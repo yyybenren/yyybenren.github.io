@@ -1,45 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>常见排序算法代码</title>
-    <url>/2025/02/07/Blog3/</url>
-    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
-<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
-<ol>
-<li>找需要拿去插入的数</li>
-<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>考研政治笔记一（马恩著作考点整理）</title>
-    <url>/2025/02/06/Blog2/</url>
-    <content><![CDATA[<h3 id="马恩著作考点整理"><a href="#马恩著作考点整理" class="headerlink" title="马恩著作考点整理"></a>马恩著作考点整理</h3><p><strong>1844年经济学哲学手稿</strong> 马克思<br>是哲学与经济学的第一次结晶，是马克思政治经济学批判研究的起始点</p>
-<p><strong>德法年鉴上的论文</strong> 马恩合著<br>完成了唯心主义向唯物主义、革命民主主义向共产主义的转变，为创立马克思主义奠定了思想前提。</p>
-<p><strong>神圣家族</strong> 马恩合著<br>马恩合著的第一部论战性质作品，为社会主义奠定了唯物主义的基础，是辩证唯物主义和历史唯物主义过程中的一个重要里程碑。</p>
-<p><strong>德意志意识形态</strong> 马恩合著<br>首次系统阐述了历史唯物主义的基本观点，实现了历史观上的伟大变革</p>
-<p><strong>哲学的贫困</strong> 马克思<br>马克思主义的第一次公开阐述，全面阐述了马克思主义的哲学原理</p>
-<p><strong>共产党宣言</strong> 马恩合著<br>标准着马克思主义的公开问世</p>
-<p><strong>资本论</strong> 马克思<br>系统阐述了剩余价值学说，揭示了资本主义生产关系的秘密。</p>
-<p><strong>哥达纲领批判</strong> 马克思<br>进一步丰富了科学社会主义学说，完整科学地阐述了共产主义社会发展阶段的理论。</p>
-<p><strong>反社林论</strong> 恩格斯<br>全面阐述了马克思主义理论体系</p>
-<p><strong>自然辩证法</strong> 恩格斯<br>第一次系统阐述了马克思主义的唯物主义自然观</p>
-<p><strong>家庭、私有制和国家的起源</strong> 恩格斯<br>科学阐明了家庭、私有制、阶级的起源、国家的起源和本质。</p>
-<p><strong>路德维希*费尔巴哈和德国古典哲学的终结</strong> 恩格斯<br>第一次鲜明而完整地提出了哲学的基本问题</p>
-]]></content>
-  </entry>
-  <entry>
     <title>考研政治笔记二（毛著作考点）</title>
     <url>/2025/02/06/Blog1/</url>
     <content><![CDATA[<h1 id="政治知识点笔记"><a href="#政治知识点笔记" class="headerlink" title="政治知识点笔记"></a>政治知识点笔记</h1><h3 id="毛泽东著作考点整理"><a href="#毛泽东著作考点整理" class="headerlink" title="毛泽东著作考点整理"></a>毛泽东著作考点整理</h3><p><strong>一、《中国社会各阶级的分析》(1925年)</strong>–最早论述新民主主义革命理论的文章</p>
@@ -175,6 +136,66 @@
 ]]></content>
   </entry>
   <entry>
+    <title>常见排序算法代码</title>
+    <url>/2025/02/07/Blog3/</url>
+    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
+<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
+<ol>
+<li>找需要拿去插入的数</li>
+<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>考研政治笔记一（马恩著作考点整理）</title>
+    <url>/2025/02/06/Blog2/</url>
+    <content><![CDATA[<h3 id="马恩著作考点整理"><a href="#马恩著作考点整理" class="headerlink" title="马恩著作考点整理"></a>马恩著作考点整理</h3><p><strong>1844年经济学哲学手稿</strong> 马克思<br>是哲学与经济学的第一次结晶，是马克思政治经济学批判研究的起始点</p>
+<p><strong>德法年鉴上的论文</strong> 马恩合著<br>完成了唯心主义向唯物主义、革命民主主义向共产主义的转变，为创立马克思主义奠定了思想前提。</p>
+<p><strong>神圣家族</strong> 马恩合著<br>马恩合著的第一部论战性质作品，为社会主义奠定了唯物主义的基础，是辩证唯物主义和历史唯物主义过程中的一个重要里程碑。</p>
+<p><strong>德意志意识形态</strong> 马恩合著<br>首次系统阐述了历史唯物主义的基本观点，实现了历史观上的伟大变革</p>
+<p><strong>哲学的贫困</strong> 马克思<br>马克思主义的第一次公开阐述，全面阐述了马克思主义的哲学原理</p>
+<p><strong>共产党宣言</strong> 马恩合著<br>标准着马克思主义的公开问世</p>
+<p><strong>资本论</strong> 马克思<br>系统阐述了剩余价值学说，揭示了资本主义生产关系的秘密。</p>
+<p><strong>哥达纲领批判</strong> 马克思<br>进一步丰富了科学社会主义学说，完整科学地阐述了共产主义社会发展阶段的理论。</p>
+<p><strong>反社林论</strong> 恩格斯<br>全面阐述了马克思主义理论体系</p>
+<p><strong>自然辩证法</strong> 恩格斯<br>第一次系统阐述了马克思主义的唯物主义自然观</p>
+<p><strong>家庭、私有制和国家的起源</strong> 恩格斯<br>科学阐明了家庭、私有制、阶级的起源、国家的起源和本质。</p>
+<p><strong>路德维希*费尔巴哈和德国古典哲学的终结</strong> 恩格斯<br>第一次鲜明而完整地提出了哲学的基本问题</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>软考系统分析师-论文高频考点-软件开发模型</title>
+    <url>/2025/02/08/Blog6/</url>
+    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发模型及其特点。包括：瀑布模型，快速原型模型，瀑布模型，增量模型，螺旋模型，喷泉模型，统一过程（UP），敏捷方法</p>
+<h2 id="软件开发模型"><a href="#软件开发模型" class="headerlink" title="软件开发模型"></a>软件开发模型</h2><p>软件开发模型是指软件开发全过程、活动和任务的结构框架，能够清晰直观地表达软件开发全过程，明确规定主要完成的活动和任务，用来作为软件项目工作的基础。</p>
+<h3 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h3><p>严格遵循软件生命周期各阶段的固定顺序，一个阶段完成后再进入下一个阶段。<strong>优点</strong>：使过程规范化、有利于评审<br><strong>缺点</strong>：过于理想，缺乏灵活性，容易造成需求偏差</p>
+<h3 id="快速原型模型"><a href="#快速原型模型" class="headerlink" title="快速原型模型"></a>快速原型模型</h3><p>适用于需求不够明确的项目，采用动态定义需求的方法，通过快速建立一个能反映用户需求的软件原型，根据反馈结果进行修改，充分体现用户参与与决策。<br>演化模型</p>
+<h3 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h3><p>采用递增式模型，将产品划分为一系列增量构件，分别进行设计、编码、集成和测试</p>
+<h3 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h3><p>结合了瀑布模型和演化模型的优点，主特点在于加入了风险分析。由制定计划、风险分析、实施工程、客户评价这一循环组成，由最初概念项目开始第一个循环</p>
+<h3 id="喷泉模型"><a href="#喷泉模型" class="headerlink" title="喷泉模型"></a>喷泉模型</h3><p>用于描述基于对象的开发过程，其核心特点是迭代。所有的开发活动没有明显的边界，允许各种开发活动交叉进行</p>
+<h3 id="统一过程（UP）"><a href="#统一过程（UP）" class="headerlink" title="统一过程（UP）"></a>统一过程（UP）</h3><p>统一过程是一个通用的过程框架，可以用于种类宽泛的软件系统，UP是基于构件的，使用UML进行软件系统建模。与其他开发方法相比，统一过程有三个显著的特点，即用例驱动、以架构为中心、迭代与增量。</p>
+<h3 id="敏捷方法"><a href="#敏捷方法" class="headerlink" title="敏捷方法"></a>敏捷方法</h3><p>敏捷方法是一种以人为核心、迭代、循序渐进的开发方法。软件项目的构件被分为多个子项目，各个子项目成果都经过测试，具备集成和可运行的特点。<br>敏捷方法在开发者看来，主要关注点有短平快的会议、小版本的发布、较少的文档、合作为重、客户直接参与、自动化测试、适应性计划调整和结对编程；从管理者角度来看有测试驱动开发、持续集成和重构。</p>
+]]></content>
+      <categories>
+        <category>系统分析师</category>
+      </categories>
+      <tags>
+        <tag>软件开发模型</tag>
+        <tag>系统分析师</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软考系统分析师-论文备考策略</title>
     <url>/2025/02/07/Blog4/</url>
     <content><![CDATA[<p>摘要：本文介绍作者本人系统分析师考试论文学习方法，分析历年真题，集中复习常考方向，准备通用模板、知识点和范文，记忆重点内容，提高备考效率。</p>
@@ -222,27 +243,6 @@
       <tags>
         <tag>系统分析师</tag>
         <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软考系统分析师-论文高频考点-软件开发模型</title>
-    <url>/2025/02/08/Blog6/</url>
-    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发模型及其特点。包括：瀑布模型，快速原型模型，瀑布模型，增量模型，螺旋模型，喷泉模型，统一过程（UP），敏捷方法</p>
-<h2 id="软件开发模型"><a href="#软件开发模型" class="headerlink" title="软件开发模型"></a>软件开发模型</h2><p>软件开发模型是指软件开发全过程、活动和任务的结构框架，能够清晰直观地表达软件开发全过程，明确规定主要完成的活动和任务，用来作为软件项目工作的基础。</p>
-<h3 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h3><p>严格遵循软件生命周期各阶段的固定顺序，一个阶段完成后再进入下一个阶段。<strong>优点</strong>：使过程规范化、有利于评审<br><strong>缺点</strong>：过于理想，缺乏灵活性，容易造成需求偏差</p>
-<h3 id="快速原型模型"><a href="#快速原型模型" class="headerlink" title="快速原型模型"></a>快速原型模型</h3><p>适用于需求不够明确的项目，采用动态定义需求的方法，通过快速建立一个能反映用户需求的软件原型，根据反馈结果进行修改，充分体现用户参与与决策。<br>演化模型</p>
-<h3 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h3><p>采用递增式模型，将产品划分为一系列增量构件，分别进行设计、编码、集成和测试</p>
-<h3 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h3><p>结合了瀑布模型和演化模型的优点，主特点在于加入了风险分析。由制定计划、风险分析、实施工程、客户评价这一循环组成，由最初概念项目开始第一个循环</p>
-<h3 id="喷泉模型"><a href="#喷泉模型" class="headerlink" title="喷泉模型"></a>喷泉模型</h3><p>用于描述基于对象的开发过程，其核心特点是迭代。所有的开发活动没有明显的边界，允许各种开发活动交叉进行</p>
-<h3 id="统一过程（UP）"><a href="#统一过程（UP）" class="headerlink" title="统一过程（UP）"></a>统一过程（UP）</h3><p>统一过程是一个通用的过程框架，可以用于种类宽泛的软件系统，UP是基于构件的，使用UML进行软件系统建模。与其他开发方法相比，统一过程有三个显著的特点，即用例驱动、以架构为中心、迭代与增量。</p>
-<h3 id="敏捷方法"><a href="#敏捷方法" class="headerlink" title="敏捷方法"></a>敏捷方法</h3><p>敏捷方法是一种以人为核心、迭代、循序渐进的开发方法。软件项目的构件被分为多个子项目，各个子项目成果都经过测试，具备集成和可运行的特点。<br>敏捷方法在开发者看来，主要关注点有短平快的会议、小版本的发布、较少的文档、合作为重、客户直接参与、自动化测试、适应性计划调整和结对编程；从管理者角度来看有测试驱动开发、持续集成和重构。</p>
-]]></content>
-      <categories>
-        <category>系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>软件开发模型</tag>
       </tags>
   </entry>
   <entry>
