@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>考研政治笔记一（马恩著作考点整理）</title>
+    <url>/2025/02/06/Blog2/</url>
+    <content><![CDATA[<h3 id="马恩著作考点整理"><a href="#马恩著作考点整理" class="headerlink" title="马恩著作考点整理"></a>马恩著作考点整理</h3><p><strong>1844年经济学哲学手稿</strong> 马克思<br>是哲学与经济学的第一次结晶，是马克思政治经济学批判研究的起始点</p>
+<p><strong>德法年鉴上的论文</strong> 马恩合著<br>完成了唯心主义向唯物主义、革命民主主义向共产主义的转变，为创立马克思主义奠定了思想前提。</p>
+<p><strong>神圣家族</strong> 马恩合著<br>马恩合著的第一部论战性质作品，为社会主义奠定了唯物主义的基础，是辩证唯物主义和历史唯物主义过程中的一个重要里程碑。</p>
+<p><strong>德意志意识形态</strong> 马恩合著<br>首次系统阐述了历史唯物主义的基本观点，实现了历史观上的伟大变革</p>
+<p><strong>哲学的贫困</strong> 马克思<br>马克思主义的第一次公开阐述，全面阐述了马克思主义的哲学原理</p>
+<p><strong>共产党宣言</strong> 马恩合著<br>标准着马克思主义的公开问世</p>
+<p><strong>资本论</strong> 马克思<br>系统阐述了剩余价值学说，揭示了资本主义生产关系的秘密。</p>
+<p><strong>哥达纲领批判</strong> 马克思<br>进一步丰富了科学社会主义学说，完整科学地阐述了共产主义社会发展阶段的理论。</p>
+<p><strong>反社林论</strong> 恩格斯<br>全面阐述了马克思主义理论体系</p>
+<p><strong>自然辩证法</strong> 恩格斯<br>第一次系统阐述了马克思主义的唯物主义自然观</p>
+<p><strong>家庭、私有制和国家的起源</strong> 恩格斯<br>科学阐明了家庭、私有制、阶级的起源、国家的起源和本质。</p>
+<p><strong>路德维希*费尔巴哈和德国古典哲学的终结</strong> 恩格斯<br>第一次鲜明而完整地提出了哲学的基本问题</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>软考系统分析师-论文高频考点</title>
+    <url>/2025/02/08/Blog10/</url>
+    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.png" alt="pic"></p>
+]]></content>
+      <categories>
+        <category>系统分析师</category>
+      </categories>
+      <tags>
+        <tag>需求工程</tag>
+        <tag>系统分析师</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见排序算法代码</title>
+    <url>/2025/02/07/Blog3/</url>
+    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
+<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
+<ol>
+<li>找需要拿去插入的数</li>
+<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>考研政治笔记二（毛著作考点）</title>
     <url>/2025/02/06/Blog1/</url>
     <content><![CDATA[<h1 id="政治知识点笔记"><a href="#政治知识点笔记" class="headerlink" title="政治知识点笔记"></a>政治知识点笔记</h1><h3 id="毛泽东著作考点整理"><a href="#毛泽东著作考点整理" class="headerlink" title="毛泽东著作考点整理"></a>毛泽东著作考点整理</h3><p><strong>一、《中国社会各阶级的分析》(1925年)</strong>–最早论述新民主主义革命理论的文章</p>
@@ -136,45 +188,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>考研政治笔记一（马恩著作考点整理）</title>
-    <url>/2025/02/06/Blog2/</url>
-    <content><![CDATA[<h3 id="马恩著作考点整理"><a href="#马恩著作考点整理" class="headerlink" title="马恩著作考点整理"></a>马恩著作考点整理</h3><p><strong>1844年经济学哲学手稿</strong> 马克思<br>是哲学与经济学的第一次结晶，是马克思政治经济学批判研究的起始点</p>
-<p><strong>德法年鉴上的论文</strong> 马恩合著<br>完成了唯心主义向唯物主义、革命民主主义向共产主义的转变，为创立马克思主义奠定了思想前提。</p>
-<p><strong>神圣家族</strong> 马恩合著<br>马恩合著的第一部论战性质作品，为社会主义奠定了唯物主义的基础，是辩证唯物主义和历史唯物主义过程中的一个重要里程碑。</p>
-<p><strong>德意志意识形态</strong> 马恩合著<br>首次系统阐述了历史唯物主义的基本观点，实现了历史观上的伟大变革</p>
-<p><strong>哲学的贫困</strong> 马克思<br>马克思主义的第一次公开阐述，全面阐述了马克思主义的哲学原理</p>
-<p><strong>共产党宣言</strong> 马恩合著<br>标准着马克思主义的公开问世</p>
-<p><strong>资本论</strong> 马克思<br>系统阐述了剩余价值学说，揭示了资本主义生产关系的秘密。</p>
-<p><strong>哥达纲领批判</strong> 马克思<br>进一步丰富了科学社会主义学说，完整科学地阐述了共产主义社会发展阶段的理论。</p>
-<p><strong>反社林论</strong> 恩格斯<br>全面阐述了马克思主义理论体系</p>
-<p><strong>自然辩证法</strong> 恩格斯<br>第一次系统阐述了马克思主义的唯物主义自然观</p>
-<p><strong>家庭、私有制和国家的起源</strong> 恩格斯<br>科学阐明了家庭、私有制、阶级的起源、国家的起源和本质。</p>
-<p><strong>路德维希*费尔巴哈和德国古典哲学的终结</strong> 恩格斯<br>第一次鲜明而完整地提出了哲学的基本问题</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>常见排序算法代码</title>
-    <url>/2025/02/07/Blog3/</url>
-    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
-<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
-<ol>
-<li>找需要拿去插入的数</li>
-<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>软考系统分析师-论文备考策略</title>
     <url>/2025/02/07/Blog4/</url>
     <content><![CDATA[<p>摘要：本文介绍作者本人系统分析师考试论文学习方法，分析历年真题，集中复习常考方向，准备通用模板、知识点和范文，记忆重点内容，提高备考效率。</p>
@@ -206,23 +219,6 @@
       </tags>
   </entry>
   <entry>
-    <title>软考系统分析师-论文高频考点-开发方法</title>
-    <url>/2025/02/08/Blog7/</url>
-    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发方法及其特点。<br>包括：结构化方法 面向对象开发方法 原型化开发方法 面向服务开发方法  </p>
-<h2 id="结构化方法"><a href="#结构化方法" class="headerlink" title="结构化方法"></a>结构化方法</h2><p>结构化方法也称生命周期法，由结构化分析、结构化设计、结构化程序三部分组成。结构化方法假定待开发系统是一个结构化的系统，按照生命周期划分为不同的阶段，使用数据流图（DFD）和数据字典，遵循工程化原理按照结构和模块进行系统开发，其精髓是自顶向下、逐步求精和模块化设计。<br><strong>优点有</strong><br>（1）开发目标清晰化。（2）开发工作阶段化。（3）开发文档规范化。（4）设计方法结构化。<br><strong>缺点如下：</strong><br>（1）开发周期长。（2）难以适应需求变化。（3）很少考虑数据结构。</p>
-<h2 id="面向对象开发方法"><a href="#面向对象开发方法" class="headerlink" title="面向对象开发方法"></a>面向对象开发方法</h2><p>面向对象开发方法采用面向对象的思想，是以用例驱动的、以体系结构为中心的、迭代的和渐增式的开发过程，主要包括需求分析、系统分析、系统设计和系统实现四个阶段，但是各个阶段的划分不像结构化开发方法那样清晰，而是在各个阶段之间迭代进行的。<br><strong>优点</strong>：模块化、代码复用、自然建模：<br><strong>缺点</strong>：性能开销、学习曲线、复杂性：</p>
-<h2 id="原型化开发方法"><a href="#原型化开发方法" class="headerlink" title="原型化开发方法"></a>原型化开发方法</h2><p>原型化方法也称为快速原型法，或者简称为原型法。是一种根据用户初步需求，利用系统开发工具，快速地建立一个系统模型展示给用户，在此基础上与用户交流，最终实现用户需求的信息系统快速开发方法。</p>
-<h2 id="面向服务的开发方法"><a href="#面向服务的开发方法" class="headerlink" title="面向服务的开发方法"></a>面向服务的开发方法</h2><p>面向服务方法是在面向对象方法的基础上扩展的构建系统的思想和方法。面向服务方法关注的是企业业务，它直接映射到业务，强调IT与业务的对齐，以服务为核心元素来封装企业的业务流程和企业已有应用系统。服务的粒度更大，更加匹配企业级应用中的业务，可以实现更高级别的重用<br><strong>缺点</strong> ：相关标准未统一、应用案例较少。<br><strong>优点</strong> ：提高系统可复用性、信息资源共享、系统之间互操作性。</p>
-]]></content>
-      <categories>
-        <category>系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>开发方法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软考系统分析师-论文AI打分</title>
     <url>/2025/02/07/Blog5/</url>
     <content><![CDATA[<p>摘要：本人练习软考高级系统分析师论文写作的过程中苦于自己写的论文没有人来评判一下，咸鱼淘宝都没找到有批改论文的服务，正巧今年春节DeepSeek发布的人工智能大型语言模型大火出圈，逐决定尝试试人工智能进行打分。</p>
@@ -239,6 +235,23 @@
       <tags>
         <tag>系统分析师</tag>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软考系统分析师-论文高频考点-开发方法</title>
+    <url>/2025/02/08/Blog7/</url>
+    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发方法及其特点。<br>包括：结构化方法 面向对象开发方法 原型化开发方法 面向服务开发方法  </p>
+<h2 id="结构化方法"><a href="#结构化方法" class="headerlink" title="结构化方法"></a>结构化方法</h2><p>结构化方法也称生命周期法，由结构化分析、结构化设计、结构化程序三部分组成。结构化方法假定待开发系统是一个结构化的系统，按照生命周期划分为不同的阶段，使用数据流图（DFD）和数据字典，遵循工程化原理按照结构和模块进行系统开发，其精髓是自顶向下、逐步求精和模块化设计。<br><strong>优点有</strong><br>（1）开发目标清晰化。（2）开发工作阶段化。（3）开发文档规范化。（4）设计方法结构化。<br><strong>缺点如下：</strong><br>（1）开发周期长。（2）难以适应需求变化。（3）很少考虑数据结构。</p>
+<h2 id="面向对象开发方法"><a href="#面向对象开发方法" class="headerlink" title="面向对象开发方法"></a>面向对象开发方法</h2><p>面向对象开发方法采用面向对象的思想，是以用例驱动的、以体系结构为中心的、迭代的和渐增式的开发过程，主要包括需求分析、系统分析、系统设计和系统实现四个阶段，但是各个阶段的划分不像结构化开发方法那样清晰，而是在各个阶段之间迭代进行的。<br><strong>优点</strong>：模块化、代码复用、自然建模：<br><strong>缺点</strong>：性能开销、学习曲线、复杂性：</p>
+<h2 id="原型化开发方法"><a href="#原型化开发方法" class="headerlink" title="原型化开发方法"></a>原型化开发方法</h2><p>原型化方法也称为快速原型法，或者简称为原型法。是一种根据用户初步需求，利用系统开发工具，快速地建立一个系统模型展示给用户，在此基础上与用户交流，最终实现用户需求的信息系统快速开发方法。</p>
+<h2 id="面向服务的开发方法"><a href="#面向服务的开发方法" class="headerlink" title="面向服务的开发方法"></a>面向服务的开发方法</h2><p>面向服务方法是在面向对象方法的基础上扩展的构建系统的思想和方法。面向服务方法关注的是企业业务，它直接映射到业务，强调IT与业务的对齐，以服务为核心元素来封装企业的业务流程和企业已有应用系统。服务的粒度更大，更加匹配企业级应用中的业务，可以实现更高级别的重用<br><strong>缺点</strong> ：相关标准未统一、应用案例较少。<br><strong>优点</strong> ：提高系统可复用性、信息资源共享、系统之间互操作性。</p>
+]]></content>
+      <categories>
+        <category>系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>开发方法</tag>
       </tags>
   </entry>
   <entry>
@@ -260,6 +273,30 @@
       <tags>
         <tag>系统分析师</tag>
         <tag>软件开发模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软考系统分析师-论文高频考点-软件测试</title>
+    <url>/2025/02/08/Blog8/</url>
+    <content><![CDATA[<p>摘要：本文梳理了软考系统分析师论文写作关于测试的知识点，只选取了重点内容，所列出内容都需要完全背诵并掌握</p>
+<h2 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h2><p>软件测试应当是寻找软件的缺陷和漏洞，通过测试来提高软件的价值、可靠性和质量。</p>
+<h2 id="软件测试方法"><a href="#软件测试方法" class="headerlink" title="软件测试方法"></a>软件测试方法</h2><h3 id="1-、按功能是否可见分"><a href="#1-、按功能是否可见分" class="headerlink" title="1,、按功能是否可见分"></a>1,、按功能是否可见分</h3><h4 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h4><p>注重软件的功能性需求，只关注程序外部结构，不关注其内部逻辑，主要对软件界面和软件功能进行测试。黑盒测试的工作重点在于设计出具有即具代表性又不失一般性的测试用例，主要用到的方法有等价类划分法，边界值分析法，错误推测法，因果图法等。</p>
+<h4 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h4><p>通过检查软件内部的逻辑结构结构，对软件中的逻辑路径进行覆盖测试，以确定实际允许状态与预期一致。常用到的方法有代码检查，静态结构分析、代码质量度量、逻辑覆盖、基本路径覆盖法、域测试、符号测试等。<br>白盒测试覆盖程度由弱到强分别为，语句覆盖、判定覆盖、条件逻辑覆盖、判断逻辑条件覆盖、条件组合判断、路径判断<br>灰盒测试。</p>
+<h3 id="2、按是否执行程序划分"><a href="#2、按是否执行程序划分" class="headerlink" title="2、按是否执行程序划分"></a>2、按是否执行程序划分</h3><h4 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h4><p>指不运行程序本身，仅通过分析和检查程序的语法、结构、过程、接口等来检查程序的正确性，通过对需求规格说明书，软件设计规格说明书，源程序进行代码分析、流程图分析、符号执行来发现错误，常用到的方法有代码检查，静态结构分析、代码质量度量等。</p>
+<h4 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h4><p>动态测试方法是指通过运行程序，检查程序运行结果与预期之间的差别，从而判定程序的正确性，健壮性和分析程序运行的性能。</p>
+<h2 id="软件测试的类型"><a href="#软件测试的类型" class="headerlink" title="软件测试的类型"></a>软件测试的类型</h2><h3 id="按阶段划分"><a href="#按阶段划分" class="headerlink" title="按阶段划分"></a>按阶段划分</h3><h4 id="1，单元测试"><a href="#1，单元测试" class="headerlink" title="1，单元测试"></a>1，单元测试</h4><p>指对程序中最小可测试单元进行检查和验证</p>
+<h4 id="2，集成测试"><a href="#2，集成测试" class="headerlink" title="2，集成测试"></a>2，集成测试</h4><p>以模块和子系统为单位进行测试，测试模块之间的通信，模块组装的正确性</p>
+<h4 id="3，系统测试"><a href="#3，系统测试" class="headerlink" title="3，系统测试"></a>3，系统测试</h4><p>系统测试是指将通过集成测试的软件，作为计算机系统的一个部分，与系统中的其他部分结合起来，在实际环境下对整个计算机系统进行的一系列严格有效的测试，以发现系统潜在的问题，保证系统的正常运行。其目的是验证系统是否正常满足用户的需求。</p>
+<h4 id="4，-验收测试"><a href="#4，-验收测试" class="headerlink" title="4， 验收测试"></a>4， 验收测试</h4><p>验收测试是系统部署前的最后一个阶段，也叫交付测试。验收测试的目的是保证软件准备就绪，并且可以让最终用户将其用于执行软件的既定功能和任务。</p>
+<h3 id="按测试对象划分"><a href="#按测试对象划分" class="headerlink" title="按测试对象划分"></a>按测试对象划分</h3><h4 id="1，功能测试"><a href="#1，功能测试" class="headerlink" title="1，功能测试"></a>1，功能测试</h4><p>又称为数据驱动的测试，主要采用黑盒测试，旨在通过测试验证程序正常的实现了各项功能，达到了用户提出的明确需求及隐含需求</p>
+<h4 id="2，性能测试"><a href="#2，性能测试" class="headerlink" title="2，性能测试"></a>2，性能测试</h4><p>性能测试的目的是验证软件系统是否达到了用户提出的性能指标，同时发现软件系统中存在的性能瓶颈，并优化软件，最后起到优化系统的功能。性能测试的主要指标有响应时间、吞吐量、并发用户数和资源利用率等。</p>
+<h4 id="3，安全测试，"><a href="#3，安全测试，" class="headerlink" title="3，安全测试，"></a>3，安全测试，</h4><h4 id="4，兼容性测试"><a href="#4，兼容性测试" class="headerlink" title="4，兼容性测试"></a>4，兼容性测试</h4><h4 id="5，界面测试"><a href="#5，界面测试" class="headerlink" title="5，界面测试"></a>5，界面测试</h4><h4 id="6，易用性测试"><a href="#6，易用性测试" class="headerlink" title="6，易用性测试"></a>6，易用性测试</h4><h4 id="7，稳定性测试"><a href="#7，稳定性测试" class="headerlink" title="7，稳定性测试"></a>7，稳定性测试</h4>]]></content>
+      <categories>
+        <category>系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>软件测试</tag>
       </tags>
   </entry>
   <entry>
@@ -285,32 +322,8 @@
         <category>系统分析师</category>
       </categories>
       <tags>
-        <tag>系统分析师</tag>
         <tag>需求工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软考系统分析师-论文高频考点-软件测试</title>
-    <url>/2025/02/08/Blog8/</url>
-    <content><![CDATA[<p>摘要：本文梳理了软考系统分析师论文写作关于测试的知识点，只选取了重点内容，所列出内容都需要完全背诵并掌握</p>
-<h2 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h2><p>软件测试应当是寻找软件的缺陷和漏洞，通过测试来提高软件的价值、可靠性和质量。</p>
-<h2 id="软件测试方法"><a href="#软件测试方法" class="headerlink" title="软件测试方法"></a>软件测试方法</h2><h3 id="1-、按功能是否可见分"><a href="#1-、按功能是否可见分" class="headerlink" title="1,、按功能是否可见分"></a>1,、按功能是否可见分</h3><h4 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h4><p>注重软件的功能性需求，只关注程序外部结构，不关注其内部逻辑，主要对软件界面和软件功能进行测试。黑盒测试的工作重点在于设计出具有即具代表性又不失一般性的测试用例，主要用到的方法有等价类划分法，边界值分析法，错误推测法，因果图法等。</p>
-<h4 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h4><p>通过检查软件内部的逻辑结构结构，对软件中的逻辑路径进行覆盖测试，以确定实际允许状态与预期一致。常用到的方法有代码检查，静态结构分析、代码质量度量、逻辑覆盖、基本路径覆盖法、域测试、符号测试等。<br>白盒测试覆盖程度由弱到强分别为，语句覆盖、判定覆盖、条件逻辑覆盖、判断逻辑条件覆盖、条件组合判断、路径判断<br>灰盒测试。</p>
-<h3 id="2、按是否执行程序划分"><a href="#2、按是否执行程序划分" class="headerlink" title="2、按是否执行程序划分"></a>2、按是否执行程序划分</h3><h4 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h4><p>指不运行程序本身，仅通过分析和检查程序的语法、结构、过程、接口等来检查程序的正确性，通过对需求规格说明书，软件设计规格说明书，源程序进行代码分析、流程图分析、符号执行来发现错误，常用到的方法有代码检查，静态结构分析、代码质量度量等。</p>
-<h4 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h4><p>动态测试方法是指通过运行程序，检查程序运行结果与预期之间的差别，从而判定程序的正确性，健壮性和分析程序运行的性能。</p>
-<h2 id="软件测试的类型"><a href="#软件测试的类型" class="headerlink" title="软件测试的类型"></a>软件测试的类型</h2><h3 id="按阶段划分"><a href="#按阶段划分" class="headerlink" title="按阶段划分"></a>按阶段划分</h3><h4 id="1，单元测试"><a href="#1，单元测试" class="headerlink" title="1，单元测试"></a>1，单元测试</h4><p>指对程序中最小可测试单元进行检查和验证</p>
-<h4 id="2，集成测试"><a href="#2，集成测试" class="headerlink" title="2，集成测试"></a>2，集成测试</h4><p>以模块和子系统为单位进行测试，测试模块之间的通信，模块组装的正确性</p>
-<h4 id="3，系统测试"><a href="#3，系统测试" class="headerlink" title="3，系统测试"></a>3，系统测试</h4><p>系统测试是指将通过集成测试的软件，作为计算机系统的一个部分，与系统中的其他部分结合起来，在实际环境下对整个计算机系统进行的一系列严格有效的测试，以发现系统潜在的问题，保证系统的正常运行。其目的是验证系统是否正常满足用户的需求。</p>
-<h4 id="4，-验收测试"><a href="#4，-验收测试" class="headerlink" title="4， 验收测试"></a>4， 验收测试</h4><p>验收测试是系统部署前的最后一个阶段，也叫交付测试。验收测试的目的是保证软件准备就绪，并且可以让最终用户将其用于执行软件的既定功能和任务。</p>
-<h3 id="按测试对象划分"><a href="#按测试对象划分" class="headerlink" title="按测试对象划分"></a>按测试对象划分</h3><h4 id="1，功能测试"><a href="#1，功能测试" class="headerlink" title="1，功能测试"></a>1，功能测试</h4><p>又称为数据驱动的测试，主要采用黑盒测试，旨在通过测试验证程序正常的实现了各项功能，达到了用户提出的明确需求及隐含需求</p>
-<h4 id="2，性能测试"><a href="#2，性能测试" class="headerlink" title="2，性能测试"></a>2，性能测试</h4><p>性能测试的目的是验证软件系统是否达到了用户提出的性能指标，同时发现软件系统中存在的性能瓶颈，并优化软件，最后起到优化系统的功能。性能测试的主要指标有响应时间、吞吐量、并发用户数和资源利用率等。</p>
-<h4 id="3，安全测试，"><a href="#3，安全测试，" class="headerlink" title="3，安全测试，"></a>3，安全测试，</h4><h4 id="4，兼容性测试"><a href="#4，兼容性测试" class="headerlink" title="4，兼容性测试"></a>4，兼容性测试</h4><h4 id="5，界面测试"><a href="#5，界面测试" class="headerlink" title="5，界面测试"></a>5，界面测试</h4><h4 id="6，易用性测试"><a href="#6，易用性测试" class="headerlink" title="6，易用性测试"></a>6，易用性测试</h4><h4 id="7，稳定性测试"><a href="#7，稳定性测试" class="headerlink" title="7，稳定性测试"></a>7，稳定性测试</h4>]]></content>
-      <categories>
-        <category>系统分析师</category>
-      </categories>
-      <tags>
         <tag>系统分析师</tag>
-        <tag>软件测试</tag>
       </tags>
   </entry>
 </search>
