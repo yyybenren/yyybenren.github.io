@@ -18,15 +18,17 @@
 ]]></content>
   </entry>
   <entry>
-    <title>软考系统分析师-论文高频考点</title>
-    <url>/2025/02/08/Blog10/</url>
-    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.png" alt="pic"></p>
+    <title>杂记-系统分析师教程纠错</title>
+    <url>/2025/02/10/Blog10/</url>
+    <content><![CDATA[<h4 id="记录一次给出版社纠错的经历"><a href="#记录一次给出版社纠错的经历" class="headerlink" title="记录一次给出版社纠错的经历"></a>记录一次给出版社纠错的经历</h4><p>最近备考软考高级系统分析师时，买了一本官方的教材2024年新出版的系统分析师教材（第二版），在学习的过程中发现了一处错误，第684页第二段第一句“本章主要从大数据处理系统的架构、开发框架…” 中的“大数据处理系统”有误，该章是微服务系统分析与设计，大数据处理系统为上一章内容。</p>
+<p>年前给出版写信纠错，年后收到了回复，纠错信和回复如下</p>
+<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/1739172546625.png"></p>
+<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/1739172593791.png"></p>
 ]]></content>
       <categories>
         <category>系统分析师</category>
       </categories>
       <tags>
-        <tag>需求工程</tag>
         <tag>系统分析师</tag>
       </tags>
   </entry>
