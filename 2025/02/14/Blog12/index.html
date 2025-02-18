@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-企业信息化 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-企业信息化">
+<meta property="og:url" content="http://yyybenren.github.io/2025/02/14/Blog12/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-02-14T09:35:00.000Z">
+<meta property="article:modified_time" content="2025-02-18T02:41:15.663Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="企业信息化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-企业信息化",
+  "url": "http://yyybenren.github.io/2025/02/14/Blog12/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-02-14T09:35:00.000Z",
+  "dateModified": "2025-02-18T02:41:15.663Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/02/14/Blog12/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-企业信息化',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-企业信息化</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-企业信息化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-14T09:35:00.000Z" title="发表于 2025-02-14 17:35:00">2025-02-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-18T02:41:15.663Z" title="更新于 2025-02-18 10:41:15">2025-02-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">637</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="企业信息化战略体系"><a href="#企业信息化战略体系" class="headerlink" title="企业信息化战略体系"></a>企业信息化战略体系</h3><p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214232207365.png" alt="image-20250214232207365"></p>
+<h3 id="企业战略与信息化战略集成方法"><a href="#企业战略与信息化战略集成方法" class="headerlink" title="企业战略与信息化战略集成方法"></a>企业战略与信息化战略集成方法</h3><p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214232348391.png" alt="image-20250214232348391"></p>
+<h3 id="信息系统战略规划方法ISSP："><a href="#信息系统战略规划方法ISSP：" class="headerlink" title="信息系统战略规划方法ISSP："></a>信息系统战略规划方法ISSP：</h3><h4 id="第一阶段（初级）"><a href="#第一阶段（初级）" class="headerlink" title="第一阶段（初级）"></a>第一阶段（初级）</h4><p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214232603983.png" alt="image-20250214232603983"></p>
+<ul>
+<li><p>关键成功因素法 CSF<img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233108659.png" alt="image-20250214233108659"></p>
+</li>
+<li><p>战略集合转化法 SST<img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233137785.png" alt="image-20250214233137785"></p>
+</li>
+<li><p>企业系统规划法 BSP<img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233203636.png" alt="image-20250214233203636"></p>
+</li>
+</ul>
+<p>第二阶段（中级）<img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233234083.png" alt="image-20250214233234083"></p>
+<p>第三阶段（高级）<img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233340851.png" alt="image-20250214233340851"></p>
+<h3 id="信息资源规划（IRP）"><a href="#信息资源规划（IRP）" class="headerlink" title="信息资源规划（IRP）"></a>信息资源规划（IRP）</h3><ul>
+<li><p>IRP强调将<strong>需求分析与系统建模紧密结合</strong>起来，需求分析是系统建模的准备，系统建模是用户需求的定型和规划化表达。</p>
+<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233553328.png" alt="image-20250214233553328"></p>
+</li>
+</ul>
+<h3 id="系统建模"><a href="#系统建模" class="headerlink" title="系统建模"></a>系统建模</h3><p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250214233741672.png" alt="image-20250214233741672"></p>
+<h3 id="业务流程分析方法"><a href="#业务流程分析方法" class="headerlink" title="业务流程分析方法"></a>业务流程分析方法</h3><p>业务流程分析的目的是了解各个业务流程的过程，明确各个部门之间的业务关系和每个业务处理的意义。</p>
+<ul>
+<li><p>价值链分析法∶找出或设计出那些能够使顾客满意，实现顾客价值最大化的业务流程。</p>
+</li>
+<li><p>客户关系分析法：把CRM用在业务流程的分析上。</p>
+</li>
+<li><p>链分析法：从企业供应链的角度分析企业的业务流程。</p>
+</li>
+<li><p>基于ERP的分析法：将企业的业务流程看作是一个紧密连接的供应链，将供应商和企业内部的采购、生产、销售，以及客户紧密联系起来，对供应链上的所有环节进行有效管理，实现对企业的动态控制和各种资源的集成和优化。</p>
+</li>
+<li><p>业务流程重组：通过重新审视企业的价值链，从功能成本的比较分析中，确定企业在哪些环节具有比较优势。</p>
+</li>
+</ul>
+<h4 id="业务流程建模"><a href="#业务流程建模" class="headerlink" title="业务流程建模"></a>业务流程建模</h4><p>企业业务流程三个要素:<strong>实体、对象和活动</strong>。</p>
+<ul>
+<li><strong>标杆瞄准</strong>【“拷贝”优秀企业成功经验】</li>
+<li><strong>IDEF</strong>【一系列建模、分析和仿真方法的统称】</li>
+<li><strong>DEMO</strong>【行为角色之间的通信方式】</li>
+<li><strong>Petri网</strong>【业务流:并行、异步、分布式和随机性】</li>
+<li><strong>基于服务的BPM</strong></li>
+</ul>
+<p>其中，IDEF包括：</p>
+<p><strong>IDEF0:业务流程(功能)建模;</strong><br><strong>IDEF1:信息建模;</strong><br><strong>IDEF1X:数据建模（如ER模型);</strong><br>IDEF2:仿真建模设计;<br>IDEF3:过程描述获取;<br><strong>IDEF4:面向对象设计;</strong><br>IDEF5:本体论描述获取;<br>IDEF6:设计原理获取;<br>IDEF7:信息系统审计;<br><strong>IDEF8:用户界面建模;</strong><br>IDEF9:场景驱动信息系统设计;<br>IDEF10:实施架构建模;<br>IDEF11:信息制品建模;<br>IDEF12:组织结构建模<br>IDEF13:三模式映射设计;<br>-IDEF14∶网络规划。</p>
+<h4 id="业务流程优化-BPR和BPM"><a href="#业务流程优化-BPR和BPM" class="headerlink" title="业务流程优化-BPR和BPM"></a>业务流程优化-BPR和BPM</h4><ul>
+<li><strong>BPR：业务流程重组</strong></li>
+<li><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/7491e8e473cf48bbba56fab0701abc35.png" alt="在这里插入图片描述"></li>
+<li><strong>BPM：业务流程管理</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/e7957587aebe44f88b753e7585671078.png" alt="在这里插入图片描述"></p>
+<h3 id="企业应用集成"><a href="#企业应用集成" class="headerlink" title="企业应用集成"></a>企业应用集成</h3><p><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/image-20250218103917957.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/02/14/Blog12/">http://yyybenren.github.io/2025/02/14/Blog12/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF%E5%8C%96/">企业信息化</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="../../10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../07/Blog4/" title="软考系统分析师-论文备考策略"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-07</div><div class="info-item-2">软考系统分析师-论文备考策略</div></div><div class="info-2"><div class="info-item-1">本文介绍作者本人系统分析师考试论文学习方法，分析历年真题，集中复习常考方向，准备通用模板、知识点和范文，记忆重点内容，提高备考效率。</div></div></div></a><a class="pagination-related" href="../../07/Blog5/" title="软考系统分析师-论文AI打分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-07</div><div class="info-item-2">软考系统分析师-论文AI打分</div></div><div class="info-2"><div class="info-item-1">人工智能大型语言模型对软考论文进行打分</div></div></div></a><a class="pagination-related" href="../../08/Blog7/" title="软考系统分析师-论文高频考点-开发方法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">软考系统分析师-论文高频考点-开发方法</div></div><div class="info-2"><div class="info-item-1">本文梳理了常见的软件开发方法及其特点</div></div></div></a><a class="pagination-related" href="../../08/Blog6/" title="软考系统分析师-论文高频考点-软件开发模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">软考系统分析师-论文高频考点-软件开发模型</div></div><div class="info-2"><div class="info-item-1">本文梳理了常见的软件开发模型及其特点</div></div></div></a><a class="pagination-related" href="../../08/Blog8/" title="软考系统分析师-论文高频考点-软件测试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">软考系统分析师-论文高频考点-软件测试</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于软件测试的知识点</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF%E5%8C%96%E6%88%98%E7%95%A5%E4%BD%93%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">企业信息化战略体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%8C%96%E6%88%98%E7%95%A5%E9%9B%86%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">企业战略与信息化战略集成方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%88%98%E7%95%A5%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95ISSP%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">信息系统战略规划方法ISSP：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%88%E5%88%9D%E7%BA%A7%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">第一阶段（初级）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E8%B5%84%E6%BA%90%E8%A7%84%E5%88%92%EF%BC%88IRP%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">信息资源规划（IRP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1"><span class="toc-number">5.</span> <span class="toc-text">系统建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">业务流程分析方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">6.1.</span> <span class="toc-text">业务流程建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E4%BC%98%E5%8C%96-BPR%E5%92%8CBPM"><span class="toc-number">6.2.</span> <span class="toc-text">业务流程优化-BPR和BPM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90"><span class="toc-number">7.</span> <span class="toc-text">企业应用集成</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化">软考系统分析师-基础知识-企业信息化</a><time datetime="2025-02-14T09:35:00.000Z" title="发表于 2025-02-14 17:35:00">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维">软考系统分析师-论文高频考点-系统运维</a><time datetime="2025-02-10T07:57:00.000Z" title="发表于 2025-02-10 15:57:00">2025-02-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/02/10/Blog10/" title="杂记-系统分析师教程纠错">杂记-系统分析师教程纠错</a><time datetime="2025-02-10T07:27:00.000Z" title="发表于 2025-02-10 15:27:00">2025-02-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/02/08/Blog9/" title="软考系统分析师-论文高频考点-需求工程">软考系统分析师-论文高频考点-需求工程</a><time datetime="2025-02-08T07:45:00.000Z" title="发表于 2025-02-08 15:45:00">2025-02-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/02/08/Blog8/" title="软考系统分析师-论文高频考点-软件测试">软考系统分析师-论文高频考点-软件测试</a><time datetime="2025-02-08T06:46:14.000Z" title="发表于 2025-02-08 14:46:14">2025-02-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
