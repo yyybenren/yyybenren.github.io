@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-信息安全之加密、摘要与数字签名 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理信息安全五要素、网络攻击分类、对称与非对称加密、数字信封、信息摘要、数字签名与数字证书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-信息安全之加密、摘要与数字签名">
+<meta property="og:url" content="http://yyybenren.github.io/2025/04/09/Blog25/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理信息安全五要素、网络攻击分类、对称与非对称加密、数字信封、信息摘要、数字签名与数字证书">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-04-09T12:20:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:24:34.241Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="信息安全">
+<meta property="article:tag" content="加密算法">
+<meta property="article:tag" content="数字签名">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-信息安全之加密、摘要与数字签名",
+  "url": "http://yyybenren.github.io/2025/04/09/Blog25/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-04-09T12:20:00.000Z",
+  "dateModified": "2026-09-28T09:24:34.241Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/04/09/Blog25/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-信息安全之加密、摘要与数字签名',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-信息安全之加密、摘要与数字签名</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-信息安全之加密、摘要与数字签名</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-09T12:20:00.000Z" title="发表于 2025-04-09 20:20:00">2025-04-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:24:34.241Z" title="更新于 2026-09-28 17:24:34">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试系统安全的第一部分，包括信息安全基本要素、网络攻击与威胁分类、安全保护等级、对称与非对称加密技术、数字信封原理、信息摘要、数字签名和数字证书。</p>
+<h2 id="一、信息安全基本要素"><a href="#一、信息安全基本要素" class="headerlink" title="一、信息安全基本要素"></a>一、信息安全基本要素</h2><table>
+<thead>
+<tr>
+<th>要素</th>
+<th>含义</th>
+<th>常用手段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保密性</td>
+<td>确保信息不暴露给未授权的实体</td>
+<td>最小授权原则、防暴露（把物理数据库文件名和扩展名改成乱码）、信息加密、物理保密</td>
+</tr>
+<tr>
+<td>完整性</td>
+<td>保证数据传输过程中正确无误，接收和发送的数据相同</td>
+<td>安全协议、校验码、密码校验、数字签名、公证</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>保证合法用户能以合法手段访问数据</td>
+<td>综合保障，如 IP 过滤、业务流控制、路由选择控制、审计跟踪</td>
+</tr>
+<tr>
+<td>可控性</td>
+<td>控制授权范围内的信息流向及行为方式，使整个网络处于可控状态</td>
+<td>——</td>
+</tr>
+<tr>
+<td>不可抵赖性</td>
+<td>信息数据参与者不能否认自己发送的数据，参与者身份真实有效</td>
+<td>数字签名等</td>
+</tr>
+</tbody></table>
+<h2 id="二、网络攻击和威胁"><a href="#二、网络攻击和威胁" class="headerlink" title="二、网络攻击和威胁"></a>二、网络攻击和威胁</h2><ul>
+<li>被动攻击：不直接影响源站和目的站的通信内容，如监听、窃取</li>
+<li>主动攻击：直接影响源站和目的站的通信内容，如中断（不再把源站数据发给目的站）、篡改（截获并修改通信内容）、伪造（第三方伪装成源站或目的站通信）</li>
+</ul>
+<p>按服务类型还可分为服务型攻击和非服务型攻击，服务型攻击针对上层服务，主要代表是 DOS 攻击；非服务型攻击针对底层。</p>
+<p>常见的安全威胁：</p>
+<table>
+<thead>
+<tr>
+<th>攻击类型</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>被动攻击</td>
+<td>窃听（网络监听）</td>
+<td>用合法或非法手段窃取系统中的信息资源和敏感信息</td>
+</tr>
+<tr>
+<td>被动攻击</td>
+<td>业务流分析</td>
+<td>通过对系统长期监听，利用统计分析研究通信频度、信息流向、通信总量等参数，从而发现有价值的信息和规律</td>
+</tr>
+<tr>
+<td>被动攻击</td>
+<td>非法登录</td>
+<td>有些资料将其归为被动攻击</td>
+</tr>
+<tr>
+<td>主动攻击</td>
+<td>假冒身份</td>
+<td>欺骗通信系统或用户，使非法用户冒充合法用户，或权限小的用户冒充权限大的用户</td>
+</tr>
+<tr>
+<td>主动攻击</td>
+<td>抵赖</td>
+<td>来自用户的攻击，如否认自己发布过的消息、伪造对方来信</td>
+</tr>
+<tr>
+<td>主动攻击</td>
+<td>旁路控制</td>
+<td>利用系统的安全缺陷或脆弱之处获得非授权的权利或特权</td>
+</tr>
+<tr>
+<td>主动攻击</td>
+<td>重放攻击</td>
+<td>把截获的某次合法通信数据拷贝，出于非法目的重新发送</td>
+</tr>
+<tr>
+<td>主动攻击</td>
+<td>拒绝服务 DOS</td>
+<td>对信息或其他资源的合法访问被无条件限制</td>
+</tr>
+</tbody></table>
+<p>注意窃听和业务流分析都通过监听手段，区别在于业务流分析更注重长期监听以及监听后的分析处理。</p>
+<h2 id="三、安全体系结构与保护等级"><a href="#三、安全体系结构与保护等级" class="headerlink" title="三、安全体系结构与保护等级"></a>三、安全体系结构与保护等级</h2><p>安全体系可划分为物理线路安全、网络安全、系统安全和应用安全：物理线路指物理设备和物理环境；网络安全指网络上的攻击和入侵；系统安全指操作系统漏洞、补丁等；应用安全指上层应用软件，包括数据库软件。</p>
+<p>安全保护等级由低到高：</p>
+<ol>
+<li>用户自主保护级：适用于普通内联网用户</li>
+<li>系统审计保护级：适用于通过内联网或国际网进行商务活动、需要保密的非重要单位</li>
+<li>安全标记保护级：适用于地方各级国家机关、金融机构、邮电通信、能源与水源供给、交通运输、大型工商与信息技术企业、重点工程建设单位</li>
+<li>结构化保护级：适用于中央级国家机关、广播电视部门、重要物资储备单位、社会应急服务部门、尖端科技企业集团、国家重点科研机构</li>
+<li>访问验证保护级：适用于国防关键部门和依法需要实施特殊隔离的单位</li>
+</ol>
+<h2 id="四、加密技术"><a href="#四、加密技术" class="headerlink" title="四、加密技术"></a>四、加密技术</h2><p>基本概念：明文是实际传输的真正数据；密文是加密之后的数据；加密是把明文转换为密文的过程；解密是把密文转换为明文的过程。加密算法一般公开，包括代换（转换成完全不同的其他数据）和置换（打乱明文顺序）两大规则；密钥是隐藏的。</p>
+<h3 id="对称加密技术"><a href="#对称加密技术" class="headerlink" title="对称加密技术"></a>对称加密技术</h3><p>加密和解密使用相同的密钥，属于不公开密钥加密算法。缺点是加密强度不高（只有一个密钥），且密钥分发困难（密钥需要传输给接收方，也要考虑保密）。</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DES</td>
+<td>替换 + 移位，56 位密钥，64 位数据块，速度快，密钥易产生</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>三重 DES，使用两个 56 位密钥 K1、K2，加密过程为 K1 加密 → K2 解密 → K1 加密，解密过程为 K1 解密 → K2 加密 → K1 解密</td>
+</tr>
+<tr>
+<td>AES</td>
+<td>美国联邦政府采用的区块加密标准，用来替代 DES，要求至少和 3DES 一样安全</td>
+</tr>
+<tr>
+<td>RC-5</td>
+<td>RSA 数据安全公司的很多产品使用</td>
+</tr>
+<tr>
+<td>IDEA</td>
+<td>128 位密钥，64 位数据块，加密性比 DES 好，对计算机性能要求相对低</td>
+</tr>
+</tbody></table>
+<h3 id="非对称加密技术"><a href="#非对称加密技术" class="headerlink" title="非对称加密技术"></a>非对称加密技术</h3><p>加密和解密使用不同的密钥，属于公开密钥加密算法。缺点是加密速度慢（密钥有 1024 位，计算量大），不适合加密大数据。</p>
+<p>原理：发送方和接收方各自持有公钥和私钥，公钥可以共享、私钥自己保密。甲方的公钥加密只能由甲方的私钥解密，反之亦然。因此甲方要传输数据给乙方，应使用乙方的公钥加密，这样只有乙方的私钥才能解密，保证了保密性，也不需要分发解密密钥。</p>
+<p>常见算法：RSA（512 位或 1024 位密钥，计算量极大、难破解）、Elgamal、ECC（椭圆曲线算法）、背包算法、Rabin、D-H 等。</p>
+<h3 id="数字信封"><a href="#数字信封" class="headerlink" title="数字信封"></a>数字信封</h3><p>对称加密密钥只有 56 位，加密过程简单、适合加密大数据，但强度不高；非对称加密密钥有 1024 位，计算量庞大、难以破解，但不适合加密大数据，一般用来加密对称算法的密钥。两者结合使用就是数字信封：</p>
+<p>发送方用对称密钥加密数据，再用接收方的公钥加密这个对称密钥一并发送；接收方用自己的私钥解密信封取出对称密钥，再解密得到原文。数字信封的本质是用对称密钥加密数据、用非对称密钥加密对称密钥，解决了对称密钥的传输问题。</p>
+<h2 id="五、信息摘要"><a href="#五、信息摘要" class="headerlink" title="五、信息摘要"></a>五、信息摘要</h2><p>信息摘要是一段数据的特征信息，数据改变则摘要改变。发送方把数据和摘要一起传给接收方，接收方对收到的数据重新生成摘要，若与收到的摘要相同则说明数据正确。信息摘要由哈希函数生成。</p>
+<p>信息摘要的特点：无论数据多长都产生固定长度的摘要；不同的输入数据产生不同的摘要；具有单向性，只能由数据生成摘要，不能由摘要还原数据。</p>
+<p>常见算法：MD5（产生 128 位输出）、SHA-1（安全散列算法，产生 160 位输出，安全性更高）。</p>
+<p>信息摘要可以验证数据完整性，但存在一个漏洞：如果数据和摘要同时被篡改，接收方比对的仍是篡改后的结果，无法发现问题。这个问题由数字签名解决。</p>
+<h2 id="六、数字签名"><a href="#六、数字签名" class="headerlink" title="六、数字签名"></a>六、数字签名</h2><p>数字签名属于非对称加密体制，主要功能是不可否认、报文鉴别、报文的完整性。</p>
+<p>原理：发送方使用自己的私钥对数据进行数字签名，接收方用发送方共享的公钥解密。由于私钥只属于发送方，接收方能用公钥解开就说明数据确实由发送方发送，从而唯一标识了发送者。</p>
+<p>数字签名与非对称加密使用公钥和私钥的过程完全相反：非对称加密用对方的公钥加密、对方私钥解密；数字签名用自己的私钥签名、对方用你的公钥核实。</p>
+<p>实际传输过程是两者合并使用：先对明文用发送方 A 的私钥签名，再用接收方 B 的公钥加密；数据到达 B 后，B 先用自己的私钥解密，再用 A 的公钥核实签名，确认发送方合法后才取出明文。</p>
+<p>数字签名与信息摘要合用后能保证数据既不可伪造也不可篡改：数字签名唯一确定发送方，第三方无法伪造；若数据被篡改，签名必然错误；签名无误则数据未被篡改，再通过信息摘要验证完整性。</p>
+<p>由于数字签名基于非对称加密、对整个报文签名速度很慢，通常先对数据生成信息摘要，只对摘要进行数字签名，从而大大提高效率。</p>
+<h2 id="七、数字证书"><a href="#七、数字证书" class="headerlink" title="七、数字证书"></a>七、数字证书</h2><p>前面的技术都建立在「发送方本身就是正确的」这一前提上。如果发送方伪造身份、公钥本身就是假的，后续的加密和签名都没有意义，因此对公钥本身的验证非常重要。</p>
+<p>数字证书（数字标识）由用户申请、证书签证机关 CA 核实签发，用于认证用户的公钥。数字证书把持有者的公钥和持有者信息绑定起来，并且经过 CA 的数字签名（即 CA 用私钥加密）。接收方首先下载 CA 的公钥验证证书真伪，验证通过就能确认发送方身份，因为 CA 是权威机构。</p>
+<p>以网银为例，最安全的过程要验证两步：一是先下载银行的数字证书，用 CA 的公钥解密，成功说明证书由 CA 颁发，而非黑客冒充；二是确认对方无误后，再用前面的一系列加密和认证技术加密通信数据。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/04/09/Blog25/">http://yyybenren.github.io/2025/04/09/Blog25/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a><a class="post-meta__tags" href="../../../../tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">数字签名</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../05/Blog24/" title="软考系统分析师-基础知识-多媒体基础与数据压缩"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-多媒体基础与数据压缩</div></div><div class="info-2"><div class="info-item-1">本文梳理媒体分类、声音与图像基础、多媒体容量计算、常见多媒体标准以及数据压缩的冗余类型</div></div></div></a><a class="pagination-related" href="../../13/Blog26/" title="软考系统分析师-基础知识-安全协议、防火墙与计算机病毒"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-安全协议、防火墙与计算机病毒</div></div><div class="info-2"><div class="info-item-1">本文梳理各层安全协议、SSL 与 IPSec 与 PGP、防火墙类型、入侵检测系统与无线安全，以及计算机病毒与木马</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../13/Blog26/" title="软考系统分析师-基础知识-安全协议、防火墙与计算机病毒"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-13</div><div class="info-item-2">软考系统分析师-基础知识-安全协议、防火墙与计算机病毒</div></div><div class="info-2"><div class="info-item-1">本文梳理各层安全协议、SSL 与 IPSec 与 PGP、防火墙类型、入侵检测系统与无线安全，以及计算机病毒与木马</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../../02/24/Blog14/" title="软考系统分析师-基础知识-计算机硬件、指令系统与体系结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="info-item-2">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="toc-number">1.</span> <span class="toc-text">一、信息安全基本要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E5%92%8C%E5%A8%81%E8%83%81"><span class="toc-number">2.</span> <span class="toc-text">二、网络攻击和威胁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BF%9D%E6%8A%A4%E7%AD%89%E7%BA%A7"><span class="toc-number">3.</span> <span class="toc-text">三、安全体系结构与保护等级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF"><span class="toc-number">4.</span> <span class="toc-text">四、加密技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF"><span class="toc-number">4.1.</span> <span class="toc-text">对称加密技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF"><span class="toc-number">4.2.</span> <span class="toc-text">非对称加密技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%BF%A1%E5%B0%81"><span class="toc-number">4.3.</span> <span class="toc-text">数字信封</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BF%A1%E6%81%AF%E6%91%98%E8%A6%81"><span class="toc-number">5.</span> <span class="toc-text">五、信息摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">6.</span> <span class="toc-text">六、数字签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">7.</span> <span class="toc-text">七、数字证书</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

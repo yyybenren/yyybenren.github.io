@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-项目管理 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理项目范围、进度、成本、质量、配置与风险管理，包括 WBS 分解、关键路径计算、挣值分析与配置管理流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-项目管理">
+<meta property="og:url" content="http://yyybenren.github.io/2025/05/15/Blog37/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理项目范围、进度、成本、质量、配置与风险管理，包括 WBS 分解、关键路径计算、挣值分析与配置管理流程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-05-15T12:20:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:28:17.318Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="项目管理">
+<meta property="article:tag" content="关键路径">
+<meta property="article:tag" content="风险管理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-项目管理",
+  "url": "http://yyybenren.github.io/2025/05/15/Blog37/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-05-15T12:20:00.000Z",
+  "dateModified": "2026-09-28T09:28:17.318Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/05/15/Blog37/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-项目管理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-项目管理</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-项目管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:28:17.318Z" title="更新于 2026-09-28 17:28:17">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试项目管理部分，包括范围管理的五个过程与 WBS 六个层次、进度管理的六个过程与关键路径计算、成本管理的估算方法与挣值分析、质量管理、配置管理的基线版本与变更控制流程，以及风险分类与管理过程。</p>
+<h2 id="一、范围管理"><a href="#一、范围管理" class="headerlink" title="一、范围管理"></a>一、范围管理</h2><p>范围管理是确定项目的边界（需求），明确哪些工作是项目应该做的，分为五个过程：</p>
+<ol>
+<li>范围计划编制：包括产品范围（软件技术相关）和工作范围（管理相关）。当产品范围发生变化，工作范围必然受影响</li>
+<li>范围定义：定义项目范围，包括产品范围和工作范围</li>
+<li>创建工作分解结构 WBS</li>
+<li>范围确认：让项目干系人确认项目范围是否正确。检查可交付成果是否得到确认，每个可交付成果是否有里程碑、是否有明确的质量标准，项目范围是否准确及其风险性</li>
+<li>范围控制：当项目范围发生变化时如何控制管理，主要是控制范围变更，对变更因素施加影响，控制变更风险</li>
+</ol>
+<h3 id="WBS-的六个层次"><a href="#WBS-的六个层次" class="headerlink" title="WBS 的六个层次"></a>WBS 的六个层次</h3><table>
+<thead>
+<tr>
+<th>层次名称</th>
+<th>层次编号</th>
+<th>层次描述</th>
+<th>层次目的</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>决策层</td>
+<td>1</td>
+<td>总项目</td>
+<td>工作授权和解除</td>
+</tr>
+<tr>
+<td>管理层</td>
+<td>2</td>
+<td>项目</td>
+<td>预算编制</td>
+</tr>
+<tr>
+<td>管理层</td>
+<td>3</td>
+<td>任务</td>
+<td>进度计划编制</td>
+</tr>
+<tr>
+<td>技术层</td>
+<td>4</td>
+<td>子任务</td>
+<td>——</td>
+</tr>
+<tr>
+<td>操作层</td>
+<td>5</td>
+<td>工作包</td>
+<td>内部控制</td>
+</tr>
+<tr>
+<td>操作层</td>
+<td>6</td>
+<td>努力水平</td>
+<td>难以衡量具体工作量的其他工作，如与客户联系</td>
+</tr>
+</tbody></table>
+<p>工作分解完成后还要编写 WBS 字典，包括详细内容、WBS 编码、工作说明、负责人、进度里程碑清单。</p>
+<h2 id="二、时间（进度）管理"><a href="#二、时间（进度）管理" class="headerlink" title="二、时间（进度）管理"></a>二、时间（进度）管理</h2><p>进度管理确保能够在给定的时间内交付产品，有六个过程：</p>
+<ol>
+<li>活动定义：在 WBS 分解的基础上，对最底层的工作包进一步分解为一个个活动</li>
+<li>活动排序：识别各项活动之间的逻辑关系，对活动排序</li>
+<li>活动资源估算：确定各项活动需要什么资源、需要多少、什么时候使用</li>
+<li>活动历时估算：估算完成每项活动所需的具体时间，包括专家判断法、三点估算法、功能点估算法、自上而下估算、自下而上估算</li>
+<li>制定进度计划：确定整个项目在每个阶段应完成哪些活动，采用网络规划技术求出关键路径作为项目工期</li>
+<li>进度控制：实施过程中将实际进展与进度计划比较，有偏差则调整；若影响总工期，采用赶工或快速跟进的方法保证按期完成</li>
+</ol>
+<h3 id="关键路径计算"><a href="#关键路径计算" class="headerlink" title="关键路径计算"></a>关键路径计算</h3><p>双代号图（PERT 图）类似于前趋图，是有向图，反映活动之间的依赖关系，有向边上标注活动运行时间，但无法反映并行关系。</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最早开始时间 ES</td>
+<td>取所有前驱活动最早完成时间 EF 的最大值</td>
+</tr>
+<tr>
+<td>最早完成时间 EF</td>
+<td>ES + 活动本身时间 DU</td>
+</tr>
+<tr>
+<td>关键路径（项目总工期）</td>
+<td>项目中耗时最长的一条线路</td>
+</tr>
+<tr>
+<td>最晚完成时间 LF</td>
+<td>取后续活动最晚开始时间的最小值</td>
+</tr>
+<tr>
+<td>最晚开始时间 LS</td>
+<td>LF - 活动本身时间 DU</td>
+</tr>
+<tr>
+<td>松弛时间（总时差）</td>
+<td>最晚开始时间 - 最早开始时间（或 LF - EF），即该活动最多可以晚开始多少天</td>
+</tr>
+<tr>
+<td>虚路径</td>
+<td>用虚线表示的路径，既不消耗资源也不消耗时间，仅用于表示依赖关系</td>
+</tr>
+</tbody></table>
+<p>单代号图（前导图）用方框表示活动，框内按「ES、持续时间、EF、活动编号、LS、总时差、LF」的约定标注。</p>
+<p>甘特图又称横道图，横轴表示时间、纵轴表示活动，以时间顺序表示活动，能反映活动间的并行关系，但无法反映依赖关系，因此难以清晰确定关键任务和关键路径。时标网络图也可用于计算关键路径，当题目还涉及成本、人员等多个条件限制时常需要画时标网络图求解。</p>
+<h2 id="三、成本管理"><a href="#三、成本管理" class="headerlink" title="三、成本管理"></a>三、成本管理</h2><ol>
+<li>成本估算：与进度管理中的活动资源估算一起进行。包括自顶向下的估算（先确定总成本再向下分解到每个工作包，又称类比估算法，要求估算人有类似项目经验）、自底向上的估算（从工作包开始一层层向上估算总成本，要求估算人十分了解项目细节）、差别估算法（上述两种方法的综合，与类似项目比较确定相同部分与不同部分，对不同部分重点估算）</li>
+<li>成本预算：把估算成本分散到 WBS 的每个工作包中建立总体预算成本；把每个工作包分配到的成本二次分配到具体活动上；确定每项成本预算支出的时间计划</li>
+<li>成本控制：与进度控制类似，在项目实施过程中把每个时间点消耗的成本与计划成本比较并调整</li>
+</ol>
+<p>挣值分析中的基本量：PV 是计划消耗成本，AC 是实际消耗成本，EV 是已完成工作量的费用。</p>
+<ul>
+<li>进度偏差 SV &#x3D; EV - PV，SV &lt; 0 表示进度拖延，SV &gt; 0 表示进度超前</li>
+<li>成本偏差 CV &#x3D; EV - AC，CV &lt; 0 表示成本超支，CV &gt; 0 表示成本节约</li>
+</ul>
+<p>其他概念：管理储备是风险预留基金，用于防止未来风险发生，不包含在预算内；零基准预算指在预算过程中不用以前相似项目来估计成本，而是从 0 开始预计项目成本，估算准确、可以避免浪费。</p>
+<h2 id="四、质量管理"><a href="#四、质量管理" class="headerlink" title="四、质量管理"></a>四、质量管理</h2><p>质量是软件产品特性的综合，表示软件产品满足明确需求（基本需求）或隐含需求（期望需求）的能力。质量管理是确定质量方针、目标和职责，并通过质量计划、质量控制、质量保证和质量改进来实现的所有管理职能的全部活动。</p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>质量规划</td>
+<td>识别项目及其产品的质量要求和标准，并书面描述项目将如何达到这些要求和标准</td>
+</tr>
+<tr>
+<td>质量保证</td>
+<td>一般每隔一定时间（如每个阶段末）进行，主要通过系统的质量审计（软件评审）和过程分析来保证项目质量</td>
+</tr>
+<tr>
+<td>质量控制</td>
+<td>实时监控项目的具体结果，判断是否符合质量标准，制订有效方案消除产生质量问题的原因</td>
+</tr>
+</tbody></table>
+<p>一定时间内质量控制的结果也是质量保证的质量审计对象；质量保证的成果又可以指导下一阶段的质量工作。</p>
+<h2 id="五、配置管理"><a href="#五、配置管理" class="headerlink" title="五、配置管理"></a>五、配置管理</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>基线：软件开发过程中特定的点，是项目生存期各开发阶段末尾的特定点，又称里程碑，反映阶段性成果。分为功能基线（系统规格说明）、分配基线（软件规格说明）、产品基线（软件产品所有配置项）、发行基线（交付给外部客户）、构造基线（企业内部使用）</li>
+<li>配置项：配置管理的基本单位。软件开发过程中的所有文档、代码、工具都可作为配置项，分为环境类、定义类、设计类、编码类、测试类、维护类六种</li>
+<li>检查点：在规定的时间间隔内对项目进行检查，比较实际与计划的差异并调整</li>
+<li>里程碑：完成阶段性工作的标志</li>
+</ul>
+<p>软件配置管理是贯穿整个软件生存周期的技术，主要功能是控制软件生存周期中软件的改变、减少各种改变造成的影响、确保软件产品质量，包括编制配置管理计划、配置标识、配置控制、配置状态报告、配置评价、发行管理和交付等活动。</p>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>配置项有三个状态：草稿、正式、修改。</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>版本号格式</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>草稿</td>
+<td>0.YZ</td>
+<td>YZ 范围为 01～99，随着草稿不断完善应递增，初值和增幅由开发者把握</td>
+</tr>
+<tr>
+<td>正式</td>
+<td>X.Y</td>
+<td>X 为主版本号（1～9），Y 为次版本号（1～9），第一次正式发布时版本号为 1.0</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>X.YZ</td>
+<td>修改配置项时一般只增大 Z 值，X.Y 保持不变</td>
+</tr>
+</tbody></table>
+<p>版本升级幅度较小时一般只增大 Y 值，X 值保持不变；只有升级幅度较大时才允许增大 X 值。</p>
+<h3 id="变更控制"><a href="#变更控制" class="headerlink" title="变更控制"></a>变更控制</h3><p>变更控制需要用到基线和配置数据库的概念，配置数据库分为三种：开发库（动态库、程序员库、工作库）、受控库（主库、系统库）、产品库（备份库、静态库、软件仓库）。</p>
+<p>变更控制流程：</p>
+<ol>
+<li>变更申请：所有变更请求应由书面申请书提出</li>
+<li>变更评估：对变更的影响范围、经济技术可行性进行分析</li>
+<li>变更决策：决定变更是否实施，若拒绝要给出理由，若实施则给出方案</li>
+<li>变更实施：由管理者指定的工作人员在受控状态下实施</li>
+<li>变更验证：由配置管理人员对变更结果进行评价，判断与预期是否相符</li>
+<li>沟通存档：将变更后的内容通知可能受影响的人员，并把变更记录汇总到文档中</li>
+</ol>
+<h2 id="六、风险管理"><a href="#六、风险管理" class="headerlink" title="六、风险管理"></a>六、风险管理</h2><p>风险分为三类：</p>
+<ul>
+<li>项目风险：威胁到项目计划，可能拖延进度、增加成本，如预算、进度、人员、资源、利益相关者、需求等方面的潜在问题</li>
+<li>技术风险：威胁到要开发软件的质量和交付时间，如设计、实现、接口、验证和维护等方面的问题，还包括规格说明的歧义性、技术不确定性、技术陈旧以及前沿技术</li>
+<li>商业风险：威胁到要开发软件的生存能力，包括市场风险（开发了没人真正需要的产品）、策略风险（产品不再符合公司商业策略）、销售风险（销售部门不知道怎么卖）、管理风险（失去高级管理层支持）、预算风险（没有得到预算或人员保证）</li>
+</ul>
+<p>风险管理过程：</p>
+<ol>
+<li>风险管理计划编制</li>
+<li>风险识别：识别已知和可预测的风险，确定来源、产生条件、特征，形成风险列表</li>
+<li>风险定性分析：对已识别风险排序，确定风险可能性与影响、优先级和类型</li>
+<li>风险定量分析：进一步了解风险发生的可能性和后果严重程度，包括灵敏度分析、期望货币价值分析、决策树分析、蒙特卡罗模拟</li>
+<li>风险应对计划编制：对每个风险制定应对措施，消极风险采用避免、转移、减轻策略，积极风险采用开拓、分享、强大策略</li>
+<li>风险监控：监控风险计划执行，检测残余风险，识别新风险，评价计划的有效性</li>
+</ol>
+<p>风险曝光度 &#x3D; 风险发生的可能性 × 风险发生会带来的损失。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/05/15/Blog37/">http://yyybenren.github.io/2025/05/15/Blog37/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a><a class="post-meta__tags" href="../../../../tags/%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84/">关键路径</a><a class="post-meta__tags" href="../../../../tags/%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/">风险管理</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</div></div><div class="info-2"><div class="info-item-1">本文梳理系统设计的基本原理与原则、概要设计与详细设计、面向对象设计七原则，以及 23 种设计模式分类与人机界面设计三大原则</div></div></div></a><a class="pagination-related" href="../../17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-数学与经济管理</div></div><div class="info-2"><div class="info-item-1">本文梳理最小生成树、最短路径、最大流量等图论应用，线性规划与决策论等运筹方法，以及数学建模的过程与方法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../../02/24/Blog14/" title="软考系统分析师-基础知识-计算机硬件、指令系统与体系结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="info-item-2">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算</div></div></div></a><a class="pagination-related" href="../../../02/28/Blog15/" title="软考系统分析师-基础知识-存储系统、总线与系统可靠性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-28</div><div class="info-item-2">软考系统分析师-基础知识-存储系统、总线与系统可靠性</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机存储系统层次与 Cache、磁盘调度与 RAID、总线分类以及系统可靠性计算</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">一、范围管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WBS-%E7%9A%84%E5%85%AD%E4%B8%AA%E5%B1%82%E6%AC%A1"><span class="toc-number">1.1.</span> <span class="toc-text">WBS 的六个层次</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%97%B6%E9%97%B4%EF%BC%88%E8%BF%9B%E5%BA%A6%EF%BC%89%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">二、时间（进度）管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E8%AE%A1%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">关键路径计算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%88%90%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">三、成本管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">四、质量管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">五、配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">5.2.</span> <span class="toc-text">版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E6%9B%B4%E6%8E%A7%E5%88%B6"><span class="toc-number">5.3.</span> <span class="toc-text">变更控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">六、风险管理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

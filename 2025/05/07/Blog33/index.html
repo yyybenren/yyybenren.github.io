@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-需求工程与结构化分析 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理需求开发与管理过程、需求分类与 PIECES 框架、需求获取方法，以及结构化分析的数据流图、数据字典与状态转换图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-需求工程与结构化分析">
+<meta property="og:url" content="http://yyybenren.github.io/2025/05/07/Blog33/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理需求开发与管理过程、需求分类与 PIECES 框架、需求获取方法，以及结构化分析的数据流图、数据字典与状态转换图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-05-07T12:20:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:27:09.177Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="需求工程">
+<meta property="article:tag" content="数据流图">
+<meta property="article:tag" content="数据字典">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-需求工程与结构化分析",
+  "url": "http://yyybenren.github.io/2025/05/07/Blog33/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-05-07T12:20:00.000Z",
+  "dateModified": "2026-09-28T09:27:09.177Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/05/07/Blog33/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-需求工程与结构化分析',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-需求工程与结构化分析</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-需求工程与结构化分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-07T12:20:00.000Z" title="发表于 2025-05-07 20:20:00">2025-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:27:09.177Z" title="更新于 2026-09-28 17:27:09">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试需求工程部分，包括软件需求的定义、需求开发与需求管理两大过程、业务需求与系统需求等分类、PIECES 框架、九种需求获取方法，以及结构化分析中的功能模型、数据模型、行为模型与数据字典。</p>
+<h2 id="一、需求工程概述"><a href="#一、需求工程概述" class="headerlink" title="一、需求工程概述"></a>一、需求工程概述</h2><p>软件需求是用户对系统在功能、行为、性能、设计约束等方面的期望，是用户解决问题或达到目标所需的条件或能力，是系统或系统部件要满足合同、标准、规范或其他正式规定文档所需具有的条件或能力，以及反映这些条件或能力的文档说明。</p>
+<p>需求工程分为两大过程：</p>
+<ul>
+<li>需求开发：需求获取 → 需求分析 → 需求定义（需求规格说明书）→ 需求验证</li>
+<li>需求管理：需求基线、变更控制、版本控制、需求跟踪、需求状态跟踪，为需求开发提供支持</li>
+</ul>
+<h2 id="二、需求分类"><a href="#二、需求分类" class="headerlink" title="二、需求分类"></a>二、需求分类</h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>业务需求</td>
+<td>反映企业或客户对系统高层次的目标要求，通常来自项目投资人、客户、市场营销部门或产品策划部门，用于确定项目视图和范围</td>
+</tr>
+<tr>
+<td>用户需求</td>
+<td>描述用户的具体目标，或用户要求系统必须能完成的任务，即用户能使用系统来做什么，通常通过用户访谈和问卷调查整理使用场景来建立</td>
+</tr>
+<tr>
+<td>系统需求</td>
+<td>从系统角度说明软件需求，包括功能需求、非功能需求和设计约束</td>
+</tr>
+</tbody></table>
+<p>系统需求的三个组成部分：</p>
+<ul>
+<li>功能需求：也称行为需求，规定开发人员必须在系统中实现的软件功能</li>
+<li>非功能需求：系统必须具备的属性或品质，又可细分为软件质量属性（可维护性、可靠性、效率等）和其他非功能需求</li>
+<li>设计约束：也称限制条件或补充规约，例如必须采用自主知识产权的数据库系统、必须运行在 UNIX 操作系统之下</li>
+</ul>
+<p>从客户角度分类：</p>
+<ul>
+<li>基本需求：需求明确规定的功能</li>
+<li>期望需求：除基本需求外，客户认为理所应当包含在内的其他功能</li>
+<li>兴奋需求：客户未要求的其他功能需求，会浪费项目开发时间和成本</li>
+</ul>
+<h3 id="PIECES-框架"><a href="#PIECES-框架" class="headerlink" title="PIECES 框架"></a>PIECES 框架</h3><p>PIECES 是系统非功能性需求分类的技术：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>性能 Performance</td>
+<td>描述企业当前的运行效率，分析当前业务的处理速度</td>
+</tr>
+<tr>
+<td>信息 Information</td>
+<td>描述业务数据的输入、输出以及处理方面存在的各种问题</td>
+</tr>
+<tr>
+<td>经济 Economics</td>
+<td>从成本和收益角度分析企业当前存在的问题</td>
+</tr>
+<tr>
+<td>控制 Control</td>
+<td>提高信息系统的安全和控制水平</td>
+</tr>
+<tr>
+<td>效率 Efficiency</td>
+<td>提高企业人、财、物等的使用效率</td>
+</tr>
+<tr>
+<td>服务 Service</td>
+<td>提高企业对客户、供应商、合作伙伴、顾客等的服务质量</td>
+</tr>
+</tbody></table>
+<h2 id="三、需求获取方法"><a href="#三、需求获取方法" class="headerlink" title="三、需求获取方法"></a>三、需求获取方法</h2><ol>
+<li>用户访谈：1 对 1～3，选择有代表性的用户</li>
+<li>问卷调查：适用于用户多、无法一一访谈的情况</li>
+<li>现场观摩：针对较为复杂的流程和操作</li>
+<li>联合需求计划 JRP：高度组织的群体会议，各方参与，成本较高</li>
+<li>情节串联板：用一系列图片来讲故事</li>
+<li>收集资料：把与系统有关的、对系统开发有益的信息收集起来</li>
+<li>参加业务实践：有效发现问题的本质并寻找解决办法</li>
+<li>阅读历史文档：对收集数据性的信息较为有用</li>
+<li>抽样调查：降低成本</li>
+</ol>
+<h2 id="四、需求分析"><a href="#四、需求分析" class="headerlink" title="四、需求分析"></a>四、需求分析</h2><p>需求分析是发现、求精、建模、规约的过程，主要是建立系统模型，创建所需数据、信息和控制流以及操作行为的模型，再对模型进行分析，主要有两种方法：结构化分析方法 SA 和面向对象分析方法 OOA。</p>
+<h3 id="结构化分析方法-SA"><a href="#结构化分析方法-SA" class="headerlink" title="结构化分析方法 SA"></a>结构化分析方法 SA</h3><p>SA 自顶向下、逐步分解，是面向数据的，强调分析对象的数据流，需要建立三类模型和一份字典：</p>
+<ul>
+<li>功能模型：数据流图 DFD，包含数据流、加工、数据存储、外部实体</li>
+<li>数据模型：实体联系图 E-R，包含实体、联系</li>
+<li>行为模型：状态转换图 STD，包含状态（初态、终态）和事件</li>
+<li>数据字典：包含数据元素、数据结构、数据流、数据存储、加工逻辑、外部实体</li>
+</ul>
+<h3 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h3><p>数据流图描述数据在系统中如何被传送或变换，以及如何对数据流进行变换，用于功能建模。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据流</td>
+<td>由一组固定成分的数据组成，表示数据的流向，通常有一个合适的名词反映其含义</td>
+</tr>
+<tr>
+<td>加工</td>
+<td>描述输入数据流到输出数据流之间的变换</td>
+</tr>
+<tr>
+<td>数据存储（文件）</td>
+<td>表示暂时存储的数据，每个文件都有名字。流向文件的数据流表示写文件，流出的表示读文件</td>
+</tr>
+<tr>
+<td>外部实体</td>
+<td>存在于软件系统外的人员或组织</td>
+</tr>
+</tbody></table>
+<p>数据流图可以分层，从顶层（上下文无关数据流）到 0 层、1 层等。顶层数据流图只含有一个加工处理，表示整个系统，描述系统的输入输出以及与外部实体的数据交互。</p>
+<p>数据项是数据流图的组成部分，不在图中显示，但会在题目说明中描述某条数据流的组成元素。</p>
+<p>加工的特点：对每一个基本加工必须有一个加工规格说明；规格说明必须描述把输入数据流变换为输出数据流的加工规则；决策表可以用来表示加工规格说明。</p>
+<p>四大模块：传入模块（从下属模块取得数据经处理传送给上级模块）、传出模块（从上级模块取得数据经处理传送给下属模块）、变换模块（从上级模块取得数据进行特定处理，转换成其他形式再送回上级模块）、协调模块（对所有下属模块进行协调和管理）。</p>
+<h3 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h3><p>数据字典用来定义数据流图中出现的符号或名称的含义，图中每个存储、加工、实体的含义都必须定义，并且父图与子图之间这些名称要相同。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>被定义为</td>
+<td>x &#x3D; a + b，表示 x 由 a 和 b 组成</td>
+</tr>
+<tr>
+<td>+</td>
+<td>与</td>
+<td>——</td>
+</tr>
+<tr>
+<td>[ , ] 或 [ | ]</td>
+<td>或</td>
+<td>x &#x3D; [a, b]，表示 x 由 a 或由 b 组成</td>
+</tr>
+<tr>
+<td>{ }</td>
+<td>重复</td>
+<td>x &#x3D; {a}，表示 x 由 0 个或多个 a 组成</td>
+</tr>
+<tr>
+<td>( )</td>
+<td>可选</td>
+<td>x &#x3D; (a)，表示 a 在 x 中可出现也可不出现</td>
+</tr>
+</tbody></table>
+<h3 id="数据流图的设计原则"><a href="#数据流图的设计原则" class="headerlink" title="数据流图的设计原则"></a>数据流图的设计原则</h3><ol>
+<li>数据守恒原则：对任何一个加工，其所有输出数据流中的数据必须能从该加工的输入数据流中直接获得，或通过该加工产生</li>
+<li>守恒加工原则：对同一个加工，输入与输出的名字必须不相同，即使组成成分相同</li>
+<li>每个加工必须既有输入数据流又有输出数据流</li>
+<li>外部实体与外部实体之间不存在数据流</li>
+<li>外部实体与数据存储之间不存在数据流</li>
+<li>数据存储与数据存储之间不存在数据流</li>
+<li>父图与子图的平衡原则：子图的输入输出数据流同父图相应加工的输入输出数据流必须一致，此原则不存在于单张图</li>
+<li>数据流与加工有关，且必须经过加工</li>
+</ol>
+<p>常见异常现象：黑洞（加工只有输入数据流没有输出数据流）、奇迹（加工只有输出数据流没有输入数据流）、灰洞（加工的输入数据流无法通过加工产生输出流）。</p>
+<h3 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h3><p>状态转换图属于行为模型，用于描述系统在不同事件影响下的状态变化，通过展示系统的各种状态以及导致状态变化的事件来表达系统的行为模式。</p>
+<h2 id="五、需求变更与需求跟踪"><a href="#五、需求变更与需求跟踪" class="headerlink" title="五、需求变更与需求跟踪"></a>五、需求变更与需求跟踪</h2><h3 id="需求变更和风险"><a href="#需求变更和风险" class="headerlink" title="需求变更和风险"></a>需求变更和风险</h3><p>需求变更过程中需要关注需求风险管理，带有风险的做法有：无足够用户参与、忽略了用户分类、用户需求不断增加、模棱两可的需求、不必要的特性、过于精简的 SRS、不准确的估算。</p>
+<p>变更产生的原因：外部环境的变化、需求和设计做得不够完整、新技术的出现、公司机构重组造成业务流程的变化。</p>
+<p>变更控制委员会 CCB 也称配置控制委员会，其任务是对建议的配置项变更做出评价、审批，以及监督已经批准变更的实施。</p>
+<h3 id="需求跟踪"><a href="#需求跟踪" class="headerlink" title="需求跟踪"></a>需求跟踪</h3><p>需求跟踪是双向跟踪，分为两个层次：正向跟踪表示用户的原始需求是否都实现了，反向跟踪表示软件实现的是否都是用户要求的，不多不少。可以用原始需求与用例的对照表（需求跟踪矩阵）来表示：</p>
+<ul>
+<li>若原始需求与用例有对应，则在对应栏打勾</li>
+<li>若某一行都没有勾，表明该原始需求未实现，正向跟踪发现问题</li>
+<li>若某一列都没有勾，表明有冗余功能用例，软件实现了多余功能，反向跟踪发现问题</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/05/07/Blog33/">http://yyybenren.github.io/2025/05/07/Blog33/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B/">需求工程</a><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE/">数据流图</a><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8/">数据字典</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../04/Blog32/" title="软考系统分析师-基础知识-软件测试与系统维护"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-软件测试与系统维护</div></div><div class="info-2"><div class="info-item-1">本文梳理测试原则与类型、测试策略与用例设计、各测试阶段、软件调试与评审，以及系统转换、维护类型与系统评价</div></div></div></a><a class="pagination-related" href="../../10/Blog34/" title="软考系统分析师-基础知识-面向对象分析与 UML"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-面向对象分析与 UML</div></div><div class="info-2"><div class="info-item-1">本文梳理面向对象基本概念、类的三种类型、UML 的构成、4+1 视图、事物与关系，以及各类 UML 图</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../10/Blog34/" title="软考系统分析师-基础知识-面向对象分析与 UML"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-10</div><div class="info-item-2">软考系统分析师-基础知识-面向对象分析与 UML</div></div><div class="info-2"><div class="info-item-1">本文梳理面向对象基本概念、类的三种类型、UML 的构成、4+1 视图、事物与关系，以及各类 UML 图</div></div></div></a><a class="pagination-related" href="../../../02/08/Blog9/" title="软考系统分析师-论文高频考点-需求工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">软考系统分析师-论文高频考点-需求工程</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于需求工程的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、需求工程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">二、需求分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PIECES-%E6%A1%86%E6%9E%B6"><span class="toc-number">2.1.</span> <span class="toc-text">PIECES 框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9C%80%E6%B1%82%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">三、需求获取方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">四、需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95-SA"><span class="toc-number">4.1.</span> <span class="toc-text">结构化分析方法 SA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE"><span class="toc-number">4.2.</span> <span class="toc-text">数据流图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8"><span class="toc-number">4.3.</span> <span class="toc-text">数据字典</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">4.4.</span> <span class="toc-text">数据流图的设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="toc-number">4.5.</span> <span class="toc-text">状态转换图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%9C%80%E6%B1%82%E5%8F%98%E6%9B%B4%E4%B8%8E%E9%9C%80%E6%B1%82%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.</span> <span class="toc-text">五、需求变更与需求跟踪</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%8F%98%E6%9B%B4%E5%92%8C%E9%A3%8E%E9%99%A9"><span class="toc-number">5.1.</span> <span class="toc-text">需求变更和风险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.2.</span> <span class="toc-text">需求跟踪</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

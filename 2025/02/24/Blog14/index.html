@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-计算机硬件、指令系统与体系结构 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-计算机硬件、指令系统与体系结构">
+<meta property="og:url" content="http://yyybenren.github.io/2025/02/24/Blog14/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-02-24T12:30:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:08:48.540Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="计算机组成与结构">
+<meta property="article:tag" content="指令系统">
+<meta property="article:tag" content="流水线">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-计算机硬件、指令系统与体系结构",
+  "url": "http://yyybenren.github.io/2025/02/24/Blog14/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-02-24T12:30:00.000Z",
+  "dateModified": "2026-09-28T09:08:48.540Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/02/24/Blog14/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-计算机硬件、指令系统与体系结构',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-24T12:30:00.000Z" title="发表于 2025-02-24 20:30:00">2025-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:08:48.540Z" title="更新于 2026-09-28 17:08:48">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试计算机组成与结构的第二部分，包括计算机硬件五大部件、指令组成与寻址方式、体系结构分类、CISC 与 RISC 的区别，以及流水线的执行时间、吞吐率与加速比计算。</p>
+<h2 id="一、计算机硬件组成"><a href="#一、计算机硬件组成" class="headerlink" title="一、计算机硬件组成"></a>一、计算机硬件组成</h2><p>计算机硬件系统由五大部分组成：运算器、控制器、存储器、输入设备、输出设备。</p>
+<ul>
+<li>运算器和控制器合称中央处理单元（CPU）</li>
+<li>存储器分为内部存储器（内存，容量小、速度快、临时存放数据）和外部存储器（硬盘、光盘等，容量大、速度慢、长期保存）</li>
+<li>输入设备和输出设备合称外设</li>
+</ul>
+<p>主机 &#x3D; CPU + 主存储器；CPU 由运算器、控制器、寄存器组和内部总线组成，实现程序控制、操作控制、时间控制和数据处理功能。</p>
+<p><strong>运算器</strong>由以下部件组成：</p>
+<ul>
+<li>算术逻辑单元 ALU：实现对数据的算术和逻辑运算</li>
+<li>累加寄存器 AC：运算结果或源操作数的存放区</li>
+<li>数据缓冲寄存器 DR：暂时存放内存的指令或数据</li>
+<li>状态条件寄存器 PSW：保存指令运行结果的条件码，如溢出标志</li>
+</ul>
+<p><strong>控制器</strong>由以下部件组成：</p>
+<ul>
+<li>指令寄存器 IR：暂存 CPU 执行的指令</li>
+<li>程序计数器 PC：存放指令执行地址</li>
+<li>地址寄存器 AR：保存当前 CPU 所访问的内存地址</li>
+<li>指令译码器 ID：分析指令操作码</li>
+</ul>
+<p>CPU 依据指令周期的不同阶段区分二进制的指令和数据，因为在不同阶段 CPU 会分别去取指令或者数据。</p>
+<h2 id="二、指令系统"><a href="#二、指令系统" class="headerlink" title="二、指令系统"></a>二、指令系统</h2><p>一条指令由操作码和操作数两部分组成：操作码决定要完成的操作，操作数指参加运算的数据及其所在单元的地址。</p>
+<p>指令的执行过程分为取指令、分析指令、执行指令三步：先把程序计数器 PC 中的指令地址送入地址总线，CPU 依据该地址从内存取出指令存入指令寄存器 IR，再由指令译码器分析操作码，最后执行指令并取出所需的源操作数。</p>
+<p>指令寻址方式分为顺序寻址和跳跃寻址。顺序寻址是取出并执行完一条指令后再取第二条；跳跃寻址则是下一条指令的地址由本条指令直接给出，程序计数器内容相应改变。</p>
+<h3 id="操作数的寻址方式"><a href="#操作数的寻址方式" class="headerlink" title="操作数的寻址方式"></a>操作数的寻址方式</h3><table>
+<thead>
+<tr>
+<th>寻址方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>立即寻址</td>
+<td>指令的地址码字段指出的不是地址，而是操作数本身</td>
+</tr>
+<tr>
+<td>直接寻址</td>
+<td>指令的地址字段直接指出操作数在主存中的地址</td>
+</tr>
+<tr>
+<td>间接寻址</td>
+<td>指令地址码字段指向的存储单元中存放的是操作数的地址</td>
+</tr>
+<tr>
+<td>寄存器寻址</td>
+<td>地址码是寄存器编号。直接寻址时寄存器内容就是操作数，间接寻址时寄存器内容是操作数的地址</td>
+</tr>
+<tr>
+<td>基址寻址</td>
+<td>基址寄存器内容加上指令中的形式地址形成有效地址，优点是扩大寻址能力</td>
+</tr>
+<tr>
+<td>变址寻址</td>
+<td>变址寄存器内容加上形式地址形成有效地址，计算方法与基址寻址相似</td>
+</tr>
+<tr>
+<td>相对寻址</td>
+<td>把程序计数器 PC 的内容加上形式地址形成有效地址，即相对当前指令地址</td>
+</tr>
+</tbody></table>
+<h2 id="三、体系结构分类"><a href="#三、体系结构分类" class="headerlink" title="三、体系结构分类"></a>三、体系结构分类</h2><p>按处理机数量分类：</p>
+<ul>
+<li>单处理系统：一个处理单元和其他设备集成</li>
+<li>并行处理系统：两个以上的处理机互联</li>
+<li>分布式处理系统：物理上远距离且松耦合的多计算机系统</li>
+</ul>
+<h3 id="Flynn-分类法"><a href="#Flynn-分类法" class="headerlink" title="Flynn 分类法"></a>Flynn 分类法</h3><p>分类依据是指令流和数据流：指令流由控制部分处理，数据流由处理器处理，主存模块用来存储指令流或数据流。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结构特征</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SISD 单指令流单数据流</td>
+<td>一个控制部分、一个处理器、一个主存模块</td>
+<td>单处理器系统</td>
+</tr>
+<tr>
+<td>SIMD 单指令流多数据流</td>
+<td>一个控制部分、多个处理器、多个主存模块，各处理器以异步形式执行同一条指令</td>
+<td>并行处理机、阵列处理机、超级向量处理机</td>
+</tr>
+<tr>
+<td>MISD 多指令流单数据流</td>
+<td>多个控制部分、一个处理器、多个主存模块</td>
+<td>被证明不可能或不实际</td>
+</tr>
+<tr>
+<td>MIMD 多指令流多数据流</td>
+<td>多个控制部分、多个处理器、多个主存模块</td>
+<td>多处理机系统、多计算机</td>
+</tr>
+</tbody></table>
+<p>一条指令可以控制一条或多条数据流，但一条数据流不能被多条指令控制，所以 MISD 不可能实现。</p>
+<h2 id="四、CISC-与-RISC"><a href="#四、CISC-与-RISC" class="headerlink" title="四、CISC 与 RISC"></a>四、CISC 与 RISC</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>CISC（复杂指令系统）</th>
+<th>RISC（精简指令系统）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>指令数量</td>
+<td>数量多，使用频率差别大，可变长格式</td>
+<td>数量少，使用频率接近，定长格式，大部分为单周期指令</td>
+</tr>
+<tr>
+<td>寻址方式</td>
+<td>支持多种</td>
+<td>支持方式少</td>
+</tr>
+<tr>
+<td>实现方式</td>
+<td>微程序控制技术（微码）</td>
+<td>硬布线逻辑控制为主，增加了通用寄存器，适合采用流水线</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>研制周期长</td>
+<td>优化编译，有效支持高级语言</td>
+</tr>
+</tbody></table>
+<p>RISC 中的流水线技术：超流水线（在每个机器周期内完成一个甚至两个浮点操作，以时间换空间）、超标量（内装多条流水线同时执行多个处理，以空间换时间）、超长指令字 VLIW（同时执行多条指令，发挥软件作用）。</p>
+<h2 id="五、指令的流水处理"><a href="#五、指令的流水处理" class="headerlink" title="五、指令的流水处理"></a>五、指令的流水处理</h2><h3 id="流水线原理"><a href="#流水线原理" class="headerlink" title="流水线原理"></a>流水线原理</h3><p>将指令分成不同段，每段由不同的部件去处理，从而产生叠加效果。常规流水线是度为 1 的，即每个流水线阶段只执行一个部分；当度大于 1 时就是超标量技术，度为 3 时相当于 3 条流水线并行执行。题目提到「度」的概念时要先把指令条数除以度，再套用流水线公式。</p>
+<h3 id="流水线计算"><a href="#流水线计算" class="headerlink" title="流水线计算"></a>流水线计算</h3><ul>
+<li>流水线周期：指令各执行段中执行时间最长的那个段</li>
+<li>流水线执行时间：1 条指令总执行时间 + （总指令条数 - 1）× 流水线周期</li>
+<li>流水线吞吐率：单位时间内执行的指令条数，等于指令条数 &#x2F; 流水线执行时间</li>
+<li>流水线加速比：不使用流水线执行时间 &#x2F; 使用流水线执行时间，越高说明效率越高</li>
+</ul>
+<h3 id="单缓冲区与双缓冲区"><a href="#单缓冲区与双缓冲区" class="headerlink" title="单缓冲区与双缓冲区"></a>单缓冲区与双缓冲区</h3><p>这类题型不直接给出流水线阶段，需要自己划分：能够同时执行的阶段就是独立的流水线阶段，只能顺序执行的阶段应该合并为一个阶段。</p>
+<p>例如「读入缓冲区 → 送入用户区 → 数据处理」三个阶段：</p>
+<ul>
+<li>单缓冲区：缓冲区与用户区都只有一个，一个盘块必须执行完前两个阶段，下一个盘块才能开始，因此前两个阶段合并，流水线为「送入用户区 + 数据处理」</li>
+<li>双缓冲区：盘块可以交替读入缓冲区，但用户区只有一个，所以缓冲区阶段可以同时进行，流水线为「读入缓冲区 + 送入用户区 + 数据处理」三段</li>
+</ul>
+<p>划分出真正的流水线阶段后，再套用流水线时间公式即可。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/02/24/Blog14/">http://yyybenren.github.io/2025/02/24/Blog14/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E7%BB%93%E6%9E%84/">计算机组成与结构</a><a class="post-meta__tags" href="../../../../tags/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a><a class="post-meta__tags" href="../../../../tags/%E6%B5%81%E6%B0%B4%E7%BA%BF/">流水线</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../28/Blog15/" title="软考系统分析师-基础知识-存储系统、总线与系统可靠性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-存储系统、总线与系统可靠性</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机存储系统层次与 Cache、磁盘调度与 RAID、总线分类以及系统可靠性计算</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../28/Blog15/" title="软考系统分析师-基础知识-存储系统、总线与系统可靠性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-28</div><div class="info-item-2">软考系统分析师-基础知识-存储系统、总线与系统可靠性</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机存储系统层次与 Cache、磁盘调度与 RAID、总线分类以及系统可靠性计算</div></div></div></a><a class="pagination-related" href="../../10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../03/08/Blog17/" title="软考系统分析师-基础知识-操作系统之进程管理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-08</div><div class="info-item-2">软考系统分析师-基础知识-操作系统之进程管理</div></div><div class="info-2"><div class="info-item-1">本文梳理操作系统的功能与分类，以及进程状态、同步互斥、PV 操作、调度算法与死锁处理</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E7%BB%84%E6%88%90"><span class="toc-number">1.</span> <span class="toc-text">一、计算机硬件组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">二、指令系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9A%84%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">操作数的寻址方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">三、体系结构分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flynn-%E5%88%86%E7%B1%BB%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">Flynn 分类法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81CISC-%E4%B8%8E-RISC"><span class="toc-number">4.</span> <span class="toc-text">四、CISC 与 RISC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%8C%87%E4%BB%A4%E7%9A%84%E6%B5%81%E6%B0%B4%E5%A4%84%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">五、指令的流水处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.</span> <span class="toc-text">流水线原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%A1%E7%AE%97"><span class="toc-number">5.2.</span> <span class="toc-text">流水线计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E5%8F%8C%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">5.3.</span> <span class="toc-text">单缓冲区与双缓冲区</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

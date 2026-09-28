@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-数据库三级模式与关系代数 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理数据库系统组成、三级模式两级映像、数据库设计阶段、E-R 模型转换规则与关系代数运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-数据库三级模式与关系代数">
+<meta property="og:url" content="http://yyybenren.github.io/2025/03/16/Blog19/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理数据库系统组成、三级模式两级映像、数据库设计阶段、E-R 模型转换规则与关系代数运算">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-03-16T12:15:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:23:44.450Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="E-R模型">
+<meta property="article:tag" content="关系代数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-数据库三级模式与关系代数",
+  "url": "http://yyybenren.github.io/2025/03/16/Blog19/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-03-16T12:15:00.000Z",
+  "dateModified": "2026-09-28T09:23:44.450Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/03/16/Blog19/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-数据库三级模式与关系代数',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-数据库三级模式与关系代数</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-数据库三级模式与关系代数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T12:15:00.000Z" title="发表于 2025-03-16 20:15:00">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:23:44.450Z" title="更新于 2026-09-28 17:23:44">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试数据库技术的第一部分，包括数据库系统组成与 DBMS 功能、三级模式两级映像、数据库设计的四个阶段、E-R 模型及其转换规则，以及关系代数的各类运算。</p>
+<h2 id="一、数据库系统概述"><a href="#一、数据库系统概述" class="headerlink" title="一、数据库系统概述"></a>一、数据库系统概述</h2><p>数据库系统 DBS 由数据库、硬件、软件和人员组成。</p>
+<p>数据库管理系统 DBMS 的功能包括：数据定义、数据库操作、数据库运行管理、数据的存储管理、数据库的建立和维护。</p>
+<p>DBMS 的分类：关系数据库系统 RDBS、面向对象的数据库系统 OODBS、对象关系数据库系统 ORDBS。</p>
+<p>数据库系统的体系结构：</p>
+<ul>
+<li>集中式：所有内容集中在 DBMS 所在的计算机上</li>
+<li>客户端&#x2F;服务器：客户端负责请求和数据表示，服务器负责数据库服务</li>
+<li>并行数据库系统：多个物理上在一起的 CPU</li>
+<li>分布式数据库系统：物理上分布在不同地方的计算机</li>
+</ul>
+<h2 id="二、三级模式与两级映像"><a href="#二、三级模式与两级映像" class="headerlink" title="二、三级模式与两级映像"></a>二、三级模式与两级映像</h2><ul>
+<li>内模式：管理物理数据的存储方式、优化和存放</li>
+<li>模式（概念模式）：通常说的「表」这一级，根据应用需求把物理数据划分为一张张表</li>
+<li>外模式：对应数据库中的视图，把表做一定处理后提供给用户使用，例如只把用户名和密码组成视图提供给登录模块，其他列不开放，从而提高安全性</li>
+</ul>
+<p>两级映像：</p>
+<ul>
+<li>外模式—模式映像：表和视图之间的映射，位于概念级和外部级之间。表中数据发生变化时只需修改此映像，无需修改应用程序</li>
+<li>模式—内模式映像：表和物理存储之间的映射，位于概念级和内部级之间。数据存储方式变化时只需修改此映像</li>
+</ul>
+<p>因此数据库系统是分层设计的，自底向上分别为物理级数据库（实际是一个数据库文件）、概念级数据库、用户级数据库。</p>
+<h2 id="三、数据库设计阶段"><a href="#三、数据库设计阶段" class="headerlink" title="三、数据库设计阶段"></a>三、数据库设计阶段</h2><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>主要工作</th>
+<th>产出物</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>需求分析</td>
+<td>分析数据存储的要求和边界</td>
+<td>数据流图、数据字典、需求说明书</td>
+</tr>
+<tr>
+<td>概念结构设计</td>
+<td>设计用户的数据模型，与具体 DBMS 无关</td>
+<td>E-R 模型</td>
+</tr>
+<tr>
+<td>逻辑结构设计</td>
+<td>把 E-R 图转换为关系模式，考虑规范化</td>
+<td>关系模式、视图、完整性约束、应用处理说明书</td>
+</tr>
+<tr>
+<td>物理设计</td>
+<td>根据逻辑设计生成物理数据库，考虑 DBMS、硬件、操作系统特性</td>
+<td>物理数据库</td>
+</tr>
+</tbody></table>
+<h2 id="四、E-R-模型"><a href="#四、E-R-模型" class="headerlink" title="四、E-R 模型"></a>四、E-R 模型</h2><p>数据模型的三要素是数据结构、数据操作、数据的约束条件。</p>
+<p>E-R 模型中的图形表示：椭圆表示属性、长方形表示实体、菱形表示联系，联系的两端要标注联系类型。</p>
+<p>联系类型包括一对一（1:1）、一对多（1:N）、多对多（M:N）。</p>
+<p>属性的分类：</p>
+<ul>
+<li>简单属性和复合属性（属性是否可以继续分割）</li>
+<li>单值属性和多值属性（属性是否有多个取值）</li>
+<li>NULL 属性（无意义）</li>
+<li>派生属性（可由其他属性计算生成）</li>
+</ul>
+<h3 id="E-R-模型转关系模式"><a href="#E-R-模型转关系模式" class="headerlink" title="E-R 模型转关系模式"></a>E-R 模型转关系模式</h3><p>每个实体都对应一个关系模式，联系的转换规则分三种情况：</p>
+<ul>
+<li>1:1 联系：可以把联系放到任意一端的实体中作为一个属性，但要保证两端关联</li>
+<li>1:N 联系：可以单独作为一个关系模式，也可以把 1 端实体的主键加入 N 端</li>
+<li>M:N 联系：必须单独作为一个关系模式，其主键是 M 端和 N 端的联合主键</li>
+</ul>
+<p>明确有多少个关系模式，就知道有多少张表；同时注意联系是作为表还是属性、作为哪个表的属性。</p>
+<h2 id="五、关系代数运算"><a href="#五、关系代数运算" class="headerlink" title="五、关系代数运算"></a>五、关系代数运算</h2><p>关系模式在代数运算中可以理解为数据库中的表，两个概念通用。</p>
+<p>基本运算（设 S1、S2 为两个关系）：</p>
+<ul>
+<li>并 S1 ∪ S2：两张表的所有记录合并，相同记录只显示一次</li>
+<li>交 S1 ∩ S2：两张表中相同的记录</li>
+<li>差 S1 - S2：S1 中有而 S2 中没有的记录</li>
+<li>笛卡尔积 S1 × S2：属性列为 S1 与 S2 属性列之和，记录数为两者记录数之积</li>
+</ul>
+<p>其他运算：</p>
+<ul>
+<li>投影 π：按条件选择某关系模式中的某列，列也可以用数字表示</li>
+<li>选择 σ：按条件选择某关系模式中的某条记录</li>
+<li>自然连接：结果显示全部属性列，但相同属性列只显示一次，只保留两个关系中属性相同且值相同的记录</li>
+</ul>
+<p><strong>效率问题</strong>：关系代数运算的效率归根结底取决于参与运算的两张表的属性列数和记录数，属性列和记录数越少，运算次数越少，效率越高。因此效率高的写法一般是「先做选择、再做连接」，即在两表连接之前就把条件判断完。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/03/16/Blog19/">http://yyybenren.github.io/2025/03/16/Blog19/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="../../../../tags/E-R%E6%A8%A1%E5%9E%8B/">E-R模型</a><a class="post-meta__tags" href="../../../../tags/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/">关系代数</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../12/Blog18/" title="软考系统分析师-基础知识-操作系统之存储、文件与设备管理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-操作系统之存储、文件与设备管理</div></div><div class="info-2"><div class="info-item-1">本文梳理存储管理方式、页面置换算法、索引文件结构、I/O 控制方式以及微内核与嵌入式操作系统</div></div></div></a><a class="pagination-related" href="../../20/Blog20/" title="软考系统分析师-基础知识-数据库规范化与并发控制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-数据库规范化与并发控制</div></div><div class="info-2"><div class="info-item-1">本文梳理函数依赖与键、四类范式、模式分解，以及事务特性、封锁协议与数据库安全</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../20/Blog20/" title="软考系统分析师-基础知识-数据库规范化与并发控制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-20</div><div class="info-item-2">软考系统分析师-基础知识-数据库规范化与并发控制</div></div><div class="info-2"><div class="info-item-1">本文梳理函数依赖与键、四类范式、模式分解，以及事务特性、封锁协议与数据库安全</div></div></div></a><a class="pagination-related" href="../../24/Blog21/" title="软考系统分析师-基础知识-数据仓库、大数据与数据库新技术"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-24</div><div class="info-item-2">软考系统分析师-基础知识-数据仓库、大数据与数据库新技术</div></div><div class="info-2"><div class="info-item-1">本文梳理分布式数据库与分布透明性、数据仓库四大特点、数据挖掘与商业智能，以及大数据、SQL 与数据库新技术</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、数据库系统概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%B8%A4%E7%BA%A7%E6%98%A0%E5%83%8F"><span class="toc-number">2.</span> <span class="toc-text">二、三级模式与两级映像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5"><span class="toc-number">3.</span> <span class="toc-text">三、数据库设计阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81E-R-%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">四、E-R 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#E-R-%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">E-R 模型转关系模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.</span> <span class="toc-text">五、关系代数运算</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

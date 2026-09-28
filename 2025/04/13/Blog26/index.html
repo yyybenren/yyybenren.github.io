@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-安全协议、防火墙与计算机病毒 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理各层安全协议、SSL 与 IPSec 与 PGP、防火墙类型、入侵检测系统与无线安全，以及计算机病毒与木马">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-安全协议、防火墙与计算机病毒">
+<meta property="og:url" content="http://yyybenren.github.io/2025/04/13/Blog26/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理各层安全协议、SSL 与 IPSec 与 PGP、防火墙类型、入侵检测系统与无线安全，以及计算机病毒与木马">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-04-13T12:25:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:24:59.789Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="信息安全">
+<meta property="article:tag" content="防火墙">
+<meta property="article:tag" content="入侵检测">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-安全协议、防火墙与计算机病毒",
+  "url": "http://yyybenren.github.io/2025/04/13/Blog26/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-04-13T12:25:00.000Z",
+  "dateModified": "2026-09-28T09:24:59.789Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/04/13/Blog26/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-安全协议、防火墙与计算机病毒',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-安全协议、防火墙与计算机病毒</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-安全协议、防火墙与计算机病毒</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-13T12:25:00.000Z" title="发表于 2025-04-13 20:25:00">2025-04-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:24:59.789Z" title="更新于 2026-09-28 17:24:59">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试系统安全的第二部分，包括各层安全协议、SSL&#x2F;SET&#x2F;Kerberos&#x2F;IPSec&#x2F;PGP 的原理，网络级与应用级防火墙、DMZ 屏蔽子网，入侵检测系统的四个模块，无线网络安全以及计算机病毒与木马。</p>
+<h2 id="一、各层安全协议"><a href="#一、各层安全协议" class="headerlink" title="一、各层安全协议"></a>一、各层安全协议</h2><p>各层保证传输安全的手段不同，物理层靠物理手段，其余各层靠协议：</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>安全手段与协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理层</td>
+<td>隔离、屏蔽</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>链路加密、PPTP、L2TP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IPSec</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>防火墙</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>TLS、SET</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>SSL、HTTPS</td>
+</tr>
+<tr>
+<td>应用层</td>
+<td>PGP</td>
+</tr>
+</tbody></table>
+<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><p>SSL 协议常用于网银交易，提供三方面服务：用户和服务器的合法性验证、加密数据以隐藏被传输的数据、保护数据的完整性。</p>
+<p>实现过程为：接通阶段 → 密码交换阶段（客户端和服务器交换双方认可的密码）→ 会谈密码阶段（产生彼此交谈的会谈密码）→ 检验阶段 → 客户认证阶段 → 结束阶段。</p>
+<p>SSL 被设计为加强 Web 安全传输（HTTP&#x2F;HTTPS，还有 SMTP&#x2F;NNTP 等）的协议；SSH 则被设计为加强 Telnet&#x2F;FTP 安全的传输协议。</p>
+<h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>SET 是安全电子交易协议，主要应用于 B2C 模式的电子商务中保障支付信息的安全性。协议本身比较复杂、设计严格、安全性高，能保证信息传输的机密性、真实性、完整性和不可否认性。SET 是 PKI 框架下的一个典型实现。</p>
+<h3 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h3><p>Kerberos 是一种网络身份认证协议，基础是基于信任第三方，提供了在开放型网络中进行身份认证的方法，认证实体可以是用户也可以是用户服务。这种认证不依赖宿主机的操作系统或 IP 地址，不需要保证网络上所有计算机的物理安全性，并假定数据包在传输中可被随机窃取和篡改。</p>
+<h3 id="IPSec"><a href="#IPSec" class="headerlink" title="IPSec"></a>IPSec</h3><p>IPSec 是 IETF 为保证在 Internet 上传送数据的保密性而制定的框架协议，应用在网络层，保护和认证 IP 数据包。它是开放的框架式协议，各算法之间相互独立，提供了信息的机密性、数据的完整性、用户的验证和防重放保护，集隧道技术、加密技术、认证技术、密钥管理技术于一体，支持隧道模式和传输模式。</p>
+<p>IPSec 的功能组件：</p>
+<ul>
+<li>认证头 AH：用于数据完整性认证和数据源认证</li>
+<li>封装安全负荷 ESP：提供数据保密性和数据完整性认证，并包含防止重放攻击的顺序号</li>
+<li>Internet 密钥交换协议 IKE：生成和分发 ESP、AH 中使用的密钥，也对远程系统进行初始认证</li>
+</ul>
+<p>安全关联 SA 是 IPSec 的基础，是两个应用 IPSec 的系统（主机、路由器）之间的单向逻辑连接，是安全策略的具体化和实例化。一个 SA 由三元组唯一标识：安全参数索引 SPI、一个 IP 目的地址、一个安全协议（AH 或 ESP）标识符。</p>
+<h3 id="PGP"><a href="#PGP" class="headerlink" title="PGP"></a>PGP</h3><p>PGP 是安全电子邮件协议，提供两种服务：数据加密和数字签名。数据加密可用于本地文件，也可用于网络上传输的电子邮件；数字签名用于数据源身份认证和报文完整性验证。PGP 使用 RSA 公钥证书进行身份认证，使用 IDEA（128 位密钥）加密数据，使用 MD5 验证数据完整性。</p>
+<p>发送方 A 持有三个密钥：A 的私钥、B 的公钥、A 生成的一次性对称密钥；接收方 B 持有两个密钥：B 的私钥、A 的公钥。</p>
+<p>发送过程：A 用 SHA 对明文生成信息摘要，用 A 的私钥对摘要做数字签名，把摘要和明文都用一次性对称密钥加密，再用 B 的公钥加密这个对称密钥，最后整体发送。</p>
+<p>接收过程：B 先用自己的私钥解密取出一次性对称密钥，用它解密密文得到摘要和明文，再用 A 的公钥核实数字签名得到摘要，同时对明文用 SHA 重新生成摘要并与收到的摘要比对，一致则安全。</p>
+<h2 id="二、防火墙"><a href="#二、防火墙" class="headerlink" title="二、防火墙"></a>二、防火墙</h2><p>防火墙是在内部网络和外部因特网之间增加的一道安全防护措施，分为网络级防火墙和应用级防火墙。</p>
+<p>网络级防火墙层次低但效率高，使用包过滤和状态检测手段，一般只检验网络包的外在属性（起始地址、状态）是否异常，异常则过滤掉，不与内网通信，因此对应用和用户是透明的。问题是遇到伪装的危险数据包就无法过滤，此时需要应用级防火墙。</p>
+<p>应用级防火墙层次高但效率低，它会把网络包拆开检查里面的数据是否有问题，消耗大量时间、效率低下，但安全强度高。</p>
+<p>常见结构有屏蔽路由器、双穴主机、屏蔽主机、屏蔽子网等。其中屏蔽子网是在内网和外网之间增加一个屏蔽子网，即 DMZ（非军事区），内外网通信必须多经过一道防火墙。DMZ 中一般存放邮件服务器、Web 服务器等需要内外网数据交互的服务器，可以屏蔽来自内部的攻击，但完全来自系统内部服务器的攻击仍无法屏蔽。</p>
+<h2 id="三、入侵检测系统"><a href="#三、入侵检测系统" class="headerlink" title="三、入侵检测系统"></a>三、入侵检测系统</h2><p>美国国防部高级研究计划局提出的公共入侵检测框架 CIDF 由四个模块组成：</p>
+<ol>
+<li>事件产生器：负责数据采集，把收集到的原始数据转换为事件。入侵检测利用的信息一般来自四个方面——系统和网络的日志文件、目录和文件中不期望的改变、程序执行中不期望的行为、物理形式的入侵信息。要在网络中若干关键点（不同网段和不同主机）收集信息，通过多个采集点信息的比较判断是否存在可疑迹象</li>
+<li>事件分析器：接收事件信息并分析判断是否为入侵行为或异常现象，分析方法有三种——模式匹配（与已知入侵数据库比较）、统计分析（为用户、文件、目录、设备建立正常使用特征，超出正常范围即认为可能入侵）、数据完整性分析（关注文件或系统对象属性是否被修改，多用于事后审计）</li>
+<li>事件数据库：存放有关事件的各种中间结果和最终数据，可以是数据库也可以是文本文件</li>
+<li>响应单元：根据报警信息做出反应，强烈的反应是断开连接、改变文件属性，简单的反应是发出系统提示引起操作人员注意</li>
+</ol>
+<h2 id="四、无线网络安全"><a href="#四、无线网络安全" class="headerlink" title="四、无线网络安全"></a>四、无线网络安全</h2><p>WiFi 接入加密安全技术由低到高为 WEP &lt; WPA &lt; WPA2：</p>
+<ul>
+<li>WEP：使用 RC4 协议加密，用 CRC-32 校验保证数据正确性</li>
+<li>WPA：增加了安全认证技术，增大密钥和初始向量长度（128 比特密钥和 48 位初始向量用于 RC4 加密）；采用临时密钥完整性协议 TKIP，更频繁地变换密钥以降低安全风险；强化数据完整性保护，用报文完整性编码检测伪造数据包，并在报文认证码中包含帧计数器防止重放攻击</li>
+<li>WPA2：在 WPA 基础上增加采用 AES 对称加密算法，比 RC4 更安全可靠</li>
+</ul>
+<h2 id="五、计算机病毒与木马"><a href="#五、计算机病毒与木马" class="headerlink" title="五、计算机病毒与木马"></a>五、计算机病毒与木马</h2><p>计算机病毒是编制或插入计算机程序中、破坏计算机功能或数据、影响计算机使用并能自我复制的一组计算机指令或程序代码。</p>
+<p>病毒的特性：传染性、隐蔽性、潜伏性、破坏性、针对性、衍生性、寄生性、未知性。</p>
+<p>病毒命名规则为「病毒前缀.病毒名.病毒后缀」。常见前缀：trojan（木马）、Hack（黑客程序）、worm（蠕虫病毒）、macro（宏病毒）、script（脚本病毒）、win32（针对 Windows 的病毒）。</p>
+<table>
+<thead>
+<tr>
+<th>病毒类型</th>
+<th>特征</th>
+<th>危害</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件型</td>
+<td>感染 DOS 下的 COM、EXE 文件</td>
+<td>随着 DOS 消失，危害越来越小</td>
+</tr>
+<tr>
+<td>引导型</td>
+<td>启动 DOS 系统时触发</td>
+<td>随着 DOS 消失，危害越来越小</td>
+</tr>
+<tr>
+<td>宏病毒</td>
+<td>针对 Office，由 Office 的宏语言编写</td>
+<td>只感染 Office 文档，以 Word 文档为主</td>
+</tr>
+<tr>
+<td>VB 脚本病毒</td>
+<td>通过 IE 浏览器激活</td>
+<td>浏览网页时感染，清除较容易</td>
+</tr>
+<tr>
+<td>蠕虫</td>
+<td>有的通过电子邮件附件传播，有的利用操作系统漏洞攻击</td>
+<td>破坏文件、造成数据丢失、使系统无法正常运行，是目前危害最大的病毒</td>
+</tr>
+<tr>
+<td>木马</td>
+<td>通常是病毒携带的附属程序</td>
+<td>夺取计算机控制权</td>
+</tr>
+<tr>
+<td>黑客程序</td>
+<td>利用系统漏洞入侵的工具</td>
+<td>常被计算机病毒携带用于破坏</td>
+</tr>
+</tbody></table>
+<p>木马是一种后门程序，常被黑客用作控制远程计算机的工具，隐藏在被控电脑上监控操作并盗取信息。</p>
+<p>代表性病毒实例：蠕虫类有熊猫烧香、罗密欧与朱丽叶、恶鹰、尼姆达、冲击波、欢乐时光；木马类有 QQ 消息尾巴木马、特洛伊木马；宏病毒有美丽沙、台湾 1 号。其中 CIH 是史上唯一破坏硬件的病毒，红色代码是蠕虫病毒加木马。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/04/13/Blog26/">http://yyybenren.github.io/2025/04/13/Blog26/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a><a class="post-meta__tags" href="../../../../tags/%E9%98%B2%E7%81%AB%E5%A2%99/">防火墙</a><a class="post-meta__tags" href="../../../../tags/%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/">入侵检测</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../09/Blog25/" title="软考系统分析师-基础知识-信息安全之加密、摘要与数字签名"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-信息安全之加密、摘要与数字签名</div></div><div class="info-2"><div class="info-item-1">本文梳理信息安全五要素、网络攻击分类、对称与非对称加密、数字信封、信息摘要、数字签名与数字证书</div></div></div></a><a class="pagination-related" href="../../17/Blog27/" title="软考系统分析师-基础知识-知识产权与标准化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-知识产权与标准化</div></div><div class="info-2"><div class="info-item-1">本文梳理各类知识产权的保护期限、权利归属判定、侵权判定规则以及标准分类与编号</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../09/Blog25/" title="软考系统分析师-基础知识-信息安全之加密、摘要与数字签名"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-09</div><div class="info-item-2">软考系统分析师-基础知识-信息安全之加密、摘要与数字签名</div></div><div class="info-2"><div class="info-item-1">本文梳理信息安全五要素、网络攻击分类、对称与非对称加密、数字信封、信息摘要、数字签名与数字证书</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../../02/24/Blog14/" title="软考系统分析师-基础知识-计算机硬件、指令系统与体系结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="info-item-2">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%90%84%E5%B1%82%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text">一、各层安全协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL"><span class="toc-number">1.1.</span> <span class="toc-text">SSL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SET"><span class="toc-number">1.2.</span> <span class="toc-text">SET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kerberos"><span class="toc-number">1.3.</span> <span class="toc-text">Kerberos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPSec"><span class="toc-number">1.4.</span> <span class="toc-text">IPSec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PGP"><span class="toc-number">1.5.</span> <span class="toc-text">PGP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">2.</span> <span class="toc-text">二、防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">三、入侵检测系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">四、无线网络安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E4%B8%8E%E6%9C%A8%E9%A9%AC"><span class="toc-number">5.</span> <span class="toc-text">五、计算机病毒与木马</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

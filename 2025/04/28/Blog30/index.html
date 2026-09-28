@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-系统规划与可行性研究 | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理系统规划的步骤、可行性分析的四个方面，以及成本效益分析中的盈亏平衡点、净现值与投资回收期计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-系统规划与可行性研究">
+<meta property="og:url" content="http://yyybenren.github.io/2025/04/28/Blog30/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理系统规划的步骤、可行性分析的四个方面，以及成本效益分析中的盈亏平衡点、净现值与投资回收期计算">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-04-28T12:20:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:26:19.992Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="系统规划">
+<meta property="article:tag" content="可行性分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-系统规划与可行性研究",
+  "url": "http://yyybenren.github.io/2025/04/28/Blog30/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-04-28T12:20:00.000Z",
+  "dateModified": "2026-09-28T09:26:19.992Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/04/28/Blog30/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-系统规划与可行性研究',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-系统规划与可行性研究</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-系统规划与可行性研究</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-28T12:20:00.000Z" title="发表于 2025-04-28 20:20:00">2025-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:26:19.992Z" title="更新于 2026-09-28 17:26:19">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试系统规划部分，包括系统规划六个步骤、项目机会选择、可行性分析的四类与八个步骤，以及成本分类、收益分类和盈亏平衡点、净现值、投资回收期等计算。</p>
+<h2 id="一、系统规划步骤"><a href="#一、系统规划步骤" class="headerlink" title="一、系统规划步骤"></a>一、系统规划步骤</h2><ol>
+<li>对现有系统进行初步调查：根据企业战略和发展目标，从类似企业和本企业内部收集各种信息，站在管理层的高度观察企业现状，分析现有系统的运行状况</li>
+<li>分析和确定系统目标：系统目标应包括服务的质量和范围、政策、组织和人员等，不仅包括信息系统的目标，还要反映整个企业的目标</li>
+<li>分析子系统的组成和基本功能：自顶向下对系统进行划分，并详细说明各个子系统应实现的功能</li>
+<li>拟定系统的实施方案：可以对子系统的优先级进行设定，以便确定开发顺序</li>
+<li>进行系统的可行性研究，编写可行性研究报告，召开可行性论证会</li>
+<li>制订系统建设方案：对可行性研究报告中提出的各项技术指标进行分析比较，落实各项假设的前提条件，并根据方案及实施计划编写系统设计任务书。系统设计任务书经上级主管部门批准后，正式作为系统建设的依据</li>
+</ol>
+<p>项目机会选择的顺序：立项目标和动机 → 立项价值判断 → 项目选择和确定 → 初步调查 → 可行性分析。</p>
+<h2 id="二、可行性分析"><a href="#二、可行性分析" class="headerlink" title="二、可行性分析"></a>二、可行性分析</h2><p>可行性是指在企业当前条件下是否有必要建设新系统，以及建设新系统的工作是否具备必要条件，即包括必要性和可能性。</p>
+<p>可行性分析的步骤：</p>
+<ol>
+<li>复查系统目标和规模</li>
+<li>分析现有系统</li>
+<li>导出新系统的高层逻辑模型</li>
+<li>用户复核</li>
+<li>提出并评价解决方案</li>
+<li>确定最终推荐的解决方案</li>
+<li>草拟开发计划</li>
+<li>编制和提交可行性分析报告</li>
+</ol>
+<p>可行性研究通常从四个方面分析，其中经济可行性通常被认为是项目的底线：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>分析内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>经济可行性</td>
+<td>也称投资收益分析或成本效益分析，评估项目的建设成本、运行成本和可能的经济收益。收益可分为直接与间接、有形与无形、一次性与非一次性、可定量与不可定量</td>
+</tr>
+<tr>
+<td>技术可行性</td>
+<td>也称技术风险分析，研究对象是信息系统需要实现的功能和性能以及技术能力约束，主要考虑技术（现有技术能力是否足以支持系统目标）、资源（掌握技术的员工、技术积累、构件库、软硬件条件）、目标三方面。技术可行性绝不仅仅是论证技术手段上是否可实现，还包含当前资源条件下的技术可行性</td>
+</tr>
+<tr>
+<td>法律可行性</td>
+<td>也称社会可行性，从政策、法律、道德、制度等社会因素论证信息系统建设的现实性</td>
+</tr>
+<tr>
+<td>用户使用可行性</td>
+<td>也称执行可行性，从用户角度评估系统可行性，包括企业的行政管理和工作制度、使用人员的素质和培训要求，可细分为管理可行性和运行可行性</td>
+</tr>
+</tbody></table>
+<p>用户使用可行性的两个细分：</p>
+<ul>
+<li>管理可行性：从企业管理上分析系统建设可行性。主管领导不支持的项目一般会失败，中高层管理人员抵触情绪大就有必要先做思想工作；还要考虑管理方法是否科学、相应管理制度改革的时机是否成熟、规章制度是否齐全</li>
+<li>运行可行性：也称操作可行性，分析和测定信息系统在确定环境中能够有效工作并被用户方便使用的程度和能力，例如 ERP 建成后的数据采集与数据质量问题、工作人员 IT 技能不足等</li>
+</ul>
+<p>需要注意：系统开发初期用户需求和候选方案尚未确定，成本不可能准确估算，此时的经济可行性只能大致估算成本与收益，判断建设是否值得。</p>
+<h2 id="三、成本效益分析"><a href="#三、成本效益分析" class="headerlink" title="三、成本效益分析"></a>三、成本效益分析</h2><h3 id="成本分类"><a href="#成本分类" class="headerlink" title="成本分类"></a>成本分类</h3><table>
+<thead>
+<tr>
+<th>成本类型</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>固定成本</td>
+<td>总额在一定期间和一定业务量范围内不随业务量变动而保持固定不变</td>
+<td>管理人员工资、办公费、固定资产折旧费、员工培训费</td>
+</tr>
+<tr>
+<td>变动成本</td>
+<td>总额随业务量变动而成正比例变动</td>
+<td>直接材料费、产品包装费、外包费用、开发奖金</td>
+</tr>
+<tr>
+<td>混合成本</td>
+<td>混合了固定成本和变动成本的性质</td>
+<td>水电费、电话费，通常有一个基数，超过基数后随业务量增大</td>
+</tr>
+<tr>
+<td>直接成本</td>
+<td>直接投入在项目上</td>
+<td>项目组人员工资、材料费用</td>
+</tr>
+<tr>
+<td>间接成本</td>
+<td>分摊到项目上</td>
+<td>水电费、员工培训费</td>
+</tr>
+<tr>
+<td>沉没成本</td>
+<td>已经投入项目中、无法挽回的成本</td>
+<td>不需要再考虑</td>
+</tr>
+</tbody></table>
+<p>收益分类：有形收益是能够直接带来营业额和利润增长的收益；无形收益不一定能导致营业额和利润增长，但能增加公司名气、信誉等。</p>
+<h3 id="常用计算"><a href="#常用计算" class="headerlink" title="常用计算"></a>常用计算</h3><p><strong>盈亏平衡点</strong></p>
+<p>利润 &#x3D; 销售额 - 成本 &#x3D; 销售额 -（固定成本 + 可变成本）。当利润为 0 时即为盈亏平衡点：</p>
+<p>盈亏平衡点销售额 &#x3D; 总固定成本 + 总可变成本 &#x3D; 总固定成本 + 可变成本占销售额的比例 × 盈亏平衡点销售额</p>
+<p>注意：可变成本与销售收入（销量）成正比，固定成本一直不变。</p>
+<p><strong>净现值 NPV</strong></p>
+<p>静态收益计算不考虑金钱的时间价值，只看项目周期内投入与产出的绝对数字；动态收益计算要考虑金钱的时间价值。设每年折现率为 i，原价值为 F 的东西在 n 年后的价值为 P &#x3D; F &#x2F; (1 + i)^n。</p>
+<p>净现值 NPV 是考虑金钱的时间价值计算出的净利润，把项目周期内每年的（收入 CI - 支出 CO）按折现率折现后累加即得。NPV 有助于公司判断项目是否盈利。</p>
+<p>净现值率 NPVR 是项目净现值与原始投资总额的比率，有助于公司选择投入小、产出高的项目。</p>
+<p><strong>投资回收期</strong></p>
+<ul>
+<li>静态投资回收期 &#x3D; 累计净现金流量开始出现正值的年份数 - 1 +（之前累计总成本 - 之前累计总收益）&#x2F;（当年收益 - 当年成本）</li>
+<li>动态投资回收期 &#x3D; 累计折现值开始出现正值的年份数 - 1 +（之前总成本折现值 - 之前总收益折现值）&#x2F;（当年收益折现值 - 当年成本折现值）</li>
+<li>投资回收率 &#x3D; 1 &#x2F; 投资回收期 × 100%</li>
+<li>投资收益率 &#x3D; 投资收益 &#x2F; 投资成本 × 100%</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/04/28/Blog30/">http://yyybenren.github.io/2025/04/28/Blog30/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92/">系统规划</a><a class="post-meta__tags" href="../../../../tags/%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/">可行性分析</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../24/Blog29/" title="软考系统分析师-基础知识-企业信息化战略与实施（下）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化战略与实施（下）</div></div><div class="info-2"><div class="info-item-1">本文梳理 ERP、CRM、SCM、PDM、BI、DSS、知识管理、企业门户、EDI、EAI 与电子商务等企业信息化应用</div></div></div></a><a class="pagination-related" href="../../../05/01/Blog31/" title="软考系统分析师-基础知识-软件工程之过程模型与开发模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-软件工程之过程模型与开发模型</div></div><div class="info-2"><div class="info-item-1">本文梳理软件工程基本原理与生命周期、CMM 与 CMMI、各类软件开发模型、统一过程、敏捷开发与逆向工程</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a><a class="pagination-related" href="../../../02/24/Blog14/" title="软考系统分析师-基础知识-计算机硬件、指令系统与体系结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="info-item-2">软考系统分析师-基础知识-计算机硬件、指令系统与体系结构</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机硬件组成、指令与寻址方式、Flynn 分类、CISC 与 RISC 对比以及流水线计算</div></div></div></a><a class="pagination-related" href="../../../02/28/Blog15/" title="软考系统分析师-基础知识-存储系统、总线与系统可靠性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-28</div><div class="info-item-2">软考系统分析师-基础知识-存储系统、总线与系统可靠性</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机存储系统层次与 Cache、磁盘调度与 RAID、总线分类以及系统可靠性计算</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">一、系统规划步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">二、可行性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">三、成本效益分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E5%88%86%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">成本分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%A1%E7%AE%97"><span class="toc-number">3.2.</span> <span class="toc-text">常用计算</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

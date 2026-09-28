@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软考系统分析师-基础知识-面向对象分析与 UML | Yyy's Blog</title><meta name="author" content="yyybenren"><meta name="copyright" content="yyybenren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文梳理面向对象基本概念、类的三种类型、UML 的构成、4+1 视图、事物与关系，以及各类 UML 图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考系统分析师-基础知识-面向对象分析与 UML">
+<meta property="og:url" content="http://yyybenren.github.io/2025/05/10/Blog34/index.html">
+<meta property="og:site_name" content="Yyy&#39;s Blog">
+<meta property="og:description" content="本文梳理面向对象基本概念、类的三种类型、UML 的构成、4+1 视图、事物与关系，以及各类 UML 图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg">
+<meta property="article:published_time" content="2025-05-10T12:25:00.000Z">
+<meta property="article:modified_time" content="2026-09-28T09:26:47.566Z">
+<meta property="article:author" content="yyybenren">
+<meta property="article:tag" content="系统分析师">
+<meta property="article:tag" content="需求工程">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="UML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软考系统分析师-基础知识-面向对象分析与 UML",
+  "url": "http://yyybenren.github.io/2025/05/10/Blog34/",
+  "image": "https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg",
+  "datePublished": "2025-05-10T12:25:00.000Z",
+  "dateModified": "2026-09-28T09:26:47.566Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yyybenren",
+      "url": "http://yyybenren.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://yyybenren.github.io/2025/05/10/Blog34/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软考系统分析师-基础知识-面向对象分析与 UML',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.githubusercontent.com/yyybenren/pic/master/test/Wharariki.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">软考系统分析师-基础知识-面向对象分析与 UML</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软考系统分析师-基础知识-面向对象分析与 UML</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-10T12:25:00.000Z" title="发表于 2025-05-10 20:25:00">2025-05-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-28T09:26:47.566Z" title="更新于 2026-09-28 17:26:47">2026-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E8%BD%AF%E8%80%83%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">软考系统分析师</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>摘要：本文梳理上午考试面向对象分析与 UML 部分，包括对象、类、继承、多态、封装等基本概念，实体类与边界类与控制类的区别，UML 的构造块、规则和公共机制，4+1 视图，以及 UML 事物、关系与常用图的分类。</p>
+<h2 id="一、面向对象基本概念"><a href="#一、面向对象基本概念" class="headerlink" title="一、面向对象基本概念"></a>一、面向对象基本概念</h2><ul>
+<li>对象：基本的运行实体，是类的实例，封装了数据和行为的整体，具有清晰的边界、良好定义的行为和可扩展性</li>
+<li>类：对象的抽象，定义了一组大体相似的对象结构，定义了数据和行为</li>
+<li>消息：对象之间进行通信的一种构造</li>
+<li>继承：父类和子类之间共享数据和方法的机制，是类之间的一种关系</li>
+<li>覆盖：子类在原有父类接口的基础上，用适合自己要求的实现去置换父类中相应实现，即在子类中重定义一个与父类同名同参的方法</li>
+<li>函数重载：与覆盖要区分开，函数重载与子类父类无关，且函数是同名不同参数</li>
+<li>多态：不同对象收到同一消息时产生完全不同的反应，由继承机制支持</li>
+<li>封装：一种信息隐蔽技术，目的是使对象的使用者和生产者分离，使其他开发人员无需了解组件内部的工作机制，只需知道如何使用组件</li>
+</ul>
+<p>多态的四种类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数多态</td>
+<td>不同类型参数多种结构类型</td>
+</tr>
+<tr>
+<td>包含多态</td>
+<td>父子类型关系</td>
+</tr>
+<tr>
+<td>过载多态</td>
+<td>类似于重载，一个名字不同含义</td>
+</tr>
+<tr>
+<td>强制多态</td>
+<td>强制类型转换</td>
+</tr>
+</tbody></table>
+<p>其他易混概念：</p>
+<ul>
+<li>静态成员是不同对象之间共享数据的方式，值可修改，静态方法只能访问静态成员</li>
+<li>静态类型指对象的类型在编译时就确定，动态类型指对象类型在运行时才能确定</li>
+<li>静态绑定（静态分配）基于静态类型，在程序执行前方法已被绑定；动态绑定基于动态类型，运行时根据变量实际引用的对象类型决定调用哪个方法，动态绑定支持多态</li>
+</ul>
+<h3 id="类的三种类型"><a href="#类的三种类型" class="headerlink" title="类的三种类型"></a>类的三种类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实体类</td>
+<td>用于对必须存储的信息和相关行为建模的类，是需要长久保存且一直存在的类</td>
+</tr>
+<tr>
+<td>边界类</td>
+<td>系统内部与系统外部的业务主角之间进行交互建模的类</td>
+</tr>
+<tr>
+<td>控制类</td>
+<td>用于对一个或几个用例所特有的控制行为进行建模，是在用例执行过程中被动出现的特定行为的类</td>
+</tr>
+</tbody></table>
+<p>在领域类模型中会涉及描述类自身情况的属性与操作，还会涉及类与类之间的关联，但不会有对象层次的内容。</p>
+<h2 id="二、UML-的构成"><a href="#二、UML-的构成" class="headerlink" title="二、UML 的构成"></a>二、UML 的构成</h2><p>UML 是统一建模语言，与程序设计语言并无关系。在采用 UML 进行面向对象系统建模时，会用构造型 stereotype 名称为 interface 来表示接口这一概念（并非具体类），声明对象类所需要的服务，而服务具体如何执行由实现它的具体类完成。</p>
+<p>UML 的结构包括三个部分：</p>
+<ol>
+<li>构造块：包括事物（thing）、关系（relationship）和图（diagram）。事物是重要组成部分，关系把事物联系在一起，图是多个相互关联的事物的集合</li>
+<li>规则：构造块如何放在一起的规定</li>
+<li>公共机制：达到特定目标的公共 UML 方法</li>
+</ol>
+<p>UML 的公共分类有两种：类与对象（类表示概念，对象表示具体实体）、接口与实现（接口用来定义契约，实现是具体内容）。</p>
+<h2 id="三、UML-4-1-视图"><a href="#三、UML-4-1-视图" class="headerlink" title="三、UML 4+1 视图"></a>三、UML 4+1 视图</h2><table>
+<thead>
+<tr>
+<th>视图</th>
+<th>使用者</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>逻辑视图（设计视图）</td>
+<td>系统分析、设计人员</td>
+<td>类与对象，表示设计模型中在架构方面具有重要意义的部分，即类、子系统、包和用例实现的子集</td>
+</tr>
+<tr>
+<td>进程视图</td>
+<td>系统集成人员</td>
+<td>线程、进程、并发与同步结构，是可执行线程和进程作为活动类的建模，是逻辑视图的一次执行实例</td>
+</tr>
+<tr>
+<td>实现视图</td>
+<td>程序员</td>
+<td>源代码结构，对组成系统的物理代码文件和构件进行建模</td>
+</tr>
+<tr>
+<td>部署视图</td>
+<td>系统和网络工程师</td>
+<td>软件到硬件的映射和分布结构，把构件部署到一组物理节点上</td>
+</tr>
+<tr>
+<td>用例视图</td>
+<td>最终用户</td>
+<td>需求分析模型，是最基本的需求分析模型，展现系统功能</td>
+</tr>
+</tbody></table>
+<h2 id="四、UML-事物"><a href="#四、UML-事物" class="headerlink" title="四、UML 事物"></a>四、UML 事物</h2><ul>
+<li>结构事物：模型中属于最静态的部分，包括类、接口、协作、用例、活动类、构件和节点</li>
+<li>行为事物：模型中的动态部分，代表时间和空间上的动作，主要有交互（由一组对象之间为达到特定目的而进行的一系列消息交换组成的动作）和状态机（由一系列对象的状态组成）</li>
+<li>分组事物：模型中组织的部分，可以看成盒子，模型可在其中分解。UML 只有一种分组事物即包。与构件不同的是，包是纯粹概念上的事物、只存在于开发阶段，而构件可以存在于系统运行阶段</li>
+<li>注释事物：UML 模型的解释部分，依附于一个元素或一组元素之上对其进行约束或解释的简单符号</li>
+</ul>
+<h2 id="五、UML-关系"><a href="#五、UML-关系" class="headerlink" title="五、UML 关系"></a>五、UML 关系</h2><table>
+<thead>
+<tr>
+<th>关系</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>依赖</td>
+<td>一个事物的语义依赖于另一个事物的语义的变化而变化</td>
+</tr>
+<tr>
+<td>关联</td>
+<td>一种结构关系，描述一组链，链是对象之间的连接。分为组合和聚合，都是部分与整体的关系，其中组合的关系更强</td>
+</tr>
+<tr>
+<td>泛化</td>
+<td>一般与特殊的关系，即子类与父类之间的关系</td>
+</tr>
+<tr>
+<td>实现</td>
+<td>一个类元指定了另一个类元保证执行的契约</td>
+</tr>
+</tbody></table>
+<p>两个类之间的关联实际上是两个类所扮演角色的关联，因此两个类之间可以有多个由不同角色标识的关联。</p>
+<h2 id="六、UML-图"><a href="#六、UML-图" class="headerlink" title="六、UML 图"></a>六、UML 图</h2><p>UML 图分为静态图（结构图）和动态图（行为图），其中动态图中强调交互的部分又称交互图：</p>
+<p><strong>静态图</strong></p>
+<table>
+<thead>
+<tr>
+<th>图</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类图</td>
+<td>展现一组类、接口、协作和它们之间的关系，是系统的静态设计视图</td>
+</tr>
+<tr>
+<td>对象图</td>
+<td>展现某一时刻一组对象及它们之间的关系，是类图的某一快照</td>
+</tr>
+<tr>
+<td>用例图</td>
+<td>展现一组用例、参与者以及它们之间的关系，参与者可以是人、硬件或其他系统扮演的角色</td>
+</tr>
+<tr>
+<td>构件图</td>
+<td>描述一个封装的类和它的接口、端口，以及由内嵌的构件和连接件构成的内部结构，是类图的变体</td>
+</tr>
+<tr>
+<td>部署图</td>
+<td>描述运行时的处理节点及在其中生存的构件的配置，给出架构的静态部署视图，表示软硬件之间的映射</td>
+</tr>
+<tr>
+<td>制品图</td>
+<td>描述系统的物理结构</td>
+</tr>
+<tr>
+<td>包图</td>
+<td>由模型本身分解而成的组织单元以及它们之间的依赖关系</td>
+</tr>
+<tr>
+<td>组合结构图</td>
+<td>描述系统中某一模块的内部结构</td>
+</tr>
+</tbody></table>
+<p><strong>动态图</strong></p>
+<table>
+<thead>
+<tr>
+<th>图</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序图（序列图）</td>
+<td>一种交互图，强调对象之间消息发送的顺序，同时显示对象之间的交互，强调按时间顺序</td>
+</tr>
+<tr>
+<td>通信图（协作图）</td>
+<td>一种交互图，强调收发消息的对象或参与者的结构组织。顺序图强调时序，通信图强调对象之间的组织结构</td>
+</tr>
+<tr>
+<td>定时图</td>
+<td>强调实际时间</td>
+</tr>
+<tr>
+<td>交互概览图</td>
+<td>交互活动的整体概览</td>
+</tr>
+<tr>
+<td>状态图</td>
+<td>描述一个状态机，由状态、转移、事件和活动组成，给出对象的动态视图，对接口、类或协作的行为建模尤为重要，有助于对反应式系统建模</td>
+</tr>
+<tr>
+<td>活动图</td>
+<td>将进程或其他计算结构展示为计算内部一步步的控制流和数据流，专注于系统的动态视图，对系统功能建模和业务流程建模特别重要，强调对象间的控制流程</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io">yyybenren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yyybenren.github.io/2025/05/10/Blog34/">http://yyybenren.github.io/2025/05/10/Blog34/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yyybenren.github.io" target="_blank">Yyy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/">系统分析师</a><a class="post-meta__tags" href="../../../../tags/%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B/">需求工程</a><a class="post-meta__tags" href="../../../../tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a><a class="post-meta__tags" href="../../../../tags/UML/">UML</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="../../07/Blog33/" title="软考系统分析师-基础知识-需求工程与结构化分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软考系统分析师-基础知识-需求工程与结构化分析</div></div><div class="info-2"><div class="info-item-1">本文梳理需求开发与管理过程、需求分类与 PIECES 框架、需求获取方法，以及结构化分析的数据流图、数据字典与状态转换图</div></div></div></a><a class="pagination-related" href="../../12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考系统分析师-基础知识-处理流程设计与软件架构风格</div></div><div class="info-2"><div class="info-item-1">本文梳理业务流程分析方法与建模、业务流程重组与管理、流程表示工具，以及软件架构风格与 C/S、B/S 架构</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="../../07/Blog33/" title="软考系统分析师-基础知识-需求工程与结构化分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-07</div><div class="info-item-2">软考系统分析师-基础知识-需求工程与结构化分析</div></div><div class="info-2"><div class="info-item-1">本文梳理需求开发与管理过程、需求分类与 PIECES 框架、需求获取方法，以及结构化分析的数据流图、数据字典与状态转换图</div></div></div></a><a class="pagination-related" href="../../../02/08/Blog9/" title="软考系统分析师-论文高频考点-需求工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">软考系统分析师-论文高频考点-需求工程</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于需求工程的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog10/" title="杂记-系统分析师教程纠错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">杂记-系统分析师教程纠错</div></div><div class="info-2"><div class="info-item-1">本文记录了本人的一次给出版社写信纠错并得到回复的经历</div></div></div></a><a class="pagination-related" href="../../../02/10/Blog11/" title="软考系统分析师-论文高频考点-系统运维"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="info-item-2">软考系统分析师-论文高频考点-系统运维</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师论文写作关于系统运维的必背知识点</div></div></div></a><a class="pagination-related" href="../../../02/14/Blog12/" title="软考系统分析师-基础知识-企业信息化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="info-item-2">软考系统分析师-基础知识-企业信息化</div></div><div class="info-2"><div class="info-item-1">本文梳理了软考系统分析师企业信息化相关知识点，主要包括信息系统战略规划和企业应用集成</div></div></div></a><a class="pagination-related" href="../../../02/20/Blog13/" title="软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-20</div><div class="info-item-2">软考系统分析师-基础知识-计算机组成与结构（数据表示与校验码）</div></div><div class="info-2"><div class="info-item-1">本文梳理计算机组成与结构中的机器数编码、浮点数运算以及奇偶校验、CRC、海明码三类校验码</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/yyybenren/pic/master/test/yyy.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">yyybenren</div><div class="author-info-description">分享知识，认识世界</div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">70</div></a><a href="/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yyybenren"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/yyy-89-75" target="_blank" title="zhihu"><i class="fab fab fa-zhihu" style="color: #4a7dbe;"></i></a><a class="social-icon" href="../mailto:y572961195@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">一、面向对象基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">类的三种类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81UML-%E7%9A%84%E6%9E%84%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">二、UML 的构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81UML-4-1-%E8%A7%86%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">三、UML 4+1 视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81UML-%E4%BA%8B%E7%89%A9"><span class="toc-number">4.</span> <span class="toc-text">四、UML 事物</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81UML-%E5%85%B3%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">五、UML 关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81UML-%E5%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">六、UML 图</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/18/Blog39/" title="软考系统分析师-基础知识-嵌入式技术">软考系统分析师-基础知识-嵌入式技术</a><time datetime="2025-05-18T12:30:00.000Z" title="发表于 2025-05-18 20:30:00">2025-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/17/Blog38/" title="软考系统分析师-基础知识-数学与经济管理">软考系统分析师-基础知识-数学与经济管理</a><time datetime="2025-05-17T12:25:00.000Z" title="发表于 2025-05-17 20:25:00">2025-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/15/Blog37/" title="软考系统分析师-基础知识-项目管理">软考系统分析师-基础知识-项目管理</a><time datetime="2025-05-15T12:20:00.000Z" title="发表于 2025-05-15 20:20:00">2025-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/14/Blog36/" title="软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式">软考系统分析师-基础知识-结构化设计、面向对象设计与设计模式</a><time datetime="2025-05-14T12:25:00.000Z" title="发表于 2025-05-14 20:25:00">2025-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/05/12/Blog35/" title="软考系统分析师-基础知识-处理流程设计与软件架构风格">软考系统分析师-基础知识-处理流程设计与软件架构风格</a><time datetime="2025-05-12T12:20:00.000Z" title="发表于 2025-05-12 20:20:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By yyybenren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
