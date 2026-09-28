@@ -1272,181 +1272,6 @@
       </tags>
   </entry>
   <entry>
-    <title>软考系统分析师-基础知识-数据仓库、大数据与数据库新技术</title>
-    <url>/2025/03/24/Blog21/</url>
-    <content><![CDATA[<p>摘要：本文梳理上午考试数据库技术的第三部分，包括分布式数据库分片与分布透明性、数据仓库的四大特点与体系结构、数据挖掘方法、商业智能，以及反规范化、大数据、SQL 语法要点和数据库新技术。</p>
-<h2 id="一、分布式数据库"><a href="#一、分布式数据库" class="headerlink" title="一、分布式数据库"></a>一、分布式数据库</h2><p>局部数据库位于不同的物理位置，用统一的全局 DBMS 将它们联网管理，就是分布式数据库。其模式层次在全局概念模式之下增加了分片模式和分布模式，再往下是各局部 DBMS 的局部概念模式与局部内模式。</p>
-<p>分片方式：</p>
-<ul>
-<li>水平分片：把表中的记录按水平方向分别存放在不同地方</li>
-<li>垂直分片：把表中的列按垂直方向分别存放在不同地方</li>
-</ul>
-<p>分布透明性分为四个方面：</p>
-<ul>
-<li>分片透明性：用户或应用程序不需要知道逻辑上访问的表具体如何分块存储</li>
-<li>位置透明性：应用程序不关心数据存储物理位置的改变</li>
-<li>逻辑透明性：用户或应用程序无需知道局部使用的是哪种数据模型</li>
-<li>复制透明性：用户或应用程序不关心复制的数据从何而来</li>
-</ul>
-<h2 id="二、数据仓库"><a href="#二、数据仓库" class="headerlink" title="二、数据仓库"></a>二、数据仓库</h2><p>数据库长时间运行后数据越来越多，会影响运行效率，而很久之前的数据对某些程序并非必要，删除又可惜，于是把这些数据提取出来保存到另一个数据库，这就是数据仓库。</p>
-<p>数据仓库有四大特点：</p>
-<ul>
-<li>面向主题：按一定的主题域组织</li>
-<li>集成的：数据来自原有分散数据库的抽取、清理、加工、汇总和整理，并消除源数据中的不一致性</li>
-<li>相对稳定的：数据主要供决策分析使用，操作以查询为主，进入数据仓库后一般长期保留，很少修改和删除，只需定期加载刷新</li>
-<li>反映历史变化：数据包含历史信息，记录企业从过去某一时点到目前各阶段的信息，可用于趋势分析和预测</li>
-</ul>
-<p>数据仓库的体系结构包含四个层次：</p>
-<ol>
-<li>数据源：整个系统的数据源泉</li>
-<li>数据的存储与管理：整个数据仓库系统的核心</li>
-<li>OLAP 服务器：对分析所需数据有效集成，按多维模型组织，支持多角度多层次分析</li>
-<li>前端工具：报表工具、查询工具、数据分析工具、数据挖掘工具及应用开发工具</li>
-</ol>
-<h3 id="数据挖掘的分析方法"><a href="#数据挖掘的分析方法" class="headerlink" title="数据挖掘的分析方法"></a>数据挖掘的分析方法</h3><ul>
-<li>关联分析：发现不同事件之间的关联性，即一个事件发生时另一个事件也经常发生</li>
-<li>序列分析：发现一定时间间隔内接连发生的事件，这些事件构成具有普遍意义的序列</li>
-<li>分类分析：通过分析具有类别的样本特点，得到决定样本属于各类别的规则或方法，需要先给记录赋予标记</li>
-<li>聚类分析：按「物以类聚」原理，把本身没有类别的样本聚集成不同的组并加以描述</li>
-</ul>
-<h3 id="商业智能-BI"><a href="#商业智能-BI" class="headerlink" title="商业智能 BI"></a>商业智能 BI</h3><p>BI 系统包括数据预处理、建立数据仓库、数据分析、数据展现四个阶段。</p>
-<p>数据预处理是整合企业原始数据的第一步，包括抽取、转换和加载三个过程，即 ETL；建立数据仓库是处理海量数据的基础；数据分析是体现系统智能的关键，一般采用联机分析处理 OLAP 和数据挖掘两大技术。OLAP 不仅进行数据汇总聚集，还提供切片、切块、下钻、上卷和旋转等多维分析功能；数据挖掘则通过关联分析、聚类和分类等方法建立分析模型，预测企业未来发展趋势；数据展现主要保障分析结果的可视化。</p>
-<h2 id="三、反规范化技术与大数据"><a href="#三、反规范化技术与大数据" class="headerlink" title="三、反规范化技术与大数据"></a>三、反规范化技术与大数据</h2><p>规范化能防止插入、更新、删除异常和数据冗余，但把表拆得太细会导致查询时需要关联很多表，严重降低查询效率。因此在读写性能优先的场景下会使用反规范化技术，主要手段是增加派生性冗余列、增加冗余列、重新组表、分割表，本质是为提高查询效率而增加冗余，是规范化操作的逆操作。</p>
-<p>大数据的特点：大量化、多样化、价值密度低、快速化。</p>
-<table>
-<thead>
-<tr>
-<th>比较维度</th>
-<th>传统数据</th>
-<th>大数据</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>数据量</td>
-<td>GB 或 TB 级</td>
-<td>PB 级或以上</td>
-</tr>
-<tr>
-<td>数据分析需求</td>
-<td>现有数据的分析与检测</td>
-<td>深度分析（关联分析、回归分析）</td>
-</tr>
-<tr>
-<td>硬件平台</td>
-<td>高端服务器</td>
-<td>集群平台</td>
-</tr>
-</tbody></table>
-<p>大数据处理系统的特征：高度可扩展性、高性能、高度容错、支持异构环境、较短的分析延迟、易用且开放的接口、较低成本、向下兼容性。</p>
-<h2 id="四、SQL-语言要点"><a href="#四、SQL-语言要点" class="headerlink" title="四、SQL 语言要点"></a>四、SQL 语言要点</h2><p>SQL 关键字不区分大小写，常用语法：</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>创建表</td>
-<td>create table</td>
-</tr>
-<tr>
-<td>主键 &#x2F; 外键</td>
-<td>primary key &#x2F; foreign key</td>
-</tr>
-<tr>
-<td>修改表 &#x2F; 删除表</td>
-<td>alter table &#x2F; drop table</td>
-</tr>
-<tr>
-<td>索引、视图</td>
-<td>index、view</td>
-</tr>
-<tr>
-<td>查询</td>
-<td>select … from … where</td>
-</tr>
-<tr>
-<td>分组查询</td>
-<td>group by，分组时 select 后的列要适应分组；用 having 附加分组条件</td>
-</tr>
-<tr>
-<td>更名</td>
-<td>as</td>
-</tr>
-<tr>
-<td>字符串匹配</td>
-<td>like，% 匹配多个字符，_ 匹配任意一个字符</td>
-</tr>
-<tr>
-<td>插入 &#x2F; 删除 &#x2F; 修改</td>
-<td>insert into … values &#x2F; delete from … where &#x2F; update … set … where</td>
-</tr>
-<tr>
-<td>排序</td>
-<td>order by，默认升序，降序加 DESC</td>
-</tr>
-<tr>
-<td>授权 &#x2F; 收回权限</td>
-<td>grant … on … to（可用 with grant option 允许再授权）&#x2F; revoke … on … from</td>
-</tr>
-<tr>
-<td>其他</td>
-<td>with check option 表示检查 where 后的谓词条件；distinct 去重；union 取并；intersect 取交</td>
-</tr>
-</tbody></table>
-<p>编写 SQL 的思路：select 之后是要显示的属性列，from 之后是表名，where 之后是查询条件；涉及平均数、最大值、求和等运算必须分组，group by 后跟分组属性列，having 后跟分组条件。条件判断时数字不用引号，字符串必须用单引号。</p>
-<h2 id="五、数据库新技术"><a href="#五、数据库新技术" class="headerlink" title="五、数据库新技术"></a>五、数据库新技术</h2><p><strong>联邦数据库 FDBS</strong>：彼此协作却又相互独立的成员数据库的集合，对各成员数据库按不同程度集成，并对外提供统一接口。特征为分布性、异构性、自治性、透明性。它与分布式数据库的区别是：FDBS 内部各成员数据库互相独立，仅提供对外统一接口；分布式数据库的数据分布在各局部数据库内，内部实际是一个整体。</p>
-<p><strong>NoSQL</strong>（Not only SQL）是非关系型数据库：</p>
-<table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>关系数据库</th>
-<th>NoSQL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>并发支持</td>
-<td>支持并发，效率低</td>
-<td>并发性能高</td>
-</tr>
-<tr>
-<td>存储与查询</td>
-<td>关系表方式存储、SQL 查询</td>
-<td>海量数据存储、查询效率高</td>
-</tr>
-<tr>
-<td>扩展方式</td>
-<td>向上扩展</td>
-<td>向外扩展</td>
-</tr>
-<tr>
-<td>索引方式</td>
-<td>B 树、哈希等</td>
-<td>键值索引</td>
-</tr>
-<tr>
-<td>应用领域</td>
-<td>面向通用领域</td>
-<td>特定应用领域</td>
-</tr>
-</tbody></table>
-<p>NoSQL 目前的不足：成熟度不够，大量关键特性有待实现；开源产品支持力度有限；对数据挖掘与商务智能支持不足，现有产品无法直接使用；专家少。代表产品有 Redis、MongoDB 等。</p>
-<p><strong>内存数据库</strong>：抛弃磁盘数据管理的传统方式，基于全部数据都在内存中重新设计体系结构，并在数据缓存、快速算法、并行操作方面做了改进，数据处理速度通常比传统数据库快 10 倍以上。其特点是工作版本常驻内存，活动事务只与实时内存数据库的内存拷贝打交道，常见产品有 Redis、SQLite 等。</p>
-<p>数据库性能优化可以从硬件系统（CPU、内存、I&#x2F;O、网络）、系统软件（进程优先级、CPU 使用权、内存使用等参数）、数据库设计（表的规划、建立物化视图、索引策略——常查询的建索引、常修改的避免索引）和应用软件（用不相干子查询替代相干子查询、只检索需要的列、用带 in 的条件子句等价替换 or 子句、使用数据库连接池、经常提交以尽早释放锁、尽可能减少多表查询）等方面入手。分布式数据库还要考虑全局查询树的变换、多副本策略、通信代价和查询树的分解等。</p>
-]]></content>
-      <categories>
-        <category>软考系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>数据库</tag>
-        <tag>数据仓库</tag>
-        <tag>大数据</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软考系统分析师-基础知识-网络体系结构与 TCP/IP 协议族</title>
     <url>/2025/03/28/Blog22/</url>
     <content><![CDATA[<p>摘要：本文梳理上午考试计算机网络的第一部分，包括 OSI&#x2F;RM 七层模型各层的功能与协议、各层互联设备、双绞线与光纤等传输介质，以及 TCP&#x2F;IP 协议族的网络层、传输层、应用层协议与常用端口号。</p>
@@ -1683,6 +1508,181 @@
         <tag>系统分析师</tag>
         <tag>计算机网络</tag>
         <tag>TCP/IP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软考系统分析师-基础知识-数据仓库、大数据与数据库新技术</title>
+    <url>/2025/03/24/Blog21/</url>
+    <content><![CDATA[<p>摘要：本文梳理上午考试数据库技术的第三部分，包括分布式数据库分片与分布透明性、数据仓库的四大特点与体系结构、数据挖掘方法、商业智能，以及反规范化、大数据、SQL 语法要点和数据库新技术。</p>
+<h2 id="一、分布式数据库"><a href="#一、分布式数据库" class="headerlink" title="一、分布式数据库"></a>一、分布式数据库</h2><p>局部数据库位于不同的物理位置，用统一的全局 DBMS 将它们联网管理，就是分布式数据库。其模式层次在全局概念模式之下增加了分片模式和分布模式，再往下是各局部 DBMS 的局部概念模式与局部内模式。</p>
+<p>分片方式：</p>
+<ul>
+<li>水平分片：把表中的记录按水平方向分别存放在不同地方</li>
+<li>垂直分片：把表中的列按垂直方向分别存放在不同地方</li>
+</ul>
+<p>分布透明性分为四个方面：</p>
+<ul>
+<li>分片透明性：用户或应用程序不需要知道逻辑上访问的表具体如何分块存储</li>
+<li>位置透明性：应用程序不关心数据存储物理位置的改变</li>
+<li>逻辑透明性：用户或应用程序无需知道局部使用的是哪种数据模型</li>
+<li>复制透明性：用户或应用程序不关心复制的数据从何而来</li>
+</ul>
+<h2 id="二、数据仓库"><a href="#二、数据仓库" class="headerlink" title="二、数据仓库"></a>二、数据仓库</h2><p>数据库长时间运行后数据越来越多，会影响运行效率，而很久之前的数据对某些程序并非必要，删除又可惜，于是把这些数据提取出来保存到另一个数据库，这就是数据仓库。</p>
+<p>数据仓库有四大特点：</p>
+<ul>
+<li>面向主题：按一定的主题域组织</li>
+<li>集成的：数据来自原有分散数据库的抽取、清理、加工、汇总和整理，并消除源数据中的不一致性</li>
+<li>相对稳定的：数据主要供决策分析使用，操作以查询为主，进入数据仓库后一般长期保留，很少修改和删除，只需定期加载刷新</li>
+<li>反映历史变化：数据包含历史信息，记录企业从过去某一时点到目前各阶段的信息，可用于趋势分析和预测</li>
+</ul>
+<p>数据仓库的体系结构包含四个层次：</p>
+<ol>
+<li>数据源：整个系统的数据源泉</li>
+<li>数据的存储与管理：整个数据仓库系统的核心</li>
+<li>OLAP 服务器：对分析所需数据有效集成，按多维模型组织，支持多角度多层次分析</li>
+<li>前端工具：报表工具、查询工具、数据分析工具、数据挖掘工具及应用开发工具</li>
+</ol>
+<h3 id="数据挖掘的分析方法"><a href="#数据挖掘的分析方法" class="headerlink" title="数据挖掘的分析方法"></a>数据挖掘的分析方法</h3><ul>
+<li>关联分析：发现不同事件之间的关联性，即一个事件发生时另一个事件也经常发生</li>
+<li>序列分析：发现一定时间间隔内接连发生的事件，这些事件构成具有普遍意义的序列</li>
+<li>分类分析：通过分析具有类别的样本特点，得到决定样本属于各类别的规则或方法，需要先给记录赋予标记</li>
+<li>聚类分析：按「物以类聚」原理，把本身没有类别的样本聚集成不同的组并加以描述</li>
+</ul>
+<h3 id="商业智能-BI"><a href="#商业智能-BI" class="headerlink" title="商业智能 BI"></a>商业智能 BI</h3><p>BI 系统包括数据预处理、建立数据仓库、数据分析、数据展现四个阶段。</p>
+<p>数据预处理是整合企业原始数据的第一步，包括抽取、转换和加载三个过程，即 ETL；建立数据仓库是处理海量数据的基础；数据分析是体现系统智能的关键，一般采用联机分析处理 OLAP 和数据挖掘两大技术。OLAP 不仅进行数据汇总聚集，还提供切片、切块、下钻、上卷和旋转等多维分析功能；数据挖掘则通过关联分析、聚类和分类等方法建立分析模型，预测企业未来发展趋势；数据展现主要保障分析结果的可视化。</p>
+<h2 id="三、反规范化技术与大数据"><a href="#三、反规范化技术与大数据" class="headerlink" title="三、反规范化技术与大数据"></a>三、反规范化技术与大数据</h2><p>规范化能防止插入、更新、删除异常和数据冗余，但把表拆得太细会导致查询时需要关联很多表，严重降低查询效率。因此在读写性能优先的场景下会使用反规范化技术，主要手段是增加派生性冗余列、增加冗余列、重新组表、分割表，本质是为提高查询效率而增加冗余，是规范化操作的逆操作。</p>
+<p>大数据的特点：大量化、多样化、价值密度低、快速化。</p>
+<table>
+<thead>
+<tr>
+<th>比较维度</th>
+<th>传统数据</th>
+<th>大数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据量</td>
+<td>GB 或 TB 级</td>
+<td>PB 级或以上</td>
+</tr>
+<tr>
+<td>数据分析需求</td>
+<td>现有数据的分析与检测</td>
+<td>深度分析（关联分析、回归分析）</td>
+</tr>
+<tr>
+<td>硬件平台</td>
+<td>高端服务器</td>
+<td>集群平台</td>
+</tr>
+</tbody></table>
+<p>大数据处理系统的特征：高度可扩展性、高性能、高度容错、支持异构环境、较短的分析延迟、易用且开放的接口、较低成本、向下兼容性。</p>
+<h2 id="四、SQL-语言要点"><a href="#四、SQL-语言要点" class="headerlink" title="四、SQL 语言要点"></a>四、SQL 语言要点</h2><p>SQL 关键字不区分大小写，常用语法：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建表</td>
+<td>create table</td>
+</tr>
+<tr>
+<td>主键 &#x2F; 外键</td>
+<td>primary key &#x2F; foreign key</td>
+</tr>
+<tr>
+<td>修改表 &#x2F; 删除表</td>
+<td>alter table &#x2F; drop table</td>
+</tr>
+<tr>
+<td>索引、视图</td>
+<td>index、view</td>
+</tr>
+<tr>
+<td>查询</td>
+<td>select … from … where</td>
+</tr>
+<tr>
+<td>分组查询</td>
+<td>group by，分组时 select 后的列要适应分组；用 having 附加分组条件</td>
+</tr>
+<tr>
+<td>更名</td>
+<td>as</td>
+</tr>
+<tr>
+<td>字符串匹配</td>
+<td>like，% 匹配多个字符，_ 匹配任意一个字符</td>
+</tr>
+<tr>
+<td>插入 &#x2F; 删除 &#x2F; 修改</td>
+<td>insert into … values &#x2F; delete from … where &#x2F; update … set … where</td>
+</tr>
+<tr>
+<td>排序</td>
+<td>order by，默认升序，降序加 DESC</td>
+</tr>
+<tr>
+<td>授权 &#x2F; 收回权限</td>
+<td>grant … on … to（可用 with grant option 允许再授权）&#x2F; revoke … on … from</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>with check option 表示检查 where 后的谓词条件；distinct 去重；union 取并；intersect 取交</td>
+</tr>
+</tbody></table>
+<p>编写 SQL 的思路：select 之后是要显示的属性列，from 之后是表名，where 之后是查询条件；涉及平均数、最大值、求和等运算必须分组，group by 后跟分组属性列，having 后跟分组条件。条件判断时数字不用引号，字符串必须用单引号。</p>
+<h2 id="五、数据库新技术"><a href="#五、数据库新技术" class="headerlink" title="五、数据库新技术"></a>五、数据库新技术</h2><p><strong>联邦数据库 FDBS</strong>：彼此协作却又相互独立的成员数据库的集合，对各成员数据库按不同程度集成，并对外提供统一接口。特征为分布性、异构性、自治性、透明性。它与分布式数据库的区别是：FDBS 内部各成员数据库互相独立，仅提供对外统一接口；分布式数据库的数据分布在各局部数据库内，内部实际是一个整体。</p>
+<p><strong>NoSQL</strong>（Not only SQL）是非关系型数据库：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>关系数据库</th>
+<th>NoSQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>并发支持</td>
+<td>支持并发，效率低</td>
+<td>并发性能高</td>
+</tr>
+<tr>
+<td>存储与查询</td>
+<td>关系表方式存储、SQL 查询</td>
+<td>海量数据存储、查询效率高</td>
+</tr>
+<tr>
+<td>扩展方式</td>
+<td>向上扩展</td>
+<td>向外扩展</td>
+</tr>
+<tr>
+<td>索引方式</td>
+<td>B 树、哈希等</td>
+<td>键值索引</td>
+</tr>
+<tr>
+<td>应用领域</td>
+<td>面向通用领域</td>
+<td>特定应用领域</td>
+</tr>
+</tbody></table>
+<p>NoSQL 目前的不足：成熟度不够，大量关键特性有待实现；开源产品支持力度有限；对数据挖掘与商务智能支持不足，现有产品无法直接使用；专家少。代表产品有 Redis、MongoDB 等。</p>
+<p><strong>内存数据库</strong>：抛弃磁盘数据管理的传统方式，基于全部数据都在内存中重新设计体系结构，并在数据缓存、快速算法、并行操作方面做了改进，数据处理速度通常比传统数据库快 10 倍以上。其特点是工作版本常驻内存，活动事务只与实时内存数据库的内存拷贝打交道，常见产品有 Redis、SQLite 等。</p>
+<p>数据库性能优化可以从硬件系统（CPU、内存、I&#x2F;O、网络）、系统软件（进程优先级、CPU 使用权、内存使用等参数）、数据库设计（表的规划、建立物化视图、索引策略——常查询的建索引、常修改的避免索引）和应用软件（用不相干子查询替代相干子查询、只检索需要的列、用带 in 的条件子句等价替换 or 子句、使用数据库连接池、经常提交以尽早释放锁、尽可能减少多表查询）等方面入手。分布式数据库还要考虑全局查询树的变换、多副本策略、通信代价和查询树的分解等。</p>
+]]></content>
+      <categories>
+        <category>软考系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>数据库</tag>
+        <tag>数据仓库</tag>
+        <tag>大数据</tag>
       </tags>
   </entry>
   <entry>
@@ -2817,28 +2817,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见排序算法代码</title>
-    <url>/2025/02/07/Blog3/</url>
-    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
-<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
-<ol>
-<li>找需要拿去插入的数</li>
-<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>软考系统分析师-基础知识-系统规划与可行性研究</title>
     <url>/2025/04/28/Blog30/</url>
     <content><![CDATA[<p>摘要：本文梳理上午考试系统规划部分，包括系统规划六个步骤、项目机会选择、可行性分析的四类与八个步骤，以及成本分类、收益分类和盈亏平衡点、净现值、投资回收期等计算。</p>
@@ -2960,142 +2938,26 @@
       </tags>
   </entry>
   <entry>
-    <title>软考系统分析师-基础知识-软件测试与系统维护</title>
-    <url>/2025/05/04/Blog32/</url>
-    <content><![CDATA[<p>摘要：本文梳理上午考试软件工程的后半部分，包括软件测试原则与类型、测试策略、黑盒与白盒测试用例设计方法、单元与集成等测试阶段、软件调试与评审，以及系统转换、数据迁移、软件维护类型与系统评价。</p>
-<h2 id="一、软件测试原则"><a href="#一、软件测试原则" class="headerlink" title="一、软件测试原则"></a>一、软件测试原则</h2><ul>
-<li>应尽早并不断地进行测试</li>
-<li>测试工作应避免由原开发软件的人或小组承担</li>
-<li>设计测试方案时，不仅要确定输入数据，还要根据系统功能确定预期的输出结果</li>
-<li>既包含有效、合理的测试用例，也包含不合理、失效的用例</li>
-<li>检验程序是否做了该做的事，且是否做了不该做的事</li>
-<li>严格按照测试计划进行</li>
-<li>妥善保存测试计划和测试用例</li>
-<li>测试用例可以重复使用或追加测试</li>
-</ul>
-<h2 id="二、测试类型"><a href="#二、测试类型" class="headerlink" title="二、测试类型"></a>二、测试类型</h2><p><strong>动态测试</strong>（程序运行时测试）：</p>
-<ul>
-<li>黑盒测试法：功能性测试，不了解软件代码结构，根据功能设计用例</li>
-<li>白盒测试法：结构性测试，明确代码流程，根据代码逻辑设计用例进行覆盖</li>
-<li>灰盒测试法：既有黑盒也有白盒</li>
-</ul>
-<p><strong>静态测试</strong>（对代码进行人工审查）：</p>
-<ul>
-<li>桌前检查：程序员检查自己编写的程序，在程序编译后、单元测试前进行</li>
-<li>代码审查：由若干个程序员和测试人员组成评审小组，通过召开程序评审会来审查</li>
-<li>代码走查：同样采用开会审查，但由测试人员提供测试用例，让程序员扮演计算机的角色手动运行测试用例，检查代码逻辑</li>
-</ul>
-<h3 id="测试策略"><a href="#测试策略" class="headerlink" title="测试策略"></a>测试策略</h3><table>
-<thead>
-<tr>
-<th>策略</th>
-<th>做法</th>
-<th>优点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>自底向上</td>
-<td>从最底层模块开始测试，需要编写驱动程序，再逐一合并模块</td>
-<td>较早验证了底层模块</td>
-</tr>
-<tr>
-<td>自顶向下</td>
-<td>先测试整个系统，需要编写桩程序，再逐步向下直到最底层模块</td>
-<td>较早验证了系统的主要控制和判断点</td>
-</tr>
-<tr>
-<td>三明治</td>
-<td>既有自底向上也有自顶向下</td>
-<td>兼有二者的优点，缺点是测试工作量大</td>
-</tr>
-</tbody></table>
-<h2 id="三、测试用例设计"><a href="#三、测试用例设计" class="headerlink" title="三、测试用例设计"></a>三、测试用例设计</h2><h3 id="黑盒测试用例"><a href="#黑盒测试用例" class="headerlink" title="黑盒测试用例"></a>黑盒测试用例</h3><ul>
-<li>等价类划分：把数据按某种特性归类，在每类数据里选取一个。设计原则是：设计新用例使其尽可能多地覆盖尚未覆盖的有效等价类，重复直到覆盖所有有效等价类；设计新用例使其仅覆盖一个尚未覆盖的无效等价类，重复直到覆盖所有无效等价类</li>
-<li>边界值划分：把每类的边界值作为测试用例，边界值一般为范围两端以及范围之外间隔最小的两个值，如年龄范围 0～150，边界值为 0、150、-1、151</li>
-<li>错误推测：没有固定方法，凭经验推测可能产生问题的地方作为测试用例</li>
-<li>因果图：由结果反推原因，具体结果具体分析，没有固定方法</li>
-</ul>
-<h3 id="白盒测试用例"><a href="#白盒测试用例" class="headerlink" title="白盒测试用例"></a>白盒测试用例</h3><p>覆盖级别由低到高：</p>
+    <title>常见排序算法代码</title>
+    <url>/2025/02/07/Blog3/</url>
+    <content><![CDATA[<p>摘要：展示了各算法的实现代码和特点，包括直接插入排序、折半插入排序、希尔排序、简单选择排序、冒泡排序、快速排序。</p>
+<h2 id="直接插入排序-InsertSort"><a href="#直接插入排序-InsertSort" class="headerlink" title="直接插入排序 InsertSort"></a>直接插入排序 InsertSort</h2><p>两重循环</p>
 <ol>
-<li>语句覆盖：所有语句都要执行一遍，覆盖层级最低</li>
-<li>判定覆盖：所有判断语句的真假分支都要覆盖一次</li>
-<li>条件覆盖：对每个独立条件都要做真假分支测试。例如 a&gt;0 &amp;&amp; b&lt;0，判定覆盖只针对组合条件真假做两个用例，条件覆盖则对每个独立条件做真假测试，可有 4 个用例</li>
-<li>判定&#x2F;条件覆盖：使判定中每个条件的所有可能取值至少出现一次，且每个判定本身的结果也至少出现一次，是两种覆盖的综合</li>
-<li>条件组合覆盖：每个判定中条件的各种可能取值组合都至少出现一次</li>
-<li>路径覆盖：所有可行路径都覆盖，覆盖层级最高</li>
+<li>找需要拿去插入的数</li>
+<li>在逐渐有序的序列做比较中找到需要插入的位置</li>
 </ol>
-<h2 id="四、测试阶段"><a href="#四、测试阶段" class="headerlink" title="四、测试阶段"></a>四、测试阶段</h2><table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元测试</td>
-<td>对单个模块进行测试，由程序员自己测试模块内部的接口、功能，测试依据是软件详细说明书。驱动模块（上层）用来调用被测模块，桩模块（底层）用来模拟被测模块调用的子模块</td>
-</tr>
-<tr>
-<td>集成测试</td>
-<td>把模块组合起来测试，分一次性组装（简单节约时间但发现问题少，只适合小项目）和增量式组装（能发现更多错误、耗时更长，又分自顶向下、自底向上、混合式）</td>
-</tr>
-<tr>
-<td>确认测试</td>
-<td>对已完成软件进行功能测试，分为内部确认测试（无用户）、Alpha 测试（用户在开发环境下测试）、Beta 测试（用户在实际使用时测试）、验收测试（用户根据 SRS 验收）</td>
-</tr>
-<tr>
-<td>系统测试</td>
-<td>对软件进行性能测试，主要是负载测试（极限情况下系统各项性能指标）、强度测试（系统资源特别低的情况下）、容量测试（并发测试，系统可同时处理的最大在线用户数），采用黑盒测试方法</td>
-</tr>
-<tr>
-<td>回归测试</td>
-<td>软件修改错误或变更后进行，用于验证之前正确的代码是否引入了错误</td>
-</tr>
-</tbody></table>
-<p>面向对象的测试层次：算法层对应单元测试（等价类划分测试、组合功能测试、递归函数测试、多态消息测试等）；类层又称模块测试，是面向对象测试独有的（不变式边界测试、模态类测试、非模态类测试）；类树层（模块层）对应集成测试（多态服务测试、展平测试）；系统层对应系统测试。</p>
-<h2 id="五、软件调试与评审"><a href="#五、软件调试与评审" class="headerlink" title="五、软件调试与评审"></a>五、软件调试与评审</h2><p>软件调试方法：</p>
-<ul>
-<li>蛮力法：主要思想是「通过计算机找错」，低效耗时</li>
-<li>回溯法：从出错处人工沿控制流程往回追踪，直到发现出错根源；复杂程序回溯路径多，难以实施</li>
-<li>原因排除法：主要思想是演绎和归纳，用二分法实现</li>
-</ul>
-<p>调试与测试的区别：测试的目的是找出存在的错误，调试的目的是定位错误并修改程序以修正错误；调试是测试之后的活动；测试从一个已知条件开始，使用预先定义的过程，有预知的结果，调试从一个未知条件开始，结束过程不可预计；测试过程可以事先设计、进度可以事先确定，调试不能描述过程或持续时间。</p>
-<p>软件评审原则：不应以测试代替评审；评审人员应关注产品而不应评论开发人员；应关注实质性问题；评审会议不应变为问题解决方案讨论会；评审应被安排进入项目计划；评审参与者应了解整个评审过程；评审人员事先应对评审材料充分了解；应重视评审的组织工作。</p>
-<p>三个易混概念：</p>
-<ul>
-<li>验证：软件开发周期中某个给定阶段的产品是否达到上一阶段确立的需求的过程</li>
-<li>确认：在软件开发过程结束时对软件进行评价，以确定它是否和软件需求相一致的过程</li>
-<li>测试：通过执行程序有意识地发现程序中的设计错误和编码错误的过程，是验证和确认的手段之一</li>
-</ul>
-<h2 id="六、系统运行与维护"><a href="#六、系统运行与维护" class="headerlink" title="六、系统运行与维护"></a>六、系统运行与维护</h2><h3 id="系统转换"><a href="#系统转换" class="headerlink" title="系统转换"></a>系统转换</h3><p>系统转换是新系统开发完毕投入运行、取代现有系统的过程，有三种转换计划：</p>
-<ul>
-<li>直接转换：现有系统被新系统直接取代，风险很大，适用于新系统不复杂或现有系统已经不能使用的情况，优点是节省成本</li>
-<li>并行转换：新老系统并行工作一段时间，新系统试运行后再取代，风险极小，试运行期间还可以比较新老系统性能，适用于大型系统，缺点是耗费人力和时间资源，难以控制两个系统间的数据转换</li>
-<li>分段转换：分期分批逐步转换，是直接和并行转换的结合，将大型系统分为多个子系统依次试运行和转换，适用于大型项目，但更耗时，且新老系统混合使用需要协调好接口</li>
-</ul>
-<h3 id="数据转换与迁移"><a href="#数据转换与迁移" class="headerlink" title="数据转换与迁移"></a>数据转换与迁移</h3><p>数据转换是把旧数据库的数据迁移到新数据库，要在新系统中尽可能保存旧系统中合理的数据结构以降低迁移难度。有三种方法：系统切换前通过工具迁移、系统切换前采用手工录入、系统切换后通过新系统生成。转换过程称为 ETL，包括抽取（旧数据库数据）、转换（三种转换方法）、装载（装入新数据库并校验数据）。</p>
-<h3 id="可维护性与维护类型"><a href="#可维护性与维护类型" class="headerlink" title="可维护性与维护类型"></a>可维护性与维护类型</h3><p>软件维护是生命周期的一个完整部分，包括交付前完成的活动（交付后运行的计划、维护计划等）和交付后的活动（软件修改、培训、帮助资料等）。</p>
-<p>可维护性的评价指标：易测试性（确认经修改软件所需努力相关的属性）、易分析性（诊断缺陷或失效原因、判定待修改部分所需努力相关的属性）、易改变性（进行修改、排错或适应环境变换所需努力相关的属性）、稳定性（修改造成未预料效果的风险相关的属性）。</p>
-<p>软件维护类型：</p>
-<ul>
-<li>正确性维护：发现 bug 而进行的修改</li>
-<li>适应性维护：外部环境发生改变，被动进行的修改和升级</li>
-<li>完善性维护：用户主动提出更多需求，修改软件增加功能，使功能性能更高</li>
-<li>预防性维护：对未来可能发生的 bug 进行预防性修改</li>
-</ul>
-<h3 id="系统评价"><a href="#系统评价" class="headerlink" title="系统评价"></a>系统评价</h3><p>系统评价指标包括系统性能评价、系统效益评价、系统建设评价。</p>
-<p>按阶段分类：立项评价（开发前的预评价，分析是否立项，做可行性评价）、中期评价（开发中每个阶段的评审，或遇到重大变故时评价是否继续）、结项评价（系统投入正式运行后，了解是否达到预期目的的综合评价）。</p>
-<p>系统评价的指标可以从三条线索构造：从组成部分出发，按运行效果和用户需求（人）、系统质量和技术条件（机）构造指标；从评价对象出发，开发方关心系统质量和技术水平，用户方关心用户需求和运行质量，外部环境主要通过社会效益指标反映；从经济学角度出发，按系统成本、系统效益和财务指标建立指标。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">    tmp=a[i];</span><br><span class="line">    j=i<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;tmp&gt;a[j])&#123;</span><br><span class="line">      a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">63</span>,<span class="number">5</span>,<span class="number">78</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">52</span>,<span class="number">8</span>&#125;;</span><br><span class="line">  <span class="type">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="type">int</span>),i;</span><br><span class="line">  <span class="comment">//InsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//BinaryInsertSort(a, n);</span></span><br><span class="line">  <span class="comment">//ShellSort(a, n);</span></span><br><span class="line">  <span class="comment">//BubbleSort(a,n);</span></span><br><span class="line">  QuickSort(a,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="折半插入排序-BinaryInsertSort"><a href="#折半插入排序-BinaryInsertSort" class="headerlink" title="折半插入排序 BinaryInsertSort"></a>折半插入排序 BinaryInsertSort</h2><p>插入排序+二分查找法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinaryInsertSort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i, j, tmp,low,high;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">  tmp=a[i];</span><br><span class="line">  j=i<span class="number">-1</span>;</span><br><span class="line">  low=<span class="number">0</span>;</span><br><span class="line">  high=j;</span><br><span class="line">  <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">    <span class="type">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;tmp)</span><br><span class="line">      high=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      low=mid+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(j&gt;=low&amp;tmp&lt;a[j])&#123;</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序-ShellSort"><a href="#希尔排序-ShellSort" class="headerlink" title="希尔排序 ShellSort"></a>希尔排序 ShellSort</h2><p>插入排序+增量序列</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ShellSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,step,temp;</span><br><span class="line">  <span class="keyword">for</span>(step=len/<span class="number">2</span>;step&gt;=<span class="number">1</span>;step=step/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=step;i&lt;len;i++)&#123;</span><br><span class="line">      j=i-step;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;temp&lt;a[j])&#123;</span><br><span class="line">        a[j+step]=a[j];</span><br><span class="line">        j=j-step;</span><br><span class="line">      &#125;</span><br><span class="line">      a[j+step]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单选择排序-SelectSort"><a href="#简单选择排序-SelectSort" class="headerlink" title="简单选择排序 SelectSort"></a>简单选择排序 SelectSort</h2><p>找最小值+交换</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i,j,key,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    key=i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[key]&gt;a[j])</span><br><span class="line">        key=j;</span><br><span class="line">    <span class="keyword">if</span>(key!=i)&#123;</span><br><span class="line">      temp=a[i];</span><br><span class="line">      a[i]=a[key];</span><br><span class="line">      a[key]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序-BubbleSort"><a href="#冒泡排序-BubbleSort" class="headerlink" title="冒泡排序 BubbleSort"></a>冒泡排序 BubbleSort</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BubbleSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> len)</span>&#123;</span><br><span class="line">  <span class="type">int</span> i,j,temp;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len-i<span class="number">-1</span>;j++)</span><br><span class="line">      <span class="keyword">if</span>(a[j+<span class="number">1</span>]&lt;a[j])&#123;</span><br><span class="line">        temp=a[j];</span><br><span class="line">        a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">        a[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h2><p>分治+递归调用</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">  <span class="type">int</span> temp,i=start,j=end;</span><br><span class="line">  <span class="type">int</span> pivot=a[i];</span><br><span class="line">  <span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&lt;pivot)</span><br><span class="line">      i++;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&gt;pivot)</span><br><span class="line">      j--;</span><br><span class="line">    temp=a[i];</span><br><span class="line">    a[i]=a[j];</span><br><span class="line">    a[j]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  a[i]=pivot;</span><br><span class="line">  QuickSort(a,start,i<span class="number">-1</span>);</span><br><span class="line">  QuickSort(a,i+<span class="number">1</span>,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
-      <categories>
-        <category>软考系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>软件工程</tag>
-        <tag>软件测试</tag>
-        <tag>系统维护</tag>
-      </tags>
   </entry>
   <entry>
     <title>软考系统分析师-基础知识-软件工程之过程模型与开发模型</title>
@@ -3274,6 +3136,144 @@
         <tag>软件工程</tag>
         <tag>CMMI</tag>
         <tag>敏捷开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软考系统分析师-基础知识-软件测试与系统维护</title>
+    <url>/2025/05/04/Blog32/</url>
+    <content><![CDATA[<p>摘要：本文梳理上午考试软件工程的后半部分，包括软件测试原则与类型、测试策略、黑盒与白盒测试用例设计方法、单元与集成等测试阶段、软件调试与评审，以及系统转换、数据迁移、软件维护类型与系统评价。</p>
+<h2 id="一、软件测试原则"><a href="#一、软件测试原则" class="headerlink" title="一、软件测试原则"></a>一、软件测试原则</h2><ul>
+<li>应尽早并不断地进行测试</li>
+<li>测试工作应避免由原开发软件的人或小组承担</li>
+<li>设计测试方案时，不仅要确定输入数据，还要根据系统功能确定预期的输出结果</li>
+<li>既包含有效、合理的测试用例，也包含不合理、失效的用例</li>
+<li>检验程序是否做了该做的事，且是否做了不该做的事</li>
+<li>严格按照测试计划进行</li>
+<li>妥善保存测试计划和测试用例</li>
+<li>测试用例可以重复使用或追加测试</li>
+</ul>
+<h2 id="二、测试类型"><a href="#二、测试类型" class="headerlink" title="二、测试类型"></a>二、测试类型</h2><p><strong>动态测试</strong>（程序运行时测试）：</p>
+<ul>
+<li>黑盒测试法：功能性测试，不了解软件代码结构，根据功能设计用例</li>
+<li>白盒测试法：结构性测试，明确代码流程，根据代码逻辑设计用例进行覆盖</li>
+<li>灰盒测试法：既有黑盒也有白盒</li>
+</ul>
+<p><strong>静态测试</strong>（对代码进行人工审查）：</p>
+<ul>
+<li>桌前检查：程序员检查自己编写的程序，在程序编译后、单元测试前进行</li>
+<li>代码审查：由若干个程序员和测试人员组成评审小组，通过召开程序评审会来审查</li>
+<li>代码走查：同样采用开会审查，但由测试人员提供测试用例，让程序员扮演计算机的角色手动运行测试用例，检查代码逻辑</li>
+</ul>
+<h3 id="测试策略"><a href="#测试策略" class="headerlink" title="测试策略"></a>测试策略</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>做法</th>
+<th>优点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自底向上</td>
+<td>从最底层模块开始测试，需要编写驱动程序，再逐一合并模块</td>
+<td>较早验证了底层模块</td>
+</tr>
+<tr>
+<td>自顶向下</td>
+<td>先测试整个系统，需要编写桩程序，再逐步向下直到最底层模块</td>
+<td>较早验证了系统的主要控制和判断点</td>
+</tr>
+<tr>
+<td>三明治</td>
+<td>既有自底向上也有自顶向下</td>
+<td>兼有二者的优点，缺点是测试工作量大</td>
+</tr>
+</tbody></table>
+<h2 id="三、测试用例设计"><a href="#三、测试用例设计" class="headerlink" title="三、测试用例设计"></a>三、测试用例设计</h2><h3 id="黑盒测试用例"><a href="#黑盒测试用例" class="headerlink" title="黑盒测试用例"></a>黑盒测试用例</h3><ul>
+<li>等价类划分：把数据按某种特性归类，在每类数据里选取一个。设计原则是：设计新用例使其尽可能多地覆盖尚未覆盖的有效等价类，重复直到覆盖所有有效等价类；设计新用例使其仅覆盖一个尚未覆盖的无效等价类，重复直到覆盖所有无效等价类</li>
+<li>边界值划分：把每类的边界值作为测试用例，边界值一般为范围两端以及范围之外间隔最小的两个值，如年龄范围 0～150，边界值为 0、150、-1、151</li>
+<li>错误推测：没有固定方法，凭经验推测可能产生问题的地方作为测试用例</li>
+<li>因果图：由结果反推原因，具体结果具体分析，没有固定方法</li>
+</ul>
+<h3 id="白盒测试用例"><a href="#白盒测试用例" class="headerlink" title="白盒测试用例"></a>白盒测试用例</h3><p>覆盖级别由低到高：</p>
+<ol>
+<li>语句覆盖：所有语句都要执行一遍，覆盖层级最低</li>
+<li>判定覆盖：所有判断语句的真假分支都要覆盖一次</li>
+<li>条件覆盖：对每个独立条件都要做真假分支测试。例如 a&gt;0 &amp;&amp; b&lt;0，判定覆盖只针对组合条件真假做两个用例，条件覆盖则对每个独立条件做真假测试，可有 4 个用例</li>
+<li>判定&#x2F;条件覆盖：使判定中每个条件的所有可能取值至少出现一次，且每个判定本身的结果也至少出现一次，是两种覆盖的综合</li>
+<li>条件组合覆盖：每个判定中条件的各种可能取值组合都至少出现一次</li>
+<li>路径覆盖：所有可行路径都覆盖，覆盖层级最高</li>
+</ol>
+<h2 id="四、测试阶段"><a href="#四、测试阶段" class="headerlink" title="四、测试阶段"></a>四、测试阶段</h2><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元测试</td>
+<td>对单个模块进行测试，由程序员自己测试模块内部的接口、功能，测试依据是软件详细说明书。驱动模块（上层）用来调用被测模块，桩模块（底层）用来模拟被测模块调用的子模块</td>
+</tr>
+<tr>
+<td>集成测试</td>
+<td>把模块组合起来测试，分一次性组装（简单节约时间但发现问题少，只适合小项目）和增量式组装（能发现更多错误、耗时更长，又分自顶向下、自底向上、混合式）</td>
+</tr>
+<tr>
+<td>确认测试</td>
+<td>对已完成软件进行功能测试，分为内部确认测试（无用户）、Alpha 测试（用户在开发环境下测试）、Beta 测试（用户在实际使用时测试）、验收测试（用户根据 SRS 验收）</td>
+</tr>
+<tr>
+<td>系统测试</td>
+<td>对软件进行性能测试，主要是负载测试（极限情况下系统各项性能指标）、强度测试（系统资源特别低的情况下）、容量测试（并发测试，系统可同时处理的最大在线用户数），采用黑盒测试方法</td>
+</tr>
+<tr>
+<td>回归测试</td>
+<td>软件修改错误或变更后进行，用于验证之前正确的代码是否引入了错误</td>
+</tr>
+</tbody></table>
+<p>面向对象的测试层次：算法层对应单元测试（等价类划分测试、组合功能测试、递归函数测试、多态消息测试等）；类层又称模块测试，是面向对象测试独有的（不变式边界测试、模态类测试、非模态类测试）；类树层（模块层）对应集成测试（多态服务测试、展平测试）；系统层对应系统测试。</p>
+<h2 id="五、软件调试与评审"><a href="#五、软件调试与评审" class="headerlink" title="五、软件调试与评审"></a>五、软件调试与评审</h2><p>软件调试方法：</p>
+<ul>
+<li>蛮力法：主要思想是「通过计算机找错」，低效耗时</li>
+<li>回溯法：从出错处人工沿控制流程往回追踪，直到发现出错根源；复杂程序回溯路径多，难以实施</li>
+<li>原因排除法：主要思想是演绎和归纳，用二分法实现</li>
+</ul>
+<p>调试与测试的区别：测试的目的是找出存在的错误，调试的目的是定位错误并修改程序以修正错误；调试是测试之后的活动；测试从一个已知条件开始，使用预先定义的过程，有预知的结果，调试从一个未知条件开始，结束过程不可预计；测试过程可以事先设计、进度可以事先确定，调试不能描述过程或持续时间。</p>
+<p>软件评审原则：不应以测试代替评审；评审人员应关注产品而不应评论开发人员；应关注实质性问题；评审会议不应变为问题解决方案讨论会；评审应被安排进入项目计划；评审参与者应了解整个评审过程；评审人员事先应对评审材料充分了解；应重视评审的组织工作。</p>
+<p>三个易混概念：</p>
+<ul>
+<li>验证：软件开发周期中某个给定阶段的产品是否达到上一阶段确立的需求的过程</li>
+<li>确认：在软件开发过程结束时对软件进行评价，以确定它是否和软件需求相一致的过程</li>
+<li>测试：通过执行程序有意识地发现程序中的设计错误和编码错误的过程，是验证和确认的手段之一</li>
+</ul>
+<h2 id="六、系统运行与维护"><a href="#六、系统运行与维护" class="headerlink" title="六、系统运行与维护"></a>六、系统运行与维护</h2><h3 id="系统转换"><a href="#系统转换" class="headerlink" title="系统转换"></a>系统转换</h3><p>系统转换是新系统开发完毕投入运行、取代现有系统的过程，有三种转换计划：</p>
+<ul>
+<li>直接转换：现有系统被新系统直接取代，风险很大，适用于新系统不复杂或现有系统已经不能使用的情况，优点是节省成本</li>
+<li>并行转换：新老系统并行工作一段时间，新系统试运行后再取代，风险极小，试运行期间还可以比较新老系统性能，适用于大型系统，缺点是耗费人力和时间资源，难以控制两个系统间的数据转换</li>
+<li>分段转换：分期分批逐步转换，是直接和并行转换的结合，将大型系统分为多个子系统依次试运行和转换，适用于大型项目，但更耗时，且新老系统混合使用需要协调好接口</li>
+</ul>
+<h3 id="数据转换与迁移"><a href="#数据转换与迁移" class="headerlink" title="数据转换与迁移"></a>数据转换与迁移</h3><p>数据转换是把旧数据库的数据迁移到新数据库，要在新系统中尽可能保存旧系统中合理的数据结构以降低迁移难度。有三种方法：系统切换前通过工具迁移、系统切换前采用手工录入、系统切换后通过新系统生成。转换过程称为 ETL，包括抽取（旧数据库数据）、转换（三种转换方法）、装载（装入新数据库并校验数据）。</p>
+<h3 id="可维护性与维护类型"><a href="#可维护性与维护类型" class="headerlink" title="可维护性与维护类型"></a>可维护性与维护类型</h3><p>软件维护是生命周期的一个完整部分，包括交付前完成的活动（交付后运行的计划、维护计划等）和交付后的活动（软件修改、培训、帮助资料等）。</p>
+<p>可维护性的评价指标：易测试性（确认经修改软件所需努力相关的属性）、易分析性（诊断缺陷或失效原因、判定待修改部分所需努力相关的属性）、易改变性（进行修改、排错或适应环境变换所需努力相关的属性）、稳定性（修改造成未预料效果的风险相关的属性）。</p>
+<p>软件维护类型：</p>
+<ul>
+<li>正确性维护：发现 bug 而进行的修改</li>
+<li>适应性维护：外部环境发生改变，被动进行的修改和升级</li>
+<li>完善性维护：用户主动提出更多需求，修改软件增加功能，使功能性能更高</li>
+<li>预防性维护：对未来可能发生的 bug 进行预防性修改</li>
+</ul>
+<h3 id="系统评价"><a href="#系统评价" class="headerlink" title="系统评价"></a>系统评价</h3><p>系统评价指标包括系统性能评价、系统效益评价、系统建设评价。</p>
+<p>按阶段分类：立项评价（开发前的预评价，分析是否立项，做可行性评价）、中期评价（开发中每个阶段的评审，或遇到重大变故时评价是否继续）、结项评价（系统投入正式运行后，了解是否达到预期目的的综合评价）。</p>
+<p>系统评价的指标可以从三条线索构造：从组成部分出发，按运行效果和用户需求（人）、系统质量和技术条件（机）构造指标；从评价对象出发，开发方关心系统质量和技术水平，用户方关心用户需求和运行质量，外部环境主要通过社会效益指标反映；从经济学角度出发，按系统成本、系统效益和财务指标建立指标。</p>
+]]></content>
+      <categories>
+        <category>软考系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>软件工程</tag>
+        <tag>软件测试</tag>
+        <tag>系统维护</tag>
       </tags>
   </entry>
   <entry>
@@ -4087,104 +4087,6 @@
       </tags>
   </entry>
   <entry>
-    <title>软考系统分析师-基础知识-数学与经济管理</title>
-    <url>/2025/05/17/Blog38/</url>
-    <content><![CDATA[<p>摘要：本文梳理上午考试数学与经济管理部分，包括最小生成树、最短路径、网络最大流量三类图论应用，线性规划、动态规划、博弈论、状态转移矩阵、排队论、决策论与伏格尔法等运筹方法，以及数学建模的过程与常用方法。</p>
-<h2 id="一、图论应用"><a href="#一、图论应用" class="headerlink" title="一、图论应用"></a>一、图论应用</h2><h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>有两种方法：普里姆算法和克鲁斯卡尔算法，实际计算建议采用克鲁斯卡尔算法。</p>
-<p>克鲁斯卡尔算法：把图中所有边按权值从小到大排序，从权值最小的边开始选取，判断是否为安全边（即不构成环），直到选取了 n-1 条边，构成最小生成树。</p>
-<p>最小生成树并不唯一，但权值之和都相等且最小，只要求出一个即可。</p>
-<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><p>计算从起点到终点的最短路径，注意与关键路径截然相反，不要混淆。</p>
-<p>方法：从起点开始依次向终点推导，每个经过的中间节点都直接计算出到该中间节点的最短路径，这样递归推导到终点就是最短路径。</p>
-<h3 id="网络与最大流量"><a href="#网络与最大流量" class="headerlink" title="网络与最大流量"></a>网络与最大流量</h3><p>计算从一个节点到另一个节点的最大运输能力，取决于节点之间运输能力的短板：先看有多少条路径可走，最大流量等于所有路径最大流量之和，而每条路径的最大流量由节点之间最小的运输能力决定。</p>
-<p>解题技巧：</p>
-<ol>
-<li>取每条路径上的最小权值作为该路径的最大流量；每次走完一条路径后，实时修改这条路径剩余的运输流量值，若为 0 则删掉该连线</li>
-<li>重复第 1 步，直到从起点到终点无路径连通，再把各路径的流量相加得到整体最大流量</li>
-</ol>
-<h2 id="二、运筹方法"><a href="#二、运筹方法" class="headerlink" title="二、运筹方法"></a>二、运筹方法</h2><h3 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h3><p>在一组约束条件下寻找目标函数的极值（极大值或极小值）问题。线性规划问题的数学模型通常由线性目标函数、线性约束条件、变量非负条件组成。</p>
-<p>满足约束条件的非负变量组的集合称为可行解域，可行解域中使目标函数达到极值的解称为最优解。最优解要么是 0 个（没有），要么唯一（1 个），要么有无穷个（只要有 2 个就会有无穷个）。</p>
-<p>实际应用中可以直接求约束条件方程组的解，即交叉点，把这些解代入目标函数判断是否为极值即可。</p>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>求解给定多种方案下最佳方案的问题。直接运用动态规划原理解题非常复杂，因此一般采用穷举法：把题目给出的所有方案全部穷举出来，各方案收益一目了然，再取最佳方案，简单明了且不易错。</p>
-<h3 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h3><p>研究具有竞争和对抗性质行为的数学理论和方法。参加竞争的各方都有各自的目标和利益，为达到目标必须研究对手的资料，博弈论就是研究如何在多方之间寻找最合理的方案。</p>
-<p>参与博弈的双方处于竞争状态、互不信任，因此都只会采用对自己有用的方案，而这种方案对双方来说并不是最优的，但因为互不信任只能如此。典型的博弈矩阵中，双方都选择对己方最有利的策略，最终落入对双方都不最优的结果。</p>
-<h3 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h3><p>两个产品之间的状态会互相转变，给出状态转换矩阵，表明两个产品随时间如何转变，可求解一定时间后两个产品的状态。</p>
-<p>解题技巧：当前两个产品的状态依赖于之前一个阶段的状态以及状态转移矩阵的系数。</p>
-<h3 id="排队论"><a href="#排队论" class="headerlink" title="排队论"></a>排队论</h3><p>求解排队问题，即检票速度和排队速度不对等时如何达到平衡的问题。</p>
-<p>解题技巧：学会假设，一般对检票速度、排队人数做出未知数假设，然后列出多个方程求解出未知数之间的关系，再进行推导。</p>
-<h3 id="决策论"><a href="#决策论" class="headerlink" title="决策论"></a>决策论</h3><p>按决策环境分类：</p>
-<ul>
-<li>确定型决策：决策环境确定，结果也确定</li>
-<li>风险决策：决策环境不确定，但结果发生的概率已知</li>
-<li>不确定型决策：决策环境和结果都不确定，完全凭主观意识决定</li>
-</ul>
-<p>决策的六个要素：决策者、可供选择的方案（包括行动、策略）、衡量选择方案的准则、事件（被决策的对象）、每一事件发生将会产生的某种结果、决策者的价值观。</p>
-<p>不确定型决策的五种准则（建立环境与方案的表格，每个环境每种方案对应一个收益）：</p>
-<table>
-<thead>
-<tr>
-<th>准则</th>
-<th>做法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>悲观主义准则</td>
-<td>小中取大 max(min)，先取每个方案的最小收益，再取这些最小收益中最大的那个</td>
-</tr>
-<tr>
-<td>乐观主义准则</td>
-<td>大中取大 max(max)，先取每个方案的最大收益，再取这些最大收益中最大的那个</td>
-</tr>
-<tr>
-<td>折中主义准则</td>
-<td>设定折中系数 a，用每个方案的最大收益 × a + 最小收益 × (1 - a)，取计算结果最大的方案。a &#x3D; 1 即乐观主义，a &#x3D; 0 即悲观主义</td>
-</tr>
-<tr>
-<td>等可能性准则</td>
-<td>假定每个可能结果发生的概率相等，把不确定型问题转换为风险决策问题</td>
-</tr>
-<tr>
-<td>后悔值准则</td>
-<td>最小最大后悔值 min(max)，用某环境下最大收益减去当前选择的收益得到后悔值，选出每个方案的最大后悔值，再从这些值中选最小的</td>
-</tr>
-</tbody></table>
-<p>风险决策（决策树和决策表）：对结果发生的概率已知的情形，把每种结果的收益乘以该结果发生的概率，取收益最大的方案，与风险曝光度的思路类似。</p>
-<h3 id="伏格尔法"><a href="#伏格尔法" class="headerlink" title="伏格尔法"></a>伏格尔法</h3><p>伏格尔法要求先计算各行各列中最小元素与次小元素之差的绝对值，在具有最大差值的那一行或列中，选择具有最小元素的方格决定基变量值，以避免把运量分配到该行或该列具有次小元素的方格中，保证有较小的目标函数值。</p>
-<p>步骤：</p>
-<ol>
-<li>算出各行各列中最小元素和次小元素的差额并标出差额最大的；若几个差额同为最大，则取价值系数最小的那一行或列，若价值系数也相同则任取其一</li>
-<li>在差额最大的行或列中的最小元素处进行分配，分配尽可能大的数，判断是否分配饱和，饱和则划去该行或列</li>
-<li>对未划去的行列重复以上步骤，直到得到一个初始解</li>
-</ol>
-<h2 id="三、数学建模"><a href="#三、数学建模" class="headerlink" title="三、数学建模"></a>三、数学建模</h2><p>数学建模是用数学的语言和方法，通过抽象和简化，建立能近似刻画并解决实际问题的模型的手段。</p>
-<p>数学建模过程：</p>
-<ol>
-<li>模型准备：了解问题的实际背景，明确实际意义，掌握对象的各种信息，用数学语言描述问题</li>
-<li>模型假设：根据实际对象的特征和建模目的，对问题做必要简化，并用精确语言提出恰当的假设</li>
-<li>模型建立：在假设基础上利用适当的数学工具刻画各变量之间的数学关系，建立相应的数学结构。只要能把问题描述清楚，尽量使用简单的数学工具</li>
-<li>模型求解：利用获取的数据资料对模型的所有参数做出计算</li>
-<li>模型分析：对所得结果进行数学上的分析</li>
-<li>模型检验：把模型分析结果与实际情形比较，验证模型的准确性、合理性和适用性。较吻合则解释计算结果的实际含义，吻合较差则修改假设并重复建模过程</li>
-<li>模型应用：应用方式因问题的性质和建模目的而异</li>
-</ol>
-<p>常用的数学建模方法：</p>
-<ul>
-<li>直接分析法：根据对问题直接的内在认识构造模型</li>
-<li>类比法：根据之前类似的模型构造新模型</li>
-<li>数据分析法：通过实验获得大量相关数据，用统计分析的方法建模</li>
-<li>构想法：对将来可能发生的情况给出逻辑上合理的方法和描述，再用现有方法建模并不断完善</li>
-</ul>
-]]></content>
-      <categories>
-        <category>软考系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>数学与经济管理</tag>
-        <tag>运筹学</tag>
-        <tag>决策论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软考系统分析师-基础知识-项目管理</title>
     <url>/2025/05/15/Blog37/</url>
     <content><![CDATA[<p>摘要：本文梳理上午考试项目管理部分，包括范围管理的五个过程与 WBS 六个层次、进度管理的六个过程与关键路径计算、成本管理的估算方法与挣值分析、质量管理、配置管理的基线版本与变更控制流程，以及风险分类与管理过程。</p>
@@ -4395,6 +4297,104 @@
       </tags>
   </entry>
   <entry>
+    <title>软考系统分析师-基础知识-数学与经济管理</title>
+    <url>/2025/05/17/Blog38/</url>
+    <content><![CDATA[<p>摘要：本文梳理上午考试数学与经济管理部分，包括最小生成树、最短路径、网络最大流量三类图论应用，线性规划、动态规划、博弈论、状态转移矩阵、排队论、决策论与伏格尔法等运筹方法，以及数学建模的过程与常用方法。</p>
+<h2 id="一、图论应用"><a href="#一、图论应用" class="headerlink" title="一、图论应用"></a>一、图论应用</h2><h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>有两种方法：普里姆算法和克鲁斯卡尔算法，实际计算建议采用克鲁斯卡尔算法。</p>
+<p>克鲁斯卡尔算法：把图中所有边按权值从小到大排序，从权值最小的边开始选取，判断是否为安全边（即不构成环），直到选取了 n-1 条边，构成最小生成树。</p>
+<p>最小生成树并不唯一，但权值之和都相等且最小，只要求出一个即可。</p>
+<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><p>计算从起点到终点的最短路径，注意与关键路径截然相反，不要混淆。</p>
+<p>方法：从起点开始依次向终点推导，每个经过的中间节点都直接计算出到该中间节点的最短路径，这样递归推导到终点就是最短路径。</p>
+<h3 id="网络与最大流量"><a href="#网络与最大流量" class="headerlink" title="网络与最大流量"></a>网络与最大流量</h3><p>计算从一个节点到另一个节点的最大运输能力，取决于节点之间运输能力的短板：先看有多少条路径可走，最大流量等于所有路径最大流量之和，而每条路径的最大流量由节点之间最小的运输能力决定。</p>
+<p>解题技巧：</p>
+<ol>
+<li>取每条路径上的最小权值作为该路径的最大流量；每次走完一条路径后，实时修改这条路径剩余的运输流量值，若为 0 则删掉该连线</li>
+<li>重复第 1 步，直到从起点到终点无路径连通，再把各路径的流量相加得到整体最大流量</li>
+</ol>
+<h2 id="二、运筹方法"><a href="#二、运筹方法" class="headerlink" title="二、运筹方法"></a>二、运筹方法</h2><h3 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h3><p>在一组约束条件下寻找目标函数的极值（极大值或极小值）问题。线性规划问题的数学模型通常由线性目标函数、线性约束条件、变量非负条件组成。</p>
+<p>满足约束条件的非负变量组的集合称为可行解域，可行解域中使目标函数达到极值的解称为最优解。最优解要么是 0 个（没有），要么唯一（1 个），要么有无穷个（只要有 2 个就会有无穷个）。</p>
+<p>实际应用中可以直接求约束条件方程组的解，即交叉点，把这些解代入目标函数判断是否为极值即可。</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>求解给定多种方案下最佳方案的问题。直接运用动态规划原理解题非常复杂，因此一般采用穷举法：把题目给出的所有方案全部穷举出来，各方案收益一目了然，再取最佳方案，简单明了且不易错。</p>
+<h3 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h3><p>研究具有竞争和对抗性质行为的数学理论和方法。参加竞争的各方都有各自的目标和利益，为达到目标必须研究对手的资料，博弈论就是研究如何在多方之间寻找最合理的方案。</p>
+<p>参与博弈的双方处于竞争状态、互不信任，因此都只会采用对自己有用的方案，而这种方案对双方来说并不是最优的，但因为互不信任只能如此。典型的博弈矩阵中，双方都选择对己方最有利的策略，最终落入对双方都不最优的结果。</p>
+<h3 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h3><p>两个产品之间的状态会互相转变，给出状态转换矩阵，表明两个产品随时间如何转变，可求解一定时间后两个产品的状态。</p>
+<p>解题技巧：当前两个产品的状态依赖于之前一个阶段的状态以及状态转移矩阵的系数。</p>
+<h3 id="排队论"><a href="#排队论" class="headerlink" title="排队论"></a>排队论</h3><p>求解排队问题，即检票速度和排队速度不对等时如何达到平衡的问题。</p>
+<p>解题技巧：学会假设，一般对检票速度、排队人数做出未知数假设，然后列出多个方程求解出未知数之间的关系，再进行推导。</p>
+<h3 id="决策论"><a href="#决策论" class="headerlink" title="决策论"></a>决策论</h3><p>按决策环境分类：</p>
+<ul>
+<li>确定型决策：决策环境确定，结果也确定</li>
+<li>风险决策：决策环境不确定，但结果发生的概率已知</li>
+<li>不确定型决策：决策环境和结果都不确定，完全凭主观意识决定</li>
+</ul>
+<p>决策的六个要素：决策者、可供选择的方案（包括行动、策略）、衡量选择方案的准则、事件（被决策的对象）、每一事件发生将会产生的某种结果、决策者的价值观。</p>
+<p>不确定型决策的五种准则（建立环境与方案的表格，每个环境每种方案对应一个收益）：</p>
+<table>
+<thead>
+<tr>
+<th>准则</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>悲观主义准则</td>
+<td>小中取大 max(min)，先取每个方案的最小收益，再取这些最小收益中最大的那个</td>
+</tr>
+<tr>
+<td>乐观主义准则</td>
+<td>大中取大 max(max)，先取每个方案的最大收益，再取这些最大收益中最大的那个</td>
+</tr>
+<tr>
+<td>折中主义准则</td>
+<td>设定折中系数 a，用每个方案的最大收益 × a + 最小收益 × (1 - a)，取计算结果最大的方案。a &#x3D; 1 即乐观主义，a &#x3D; 0 即悲观主义</td>
+</tr>
+<tr>
+<td>等可能性准则</td>
+<td>假定每个可能结果发生的概率相等，把不确定型问题转换为风险决策问题</td>
+</tr>
+<tr>
+<td>后悔值准则</td>
+<td>最小最大后悔值 min(max)，用某环境下最大收益减去当前选择的收益得到后悔值，选出每个方案的最大后悔值，再从这些值中选最小的</td>
+</tr>
+</tbody></table>
+<p>风险决策（决策树和决策表）：对结果发生的概率已知的情形，把每种结果的收益乘以该结果发生的概率，取收益最大的方案，与风险曝光度的思路类似。</p>
+<h3 id="伏格尔法"><a href="#伏格尔法" class="headerlink" title="伏格尔法"></a>伏格尔法</h3><p>伏格尔法要求先计算各行各列中最小元素与次小元素之差的绝对值，在具有最大差值的那一行或列中，选择具有最小元素的方格决定基变量值，以避免把运量分配到该行或该列具有次小元素的方格中，保证有较小的目标函数值。</p>
+<p>步骤：</p>
+<ol>
+<li>算出各行各列中最小元素和次小元素的差额并标出差额最大的；若几个差额同为最大，则取价值系数最小的那一行或列，若价值系数也相同则任取其一</li>
+<li>在差额最大的行或列中的最小元素处进行分配，分配尽可能大的数，判断是否分配饱和，饱和则划去该行或列</li>
+<li>对未划去的行列重复以上步骤，直到得到一个初始解</li>
+</ol>
+<h2 id="三、数学建模"><a href="#三、数学建模" class="headerlink" title="三、数学建模"></a>三、数学建模</h2><p>数学建模是用数学的语言和方法，通过抽象和简化，建立能近似刻画并解决实际问题的模型的手段。</p>
+<p>数学建模过程：</p>
+<ol>
+<li>模型准备：了解问题的实际背景，明确实际意义，掌握对象的各种信息，用数学语言描述问题</li>
+<li>模型假设：根据实际对象的特征和建模目的，对问题做必要简化，并用精确语言提出恰当的假设</li>
+<li>模型建立：在假设基础上利用适当的数学工具刻画各变量之间的数学关系，建立相应的数学结构。只要能把问题描述清楚，尽量使用简单的数学工具</li>
+<li>模型求解：利用获取的数据资料对模型的所有参数做出计算</li>
+<li>模型分析：对所得结果进行数学上的分析</li>
+<li>模型检验：把模型分析结果与实际情形比较，验证模型的准确性、合理性和适用性。较吻合则解释计算结果的实际含义，吻合较差则修改假设并重复建模过程</li>
+<li>模型应用：应用方式因问题的性质和建模目的而异</li>
+</ol>
+<p>常用的数学建模方法：</p>
+<ul>
+<li>直接分析法：根据对问题直接的内在认识构造模型</li>
+<li>类比法：根据之前类似的模型构造新模型</li>
+<li>数据分析法：通过实验获得大量相关数据，用统计分析的方法建模</li>
+<li>构想法：对将来可能发生的情况给出逻辑上合理的方法和描述，再用现有方法建模并不断完善</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软考系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>数学与经济管理</tag>
+        <tag>运筹学</tag>
+        <tag>决策论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软考系统分析师-基础知识-嵌入式技术</title>
     <url>/2025/05/18/Blog39/</url>
     <content><![CDATA[<p>摘要：本文梳理上午考试的补充章节嵌入式技术，包括冯诺依曼结构与哈佛结构的区别、嵌入式微处理器的四类、多核处理器与调度、嵌入式软件分类与板级支持包、实时操作系统的特点，以及交叉编译与交叉调试的开发流程。</p>
@@ -4555,23 +4555,6 @@
       </tags>
   </entry>
   <entry>
-    <title>软考系统分析师-论文高频考点-开发方法</title>
-    <url>/2025/02/08/Blog7/</url>
-    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发方法及其特点。<br>包括：结构化方法 面向对象开发方法 原型化开发方法 面向服务开发方法  </p>
-<h2 id="结构化方法"><a href="#结构化方法" class="headerlink" title="结构化方法"></a>结构化方法</h2><p>结构化方法也称生命周期法，由结构化分析、结构化设计、结构化程序三部分组成。结构化方法假定待开发系统是一个结构化的系统，按照生命周期划分为不同的阶段，使用数据流图（DFD）和数据字典，遵循工程化原理按照结构和模块进行系统开发，其精髓是自顶向下、逐步求精和模块化设计。<br><strong>优点有</strong><br>（1）开发目标清晰化。（2）开发工作阶段化。（3）开发文档规范化。（4）设计方法结构化。<br><strong>缺点如下：</strong><br>（1）开发周期长。（2）难以适应需求变化。（3）很少考虑数据结构。</p>
-<h2 id="面向对象开发方法"><a href="#面向对象开发方法" class="headerlink" title="面向对象开发方法"></a>面向对象开发方法</h2><p>面向对象开发方法采用面向对象的思想，是以用例驱动的、以体系结构为中心的、迭代的和渐增式的开发过程，主要包括需求分析、系统分析、系统设计和系统实现四个阶段，但是各个阶段的划分不像结构化开发方法那样清晰，而是在各个阶段之间迭代进行的。<br><strong>优点</strong>：模块化、代码复用、自然建模：<br><strong>缺点</strong>：性能开销、学习曲线、复杂性：</p>
-<h2 id="原型化开发方法"><a href="#原型化开发方法" class="headerlink" title="原型化开发方法"></a>原型化开发方法</h2><p>原型化方法也称为快速原型法，或者简称为原型法。是一种根据用户初步需求，利用系统开发工具，快速地建立一个系统模型展示给用户，在此基础上与用户交流，最终实现用户需求的信息系统快速开发方法。</p>
-<h2 id="面向服务的开发方法"><a href="#面向服务的开发方法" class="headerlink" title="面向服务的开发方法"></a>面向服务的开发方法</h2><p>面向服务方法是在面向对象方法的基础上扩展的构建系统的思想和方法。面向服务方法关注的是企业业务，它直接映射到业务，强调IT与业务的对齐，以服务为核心元素来封装企业的业务流程和企业已有应用系统。服务的粒度更大，更加匹配企业级应用中的业务，可以实现更高级别的重用<br><strong>缺点</strong> ：相关标准未统一、应用案例较少。<br><strong>优点</strong> ：提高系统可复用性、信息资源共享、系统之间互操作性。</p>
-]]></content>
-      <categories>
-        <category>系统分析师</category>
-      </categories>
-      <tags>
-        <tag>系统分析师</tag>
-        <tag>开发方法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软考系统分析师-论文高频考点-软件开发模型</title>
     <url>/2025/02/08/Blog6/</url>
     <content><![CDATA[<p>摘要：本文梳理了常见的软件开发模型及其特点。包括：瀑布模型，快速原型模型，瀑布模型，增量模型，螺旋模型，喷泉模型，统一过程（UP），敏捷方法</p>
@@ -4590,6 +4573,23 @@
       <tags>
         <tag>系统分析师</tag>
         <tag>软件开发模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软考系统分析师-论文高频考点-开发方法</title>
+    <url>/2025/02/08/Blog7/</url>
+    <content><![CDATA[<p>摘要：本文梳理了常见的软件开发方法及其特点。<br>包括：结构化方法 面向对象开发方法 原型化开发方法 面向服务开发方法  </p>
+<h2 id="结构化方法"><a href="#结构化方法" class="headerlink" title="结构化方法"></a>结构化方法</h2><p>结构化方法也称生命周期法，由结构化分析、结构化设计、结构化程序三部分组成。结构化方法假定待开发系统是一个结构化的系统，按照生命周期划分为不同的阶段，使用数据流图（DFD）和数据字典，遵循工程化原理按照结构和模块进行系统开发，其精髓是自顶向下、逐步求精和模块化设计。<br><strong>优点有</strong><br>（1）开发目标清晰化。（2）开发工作阶段化。（3）开发文档规范化。（4）设计方法结构化。<br><strong>缺点如下：</strong><br>（1）开发周期长。（2）难以适应需求变化。（3）很少考虑数据结构。</p>
+<h2 id="面向对象开发方法"><a href="#面向对象开发方法" class="headerlink" title="面向对象开发方法"></a>面向对象开发方法</h2><p>面向对象开发方法采用面向对象的思想，是以用例驱动的、以体系结构为中心的、迭代的和渐增式的开发过程，主要包括需求分析、系统分析、系统设计和系统实现四个阶段，但是各个阶段的划分不像结构化开发方法那样清晰，而是在各个阶段之间迭代进行的。<br><strong>优点</strong>：模块化、代码复用、自然建模：<br><strong>缺点</strong>：性能开销、学习曲线、复杂性：</p>
+<h2 id="原型化开发方法"><a href="#原型化开发方法" class="headerlink" title="原型化开发方法"></a>原型化开发方法</h2><p>原型化方法也称为快速原型法，或者简称为原型法。是一种根据用户初步需求，利用系统开发工具，快速地建立一个系统模型展示给用户，在此基础上与用户交流，最终实现用户需求的信息系统快速开发方法。</p>
+<h2 id="面向服务的开发方法"><a href="#面向服务的开发方法" class="headerlink" title="面向服务的开发方法"></a>面向服务的开发方法</h2><p>面向服务方法是在面向对象方法的基础上扩展的构建系统的思想和方法。面向服务方法关注的是企业业务，它直接映射到业务，强调IT与业务的对齐，以服务为核心元素来封装企业的业务流程和企业已有应用系统。服务的粒度更大，更加匹配企业级应用中的业务，可以实现更高级别的重用<br><strong>缺点</strong> ：相关标准未统一、应用案例较少。<br><strong>优点</strong> ：提高系统可复用性、信息资源共享、系统之间互操作性。</p>
+]]></content>
+      <categories>
+        <category>系统分析师</category>
+      </categories>
+      <tags>
+        <tag>系统分析师</tag>
+        <tag>开发方法</tag>
       </tags>
   </entry>
   <entry>
